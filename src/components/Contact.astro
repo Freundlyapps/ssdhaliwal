@@ -1,0 +1,268 @@
+---
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const contact = {
+  en: {
+    sectionTitle: 'Get In Touch',
+    sectionSubtitle: 'Ready to start a project?',
+    formTitle: 'Send a Message',
+    nameLabel: 'Your Name',
+    namePlaceholder: 'John Doe',
+    emailLabel: 'Your Email',
+    emailPlaceholder: 'john@example.com',
+    subjectLabel: 'Subject',
+    subjectPlaceholder: 'What can I help you with?',
+    messageLabel: 'Your Message',
+    messagePlaceholder: 'Tell me about your project or challenge...',
+    submitButton: 'Send Message',
+    alternativeContact: 'Or get in touch directly',
+    emailLinkLabel: 'Email',
+    bookCall: 'Book a Free Call',
+    socialLabel: 'Connect with me',
+  },
+  de: {
+    sectionTitle: 'Kontakt',
+    sectionSubtitle: 'Bereit, ein Projekt zu starten?',
+    formTitle: 'Senden Sie eine Nachricht',
+    nameLabel: 'Ihr Name',
+    namePlaceholder: 'Max Mustermann',
+    emailLabel: 'Ihre E-Mail',
+    emailPlaceholder: 'max@beispiel.de',
+    subjectLabel: 'Betreff',
+    subjectPlaceholder: 'Wobei kann ich Ihnen helfen?',
+    messageLabel: 'Ihre Nachricht',
+    messagePlaceholder: 'Erzählen Sie mir von Ihrem Projekt oder Ihrer Herausforderung...',
+    submitButton: 'Nachricht senden',
+    alternativeContact: 'Oder kontaktieren Sie mich direkt',
+    emailLinkLabel: 'E-Mail',
+    bookCall: 'Kostenloses Gespräch buchen',
+    socialLabel: 'Verbinden Sie sich mit mir',
+  },
+};
+
+const t = contact[lang];
+const isGerman = lang === 'de';
+---
+
+<section id="contact" class="py-20 bg-gray-50 dark:bg-[#0a0a0a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {t.sectionTitle}
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        {t.sectionSubtitle}
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+          {t.formTitle}
+        </h3>
+
+        <!-- Netlify Form -->
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          action="/success"
+          class="space-y-6"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="bot-field" class="hidden" />
+
+          <!-- Name -->
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              {t.nameLabel}
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder={t.namePlaceholder}
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              {t.emailLabel}
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder={t.emailPlaceholder}
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            />
+          </div>
+
+          <!-- Subject -->
+          <div>
+            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              {t.subjectLabel}
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder={t.subjectPlaceholder}
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+            />
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              {t.messageLabel}
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              placeholder={t.messagePlaceholder}
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full px-8 py-4 bg-gradient-to-r from-primary to-accent hover:from-primary-dark hover:to-accent-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            {t.submitButton}
+            <svg class="w-5 h-5 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+          </button>
+        </form>
+
+        <!-- Form Notice -->
+        <p class="mt-4 text-xs text-gray-500 dark:text-gray-400 text-center">
+          {isGerman
+            ? 'Durch das Absenden stimmen Sie unserer Datenschutzerklärung zu.'
+            : 'By submitting, you agree to our privacy policy.'}
+        </p>
+      </div>
+
+      <!-- Alternative Contact -->
+      <div class="space-y-8">
+        <!-- Direct Email -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+            {t.alternativeContact}
+          </h4>
+
+          <div class="space-y-4">
+            <a
+              href="mailto:freundly.apps@gmail.com"
+              class="flex items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              <div class="w-12 h-12 bg-primary/20 text-primary rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">{t.emailLinkLabel}</p>
+                <p class="font-semibold text-gray-900 dark:text-white">freundly.apps@gmail.com</p>
+              </div>
+            </a>
+
+            <a
+              href="https://calendly.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              <div class="w-12 h-12 bg-accent/20 text-accent rounded-lg flex items-center justify-center mr-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm text-gray-600 dark:text-gray-400">{t.bookCall}</p>
+                <p class="font-semibold text-gray-900 dark:text-white">Calendly →</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+          <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-6">
+            {t.socialLabel}
+          </h4>
+
+          <div class="grid grid-cols-2 gap-4">
+            <a
+              href="https://github.com/Freundlyapps"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              GitHub
+            </a>
+
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              LinkedIn
+            </a>
+
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              X / Twitter
+            </a>
+
+            <a
+              href="https://picshifter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+            >
+              <span class="text-xl mr-2">🖼️</span>
+              PicShifter
+            </a>
+          </div>
+        </div>
+
+        <!-- Location -->
+        <div class="bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/5 dark:to-accent/5 rounded-2xl p-8 text-center">
+          <p class="text-gray-600 dark:text-gray-400 mb-2">Based in</p>
+          <p class="text-2xl font-bold text-gray-900 dark:text-white">Austria 🇦🇹</p>
+          <p class="text-sm text-gray-500 dark:text-gray-500 mt-2">Available worldwide remotely</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

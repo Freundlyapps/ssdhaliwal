@@ -1,0 +1,142 @@
+---
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const nav = {
+  en: [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Contact', href: '/contact' },
+  ],
+  de: [
+    { name: 'Start', href: '/de' },
+    { name: 'Über mich', href: '/de/ueber' },
+    { name: 'Leistungen', href: '/de/leistungen' },
+    { name: 'Projekte', href: '/de/projekte' },
+    { name: 'Kontakt', href: '/de/kontakt' },
+  ],
+};
+
+const currentNav = nav[lang];
+const isGerman = lang === 'de';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-[#121212]/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href={isGerman ? '/de' : '/'} class="flex items-center space-x-2">
+        <span class="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          ssdhaliwal<span class="text-primary">.dev</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        {currentNav.map((item) => (
+          <a
+            href={item.href}
+            class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors font-medium"
+          >
+            {item.name}
+          </a>
+        ))}
+
+        <!-- Language Switcher -->
+        <div class="flex items-center space-x-2 border-l border-gray-300 dark:border-gray-700 pl-4">
+          <a
+            href="/"
+            class={`text-sm font-semibold ${!isGerman ? 'text-primary underline' : 'text-gray-600 dark:text-gray-400'} hover:text-primary dark:hover:text-primary-light transition-colors`}
+          >
+            EN
+          </a>
+          <span class="text-gray-400">|</span>
+          <a
+            href="/de"
+            class={`text-sm font-semibold ${isGerman ? 'text-primary underline' : 'text-gray-600 dark:text-gray-400'} hover:text-primary dark:hover:text-primary-light transition-colors`}
+          >
+            DE
+          </a>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+          aria-label="Toggle dark mode"
+        >
+          <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
+          </svg>
+          <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+        aria-label="Open menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col space-y-3">
+        {currentNav.map((item) => (
+          <a
+            href={item.href}
+            class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-light transition-colors font-medium py-2"
+          >
+            {item.name}
+          </a>
+        ))}
+
+        <!-- Language & Theme for Mobile -->
+        <div class="flex items-center space-x-4 pt-2 border-t border-gray-200 dark:border-gray-700">
+          <div class="flex items-center space-x-2">
+            <a href="/" class={`text-sm font-semibold ${!isGerman ? 'text-primary underline' : 'text-gray-600 dark:text-gray-400'}`}>EN</a>
+            <span class="text-gray-400">|</span>
+            <a href="/de" class={`text-sm font-semibold ${isGerman ? 'text-primary underline' : 'text-gray-600 dark:text-gray-400'}`}>DE</a>
+          </div>
+          <button
+            id="theme-toggle-mobile"
+            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800"
+            aria-label="Toggle dark mode"
+          >
+            <span class="dark:hidden">🌙</span>
+            <span class="hidden dark:inline">☀️</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile Menu Script -->
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu when clicking a link
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>

@@ -1,0 +1,137 @@
+---
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const hero = {
+  en: {
+    greeting: 'Hi, I\'m',
+    name: 'Sarabjit Singh Dhaliwal',
+    title: 'No-Code/Low-Code AI Expert',
+    description: 'Building custom SaaS & tools for content creators and SMBs—from scratch. Creator of PicShifter (10K+ users) and Writola.',
+    ctaPrimary: 'Explore Portfolio',
+    ctaSecondary: 'Book Free Audit',
+  },
+  de: {
+    greeting: 'Hallo, ich bin',
+    name: 'Sarabjit Singh Dhaliwal',
+    title: 'No-Code/Low-Code AI Experte',
+    description: 'Individuelle SaaS-Lösungen & Tools für Content Creator und KMUs. Schöpfer von PicShifter (10.000+ Nutzer) und Writola.',
+    ctaPrimary: 'Projekte ansehen',
+    ctaSecondary: 'Kostenloses Beratungsgespräch',
+  },
+};
+
+const t = hero[lang];
+const isGerman = lang === 'de';
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Gradient Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 dark:from-primary/10 dark:via-accent/5 dark:to-primary/10"></div>
+
+  <!-- Animated gradient blobs -->
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 dark:bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 dark:bg-accent/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Photo/Avatar -->
+      <div class="flex justify-center lg:justify-start order-1 lg:order-1">
+        <div class="relative">
+          <!-- Avatar placeholder - replace with your photo -->
+          <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary to-accent p-1 shadow-2xl">
+            <div class="w-full h-full rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
+              <!-- Placeholder - Replace with your image -->
+              <svg class="w-32 h-32 text-gray-400 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Status badge -->
+          <div class="absolute -bottom-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+            Available for work
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Text Content -->
+      <div class="text-center lg:text-left order-2 lg:order-2">
+        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-2">
+          {t.greeting}
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+          {t.name}
+        </h1>
+        <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">
+          {t.title}
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto lg:mx-0">
+          {t.description}
+        </p>
+
+        <!-- Tech Stack Badges -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
+            🚀 Bubble
+          </span>
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
+            🌐 Webflow
+          </span>
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
+            🔌 Zapier
+          </span>
+          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
+            🤖 OpenAI
+          </span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a
+            href={isGerman ? '/de/projekte' : '#portfolio'}
+            class="px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+          >
+            {t.ctaPrimary}
+          </a>
+          <a
+            href="https://calendly.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 border-2 border-primary text-primary dark:text-primary-light hover:bg-primary hover:text-white font-semibold rounded-lg transition-all duration-300 text-center"
+          >
+            {t.ctaSecondary}
+          </a>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="mt-12 flex items-center justify-center lg:justify-start space-x-8">
+          <div class="text-center">
+            <p class="text-3xl font-bold text-gray-900 dark:text-white">10K+</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">PicShifter Users</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-bold text-gray-900 dark:text-white">500+</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">GitHub Stars</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-bold text-gray-900 dark:text-white">4+</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Projects</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href="#about" class="text-gray-400 hover:text-primary transition-colors">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </a>
+  </div>
+</section>

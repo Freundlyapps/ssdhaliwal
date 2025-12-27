@@ -1,0 +1,277 @@
+---
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const portfolio = {
+  en: [
+    {
+      title: 'PicShifter',
+      description: 'Open-source image optimizer—privacy-first resizing & conversion.',
+      problem: 'Content creators waste hours manually resizing images.',
+      solution: 'Browser-based tool that bulk resizes without server upload.',
+      impact: ['10,000+ users', '500+ GitHub stars', 'Privacy-first (GDPR compliant)'],
+      tech: ['Bubble.js', 'Canvas API', 'GitHub Pages'],
+      liveUrl: 'https://picshifter.com',
+      githubUrl: 'https://github.com/Freundlyapps/picshifter',
+      image: '/images/picshifter.png',
+      tags: ['Open Source', 'Image Processing', 'Privacy'],
+    },
+    {
+      title: 'Writola',
+      description: 'AI-powered writing and publishing SaaS for content creators.',
+      problem: 'Creating SEO-optimized content takes hours of research and writing.',
+      solution: 'AI assistant that researches, writes, and formats blog posts.',
+      impact: ['Reduces writing time by 70%', 'Beta users produce 3x more content', 'Closed beta'],
+      tech: ['Bubble.io', 'OpenAI API', 'WordPress API'],
+      liveUrl: 'https://writola.com',
+      image: '/images/writola.png',
+      tags: ['AI', 'SaaS', 'Content', 'Beta'],
+      isBeta: true,
+    },
+    {
+      title: 'PDFtoImage',
+      description: 'Free drag-drop PDF converter for quick thumbnails and newsletters.',
+      problem: 'Quick PDF-to-image conversion without registration.',
+      solution: 'Simple, instant conversion tool.',
+      impact: ['No registration', 'Instant processing', 'Free forever'],
+      tech: ['JavaScript', 'PDF.js', 'Canvas API'],
+      liveUrl: 'https://pdetoimage.picshifter.com',
+      image: '/images/pdetoimage.png',
+      tags: ['Free Tool', 'PDF', 'Utility'],
+    },
+    {
+      title: 'AI Video Generator',
+      description: 'Script-to-short videos, fully automated.',
+      problem: 'Creating short videos from scripts is time-consuming.',
+      solution: 'Automated video generation from text scripts.',
+      impact: ['In development', 'Early access available', 'Teaser coming soon'],
+      tech: ['OpenAI', 'Video APIs', 'Automation'],
+      image: '/images/ai-video.png',
+      tags: ['AI', 'Video', 'In Development'],
+      isInDevelopment: true,
+    },
+  ],
+  de: [
+    {
+      title: 'PicShifter',
+      description: 'Open-Source Bild-Optimierer—datenschutzsichere Größenänderung & Konvertierung.',
+      problem: 'Content Creator verlieren Stunden beim manuellen Skalieren von Bildern.',
+      solution: 'Browser-basiertes Tool für Bulk-Skalierung ohne Server-Upload.',
+      impact: ['10.000+ Nutzer', '500+ GitHub Stars', 'Datenschutzkonform (DSGVO)'],
+      tech: ['Bubble.js', 'Canvas API', 'GitHub Pages'],
+      liveUrl: 'https://picshifter.com',
+      githubUrl: 'https://github.com/Freundlyapps/picshifter',
+      image: '/images/picshifter.png',
+      tags: ['Open Source', 'Bildverarbeitung', 'Datenschutz'],
+    },
+    {
+      title: 'Writola',
+      description: 'KI-gestützte Schreib- und Publishing-SaaS für Content Creator.',
+      problem: 'Die Erstellung von SEO-optimierten Inhalten dauert Stunden.',
+      solution: 'KI-Assistent, der recherchiert, schreibt und formatiert.',
+      impact: ['Reduziert Schreibzeit um 70%', 'Beta-Nutzer erstellen 3x mehr Content', 'Geschlossene Beta'],
+      tech: ['Bubble.io', 'OpenAI API', 'WordPress API'],
+      liveUrl: 'https://writola.com',
+      image: '/images/writola.png',
+      tags: ['KI', 'SaaS', 'Content', 'Beta'],
+      isBeta: true,
+    },
+    {
+      title: 'PDFtoImage',
+      description: 'Kostenloser Drag-&-Drop PDF-Konverter für schnelle Thumbnails.',
+      problem: 'Schnelle PDF-zu-Bild-Konvertierung ohne Registrierung.',
+      solution: 'Einfaches, sofortiges Konvertierungstool.',
+      impact: ['Keine Registrierung', 'Sofortige Verarbeitung', 'Für immer kostenlos'],
+      tech: ['JavaScript', 'PDF.js', 'Canvas API'],
+      liveUrl: 'https://pdetoimage.picshifter.com',
+      image: '/images/pdetoimage.png',
+      tags: ['Kostenloses Tool', 'PDF', 'Utility'],
+    },
+    {
+      title: 'AI Video Generator',
+      description: 'Script-zu-Short-Videos, vollautomatisch.',
+      problem: 'Die Erstellung von Kurzvideos aus Skripten ist zeitaufwendig.',
+      solution: 'Automatisierte Video-Generierung aus Textskripten.',
+      impact: ['In Entwicklung', 'Früher Zugang verfügbar', 'Teaser bald verfügbar'],
+      tech: ['OpenAI', 'Video APIs', 'Automatisierung'],
+      image: '/images/ai-video.png',
+      tags: ['KI', 'Video', 'In Entwicklung'],
+      isInDevelopment: true,
+    },
+  ],
+};
+
+const t = {
+  en: {
+    sectionTitle: 'Portfolio',
+    sectionSubtitle: 'Projects I\'ve built',
+    viewProject: 'View Project',
+    liveDemo: 'Live Demo',
+    sourceCode: 'Source Code',
+    beta: 'Beta',
+    inDevelopment: 'In Development',
+    earlyAccess: 'Get Early Access',
+  },
+  de: {
+    sectionTitle: 'Projekte',
+    sectionSubtitle: 'Projekte, die ich gebaut habe',
+    viewProject: 'Projekt ansehen',
+    liveDemo: 'Live-Demo',
+    sourceCode: 'Quellcode',
+    beta: 'Beta',
+    inDevelopment: 'In Entwicklung',
+    earlyAccess: 'Frühen Zugang sichern',
+  },
+};
+
+const projects = portfolio[lang];
+const labels = t[lang];
+---
+
+<section id="portfolio" class="py-20 bg-white dark:bg-[#0a0a0a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {labels.sectionTitle}
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        {labels.sectionSubtitle}
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid md:grid-cols-2 gap-8">
+      {projects.map((project) => (
+        <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+          <!-- Project Image/Placeholder -->
+          <div class="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
+            <!-- Placeholder for project image -->
+            <div class="w-full h-full flex items-center justify-center">
+              <span class="text-6xl">{project.title.charAt(0)}</span>
+            </div>
+
+            <!-- Badges -->
+            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+              {project.isBeta && (
+                <span class="px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full">
+                  {labels.beta}
+                </span>
+              )}
+              {project.isInDevelopment && (
+                <span class="px-3 py-1 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-semibold rounded-full">
+                  {labels.inDevelopment}
+                </span>
+              )}
+            </div>
+
+            <!-- Tech Tags -->
+            <div class="absolute top-4 right-4 flex flex-wrap gap-1 justify-end">
+              {project.tags.slice(0, 2).map((tag) => (
+                <span class="px-2 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-medium rounded-md">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              {project.title}
+            </h3>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              {project.description}
+            </p>
+
+            <!-- Problem/Solution -->
+            <div class="space-y-2 mb-4 text-sm">
+              <div class="flex items-start">
+                <span class="text-red-500 mr-2">❌</span>
+                <span class="text-gray-600 dark:text-gray-400">{project.problem}</span>
+              </div>
+              <div class="flex items-start">
+                <span class="text-green-500 mr-2">✅</span>
+                <span class="text-gray-600 dark:text-gray-400">{project.solution}</span>
+              </div>
+            </div>
+
+            <!-- Impact -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.impact.map((item) => (
+                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium rounded-full">
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              {project.tech.map((tech) => (
+                <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-md">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            <!-- Links -->
+            <div class="flex items-center space-x-4">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors text-sm"
+                >
+                  {labels.liveDemo}
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center px-4 py-2 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white rounded-lg font-medium transition-colors text-sm"
+                >
+                  {labels.sourceCode}
+                  <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                </a>
+              )}
+              {project.isInDevelopment && (
+                <a
+                  href="/contact"
+                  class="flex items-center px-4 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white rounded-lg font-medium transition-colors text-sm"
+                >
+                  {labels.earlyAccess}
+                </a>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- More Projects CTA -->
+    <div class="mt-12 text-center">
+      <a
+        href="https://github.com/Freundlyapps?tab=repositories"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center text-primary dark:text-primary-light hover:underline font-medium"
+      >
+        View all on GitHub
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

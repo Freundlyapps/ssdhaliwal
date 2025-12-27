@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const meta = {
+  title: 'Message Sent - Thank You!',
+  description: 'Your message has been sent successfully. I\'ll get back to you soon.',
+};
+---
+
+<Layout title={meta.title} description={meta.description} lang="en">
+  <section class="min-h-screen flex items-center justify-center py-20">
+    <div class="max-w-2xl mx-auto px-4 text-center">
+      <!-- Success Icon -->
+      <div class="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-8">
+        <svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        Message Sent!
+      </h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
+        Thank you for reaching out. I'll get back to you within 24 hours.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/"
+          class="px-8 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-colors"
+        >
+          Back to Home
+        </a>
+        <a
+          href="/portfolio"
+          class="px-8 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-lg transition-colors"
+        >
+          View Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

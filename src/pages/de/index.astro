@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Services from '../../components/Services.astro';
+import Portfolio from '../../components/Portfolio.astro';
+import Contact from '../../components/Contact.astro';
+
+const meta = {
+  title: 'Sarabjit Singh Dhaliwal | No-Code/Low-Code AI Entwickler',
+  description: 'Individuelle KI-SaaS & Tools für Content Creator und KMUs. Schöpfer von PicShifter, Writola. Facebook & LinkedIn API Experte aus Österreich.',
+  image: '/images/og-image.jpg',
+};
+---
+
+<Layout title={meta.title} description={meta.description} image={meta.image} lang="de">
+  <Hero lang="de" />
+  <About lang="de" />
+  <Services lang="de" />
+  <Portfolio lang="de" />
+  <Contact lang="de" />
+</Layout>
