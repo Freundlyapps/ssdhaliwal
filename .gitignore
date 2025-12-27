@@ -1,0 +1,130 @@
+# ============================================
+# .gitignore for ssdhaliwal Portfolio
+# Astro + Netlify + Node.js
+# ============================================
+
+# ----------
+# Dependencies
+# ----------
+node_modules/
+.pnp/
+.pnp.js
+
+# ----------
+# Build outputs
+# ----------
+dist/
+build/
+.output/
+.netlify/
+
+# ----------
+# Environment files
+# ----------
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ----------
+# Astro specific
+# ----------
+.astro/
+astro.config.mjs.backup
+
+# ----------
+# Logs
+# ----------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+logs/
+*.log
+
+# ----------
+# Runtime data
+# ----------
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ----------
+# Coverage directory
+# ----------
+coverage/
+*.lcov
+.nyc_output/
+
+# ----------
+# IDEs & Editors
+# ----------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ----------
+# OS generated files
+# ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# ----------
+# Temporary files
+# ----------
+*.tmp
+*.temp
+.cache/
+.parcel-cache/
+
+# ----------
+# Optional npm cache
+# ----------
+.npm
+
+# ----------
+# Optional eslint cache
+# ----------
+.eslintcache
+
+# ----------
+# TypeScript
+# ----------
+*.tsbuildinfo
+
+# ----------
+# Netlify
+# ----------
+.netlify/
+
+# ----------
+# Vercel
+# ----------
+.vercel
+
+# ----------
+# Firebase
+#----------
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# ----------
+# Misc
+# ----------
+*.bak
+*.backup
+site/assets/dist/
