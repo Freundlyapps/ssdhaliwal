@@ -54,6 +54,33 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
+    <!-- Custom Animations -->
+    <style is:inline>
+      @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes slide-up {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      .animate-fade-in { animation: fade-in 0.8s ease-out; }
+      .animate-slide-up { animation: slide-up 0.8s ease-out 0.2s backwards; }
+      .animate-float { animation: float 3s ease-in-out infinite; }
+
+      /* Scroll-triggered animations */
+      .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+
     <!-- Netlify Identity for CMS (optional) -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
@@ -88,6 +115,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       themeToggle?.addEventListener('click', () => {
         const isDark = document.documentElement.classList.toggle('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    </script>
+
+    <!-- Scroll Reveal Animation -->
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+          const windowHeight = window.innerHeight;
+          revealElements.forEach((element) => {
+            const elementTop = element.getBoundingClientRect().top;
+            const revealPoint = 150;
+
+            if (elementTop < windowHeight - revealPoint) {
+              element.classList.add('active');
+            }
+          });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
       });
     </script>
 

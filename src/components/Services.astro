@@ -8,15 +8,15 @@ const { lang = 'en' } = Astro.props;
 const services = {
   en: [
     {
-      icon: '🚀',
+      icon: 'rocket',
       title: 'Custom SaaS Builds',
       description: 'AI-integrated apps from scratch. From idea to working product.',
-      features: ['User authentication', 'Payment integration', 'CMS & documentation', ' scalable architecture'],
+      features: ['User authentication', 'Payment integration', 'CMS & documentation', 'Scalable architecture'],
       price: '€1,800+',
       cta: 'Get Quote',
     },
     {
-      icon: '🌐',
+      icon: 'globe',
       title: 'Website Development',
       description: 'Responsive, fast websites on no-code platforms. Perfect for portfolios and products.',
       features: ['Mobile-responsive', 'CMS for easy updates', 'SEO optimized', 'Contact forms'],
@@ -24,7 +24,7 @@ const services = {
       cta: 'Get Quote',
     },
     {
-      icon: '🤖',
+      icon: 'chip',
       title: 'AI Problem-Solving',
       description: 'Custom AI tools from scratch. Need something that doesn\'t exist? Let\'s build it.',
       features: ['Script-to-video generators', 'Content automation', 'PDF/image processing', 'Custom workflows'],
@@ -32,15 +32,15 @@ const services = {
       cta: 'Book Call',
     },
     {
-      icon: '🔌',
+      icon: 'plug',
       title: 'API Integrations',
       description: 'Connect your favorite tools. Expert in Facebook, LinkedIn, and OpenAI APIs.',
-      features: ['Facebook OAuth', 'LinkedIn sharing', 'OpenAI GPT-4', 'Custom webhooks'],
+      features: ['Facebook OAuth', 'LinkedIn sharing', 'OpenAI compatible', 'Custom webhooks'],
       price: '€270-450',
       cta: 'Discuss',
     },
     {
-      icon: '📋',
+      icon: 'clipboard',
       title: 'Consulting & Audits',
       description: 'Not sure where to start? Let\'s map out your solution together.',
       features: ['Requirements analysis', 'Platform recommendation', 'Implementation roadmap', 'Free resources'],
@@ -50,7 +50,7 @@ const services = {
   ],
   de: [
     {
-      icon: '🚀',
+      icon: 'rocket',
       title: 'Individuelle SaaS-Entwicklung',
       description: 'KI-integrierte Apps von Grund auf. Von der Idee zum funktionierenden Produkt.',
       features: ['User-Authentifizierung', 'Zahlungsintegration', 'CMS & Dokumentation', 'Skalierbare Architektur'],
@@ -58,7 +58,7 @@ const services = {
       cta: 'Angebot anfordern',
     },
     {
-      icon: '🌐',
+      icon: 'globe',
       title: 'Webentwicklung',
       description: 'Responsive, schnelle Websites auf No-Code-Basis. Perfekt für Portfolios und Produkte.',
       features: ['Mobile-optimiert', 'CMS für einfache Updates', 'SEO-optimiert', 'Kontaktformulare'],
@@ -66,7 +66,7 @@ const services = {
       cta: 'Angebot anfordern',
     },
     {
-      icon: '🤖',
+      icon: 'chip',
       title: 'KI-Lösungen',
       description: 'Maßgeschneiderte KI-Tools von Grund auf. Benötigen Sie etwas, das noch nicht existiert?',
       features: ['Script-zu-Video-Generatoren', 'Content-Automatisierung', 'PDF/Bild-Verarbeitung', 'Custom Workflows'],
@@ -74,15 +74,15 @@ const services = {
       cta: 'Gespräch buchen',
     },
     {
-      icon: '🔌',
+      icon: 'plug',
       title: 'API-Integrationen',
       description: 'Verbinden Sie Ihre Lieblings-Tools. Experte für Facebook, LinkedIn und OpenAI APIs.',
-      features: ['Facebook OAuth', 'LinkedIn Sharing', 'OpenAI GPT-4', 'Eigene Webhooks'],
+      features: ['Facebook OAuth', 'LinkedIn Sharing', 'OpenAI kompatibel', 'Eigene Webhooks'],
       price: '€270-450',
       cta: 'Besprechen',
     },
     {
-      icon: '📋',
+      icon: 'clipboard',
       title: 'Beratung & Audits',
       description: 'Nicht sicher, wo Sie anfangen sollen? Lassen Sie uns gemeinsam eine Lösung entwickeln.',
       features: ['Anforderungsanalyse', 'Plattform-Empfehlung', 'Implementierungs-Roadmap', 'Kostenlose Ressourcen'],
@@ -92,14 +92,26 @@ const services = {
   ],
 };
 
+const icons: Record<string, string> = {
+  rocket: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+  globe: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>`,
+  chip: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>`,
+  plug: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 015.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>`,
+  clipboard: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>`,
+};
+
 const t = {
   en: {
     sectionTitle: 'Services',
     sectionSubtitle: 'What I can do for you',
+    customSolution: 'Need something custom?',
+    letsTalk: 'Let\'s talk',
   },
   de: {
     sectionTitle: 'Leistungen',
     sectionSubtitle: 'Was ich für Sie tun kann',
+    customSolution: 'Benötigen Sie eine maßgeschneiderte Lösung?',
+    letsTalk: 'Lassen Sie uns sprechen',
   },
 };
 
@@ -111,7 +123,7 @@ const isGerman = lang === 'de';
 <section id="services" class="py-20 bg-gray-50 dark:bg-[#0a0a0a]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-16 reveal">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
         {labels.sectionTitle}
       </h2>
@@ -123,20 +135,18 @@ const isGerman = lang === 'de';
     <!-- Services Grid -->
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {currentServices.map((service, index) => (
-        <div
-          class={`bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${index === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}
-        >
+        <div class="group bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-transparent hover:border-primary/30 reveal" style={`transition-delay: ${index * 0.1}s;`}>
           <!-- Icon -->
-          <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center text-3xl mb-6">
-            {service.icon}
+          <div class="w-16 h-16 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-all duration-300">
+            <div set:html={icons[service.icon]} />
           </div>
 
           <!-- Title & Price -->
           <div class="flex items-start justify-between mb-4">
-            <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
               {service.title}
             </h3>
-            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold whitespace-nowrap ml-2">
+            <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold whitespace-nowrap ml-2 group-hover:bg-primary group-hover:text-white transition-colors">
               {service.price}
             </span>
           </div>
@@ -149,7 +159,7 @@ const isGerman = lang === 'de';
           <!-- Features -->
           <ul class="space-y-2 mb-6">
             {service.features.map((feature) => (
-              <li class="flex items-start text-sm text-gray-600 dark:text-gray-400">
+              <li class="flex items-start text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200 transition-colors">
                 <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
@@ -160,11 +170,11 @@ const isGerman = lang === 'de';
 
           <!-- CTA -->
           <a
-            href={isGerman ? '/de/kontakt' : '/contact'}
-            class="inline-flex items-center w-full justify-center px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-semibold hover:bg-primary dark:hover:bg-primary hover:text-white dark:hover:text-white transition-colors"
+            href={isGerman ? '/de#contact' : '#contact'}
+            class="inline-flex items-center w-full justify-center px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-semibold hover:bg-primary hover:text-white hover:scale-105 transition-all duration-300"
           >
             {service.cta}
-            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
@@ -175,13 +185,13 @@ const isGerman = lang === 'de';
     <!-- Bottom CTA -->
     <div class="mt-16 text-center">
       <p class="text-gray-600 dark:text-gray-400 mb-6">
-        {isGerman ? 'Benötigen Sie eine maßgeschneiderte Lösung?' : 'Need something custom?'}
+        {labels.customSolution}
       </p>
       <a
-        href={isGerman ? '/de/kontakt' : '/contact'}
-        class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-accent text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+        href={isGerman ? '/de#contact' : '#contact'}
+        class="inline-flex items-center px-8 py-4 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
       >
-        {isGerman ? 'Lassen Sie uns sprechen' : 'Let\'s talk'}
+        {labels.letsTalk}
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>

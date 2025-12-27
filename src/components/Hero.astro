@@ -13,6 +13,7 @@ const hero = {
     description: 'Building custom SaaS & tools for content creators and SMBs—from scratch. Creator of PicShifter (10K+ users) and Writola.',
     ctaPrimary: 'Explore Portfolio',
     ctaSecondary: 'Book Free Audit',
+    available: 'Available for work',
   },
   de: {
     greeting: 'Hallo, ich bin',
@@ -21,6 +22,7 @@ const hero = {
     description: 'Individuelle SaaS-Lösungen & Tools für Content Creator und KMUs. Schöpfer von PicShifter (10.000+ Nutzer) und Writola.',
     ctaPrimary: 'Projekte ansehen',
     ctaSecondary: 'Kostenloses Beratungsgespräch',
+    available: 'Verfügbar für Projekte',
   },
 };
 
@@ -33,33 +35,31 @@ const isGerman = lang === 'de';
   <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/20 dark:from-primary/10 dark:via-accent/5 dark:to-primary/10"></div>
 
   <!-- Animated gradient blobs -->
-  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 dark:bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 dark:bg-accent/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 dark:bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/30 dark:bg-accent/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- Left: Photo/Avatar -->
       <div class="flex justify-center lg:justify-start order-1 lg:order-1">
-        <div class="relative">
-          <!-- Avatar placeholder - replace with your photo -->
-          <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary to-accent p-1 shadow-2xl">
+        <div class="relative animate-fade-in">
+          <!-- Avatar -->
+          <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-primary to-accent p-1.5 shadow-2xl hover:scale-105 transition-transform duration-500">
             <div class="w-full h-full rounded-full bg-gray-200 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-              <!-- Placeholder - Replace with your image -->
-              <svg class="w-32 h-32 text-gray-400 dark:text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
+              <img src="/images/avatar.jpg" alt="Sarabjit Singh Dhaliwal" class="w-full h-full object-cover" />
             </div>
           </div>
 
           <!-- Status badge -->
-          <div class="absolute -bottom-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-            Available for work
+          <div class="absolute -bottom-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg flex items-center animate-bounce">
+            <span class="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
+            {t.available}
           </div>
         </div>
       </div>
 
       <!-- Right: Text Content -->
-      <div class="text-center lg:text-left order-2 lg:order-2">
+      <div class="text-center lg:text-left order-2 lg:order-2 animate-slide-up">
         <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-2">
           {t.greeting}
         </p>
@@ -75,35 +75,53 @@ const isGerman = lang === 'de';
 
         <!-- Tech Stack Badges -->
         <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
-            🚀 Bubble
+          <span class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 0 1-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 0 0-.219 13.076c1.424 2.399 3.736 4.253 6.496 5.075.47.134.96.223 1.474.265.39.034 1.346.034 1.736-.001 1.112-.097 2.098-.336 3.082-.765.216-.093.41-.18.606-.276l.03-.016.01.008c2.324 1.589 5.157 2.367 8.065 2.201 1.453-.083 2.879-.421 4.223-1.003 2.632-1.126 4.77-3.14 5.925-5.65.39-.84.675-1.715.854-2.642.12-.607.173-1.18.18-1.945a12.134 12.134 0 0 0 .001-2.094c-.145-.923-.42-1.78-.835-2.615-1.157-2.492-3.262-4.536-5.87-5.688a12.036 12.036 0 0 0-2.235-.657 19.867 19.867 0 0 1-.365-.066C12.296.005 11.76 0 11.572 0z"/>
+            </svg>
+            Next.js
           </span>
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
-            🌐 Webflow
+          <span class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+            </svg>
+            WordPress
           </span>
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
-            🔌 Zapier
+          <span class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            Zapier
           </span>
-          <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-700 dark:text-gray-300">
-            🤖 OpenAI
+          <span class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            </svg>
+            Claude API
           </span>
         </div>
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
           <a
-            href={isGerman ? '/de/projekte' : '#portfolio'}
-            class="px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+            href={isGerman ? '/de#portfolio' : '#portfolio'}
+            class="inline-flex items-center px-8 py-4 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-center group"
           >
             {t.ctaPrimary}
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
           </a>
           <a
             href="https://calendly.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-8 py-4 border-2 border-primary text-primary dark:text-primary-light hover:bg-primary hover:text-white font-semibold rounded-lg transition-all duration-300 text-center"
+            class="inline-flex items-center px-8 py-4 border-2 border-primary text-primary dark:text-primary-light hover:bg-primary hover:text-white hover:scale-105 font-semibold rounded-lg shadow-md hover:shadow-xl transition-all duration-300 text-center group"
           >
             {t.ctaSecondary}
+            <svg class="w-5 h-5 ml-2 group-hover:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
           </a>
         </div>
 
@@ -112,10 +130,6 @@ const isGerman = lang === 'de';
           <div class="text-center">
             <p class="text-3xl font-bold text-gray-900 dark:text-white">10K+</p>
             <p class="text-sm text-gray-600 dark:text-gray-400">PicShifter Users</p>
-          </div>
-          <div class="text-center">
-            <p class="text-3xl font-bold text-gray-900 dark:text-white">500+</p>
-            <p class="text-sm text-gray-600 dark:text-gray-400">GitHub Stars</p>
           </div>
           <div class="text-center">
             <p class="text-3xl font-bold text-gray-900 dark:text-white">4+</p>

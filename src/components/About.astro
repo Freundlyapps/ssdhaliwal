@@ -10,18 +10,18 @@ const about = {
     sectionTitle: 'About Me',
     sectionSubtitle: 'From automations to impactful tools',
     journey: 'My Journey',
-    journeyText: 'Everything started with a simple question: "Why does this have to be so complicated?" As a content creator myself, I was frustrated by tedious workflows—resizing images, converting files, publishing across platforms. I knew there had to be a better way.',
+    journeyText: 'Everything started with a simple question: "Why does this have to be so complicated?" As a content creator myself, I was frustrated by tedious workflows-resizing images, converting files, publishing across platforms. I knew there had to be a better way.',
     skills: 'My Skills',
     whatIDo: 'What I Do Today',
     whatIDoText1: 'I build custom software that solves real problems for content creators and SMBs.',
-    whatIDoText2: 'From automated content pipelines to AI-powered tools, I create solutions that actually work—not just prototypes.',
+    whatIDoText2: 'From automated content pipelines to AI-powered tools, I create solutions that actually work-not just prototypes.',
     specializations: 'Specializations',
     spec1: 'Content Creators',
     spec1Text: 'Automated content pipelines, image/video workflows, AI writing assistants',
     spec2: 'SMBs',
     spec2Text: 'Custom SaaS applications, API integrations, workflow automation',
     philosophy: 'My Philosophy',
-    philosophyText: '"No code bloat" — I build exactly what you need, nothing more, nothing less. Every feature solves a specific problem.',
+    philosophyText: '"No code bloat" - I build exactly what you need, nothing more, nothing less. Every feature solves a specific problem.',
   },
   de: {
     sectionTitle: 'Über mich',
@@ -44,21 +44,21 @@ const about = {
 
 const t = about[lang];
 const skills = [
-  { name: 'Bubble', icon: '🚀', level: 90 },
-  { name: 'Webflow', icon: '🌐', level: 85 },
-  { name: 'Zapier/Make', icon: '🔌', level: 90 },
-  { name: 'OpenAI API', icon: '🤖', level: 85 },
-  { name: 'Airtable', icon: '📊', level: 80 },
-  { name: 'Facebook API', icon: '📘', level: 75 },
-  { name: 'LinkedIn API', icon: '💼', level: 75 },
-  { name: 'Tailwind CSS', icon: '🎨', level: 80 },
+  { name: 'Next.js', level: 90 },
+  { name: 'WordPress', level: 85 },
+  { name: 'Zapier/Make', level: 90 },
+  { name: 'Claude API', level: 85 },
+  { name: 'Gemini API', level: 80 },
+  { name: 'Facebook API', level: 75 },
+  { name: 'LinkedIn API', level: 75 },
+  { name: 'Tailwind CSS', level: 80 },
 ];
 ---
 
 <section id="about" class="py-20 bg-white dark:bg-[#0a0a0a]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-16 reveal">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
         {t.sectionTitle}
       </h2>
@@ -70,9 +70,13 @@ const skills = [
     <div class="grid lg:grid-cols-2 gap-16 items-start">
       <!-- Left: Story -->
       <div class="space-y-8">
-        <div>
+        <div class="reveal" style="transition-delay: 0.1s;">
           <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-            <span class="w-8 h-8 bg-primary/20 text-primary rounded-lg flex items-center justify-center mr-3">📖</span>
+            <span class="w-10 h-10 flex items-center justify-center mr-3 text-primary">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </span>
             {t.journey}
           </h3>
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -80,9 +84,13 @@ const skills = [
           </p>
         </div>
 
-        <div>
+        <div class="reveal" style="transition-delay: 0.2s;">
           <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-            <span class="w-8 h-8 bg-accent/20 text-accent rounded-lg flex items-center justify-center mr-3">💡</span>
+            <span class="w-10 h-10 flex items-center justify-center mr-3 text-accent">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </span>
             {t.whatIDo}
           </h3>
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
@@ -93,9 +101,13 @@ const skills = [
           </p>
         </div>
 
-        <div>
+        <div class="reveal" style="transition-delay: 0.3s;">
           <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-4 flex items-center">
-            <span class="w-8 h-8 bg-green-500/20 text-green-500 rounded-lg flex items-center justify-center mr-3">🎯</span>
+            <span class="w-10 h-10 flex items-center justify-center mr-3 text-green-500">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </span>
             {t.philosophy}
           </h3>
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed italic">
@@ -107,21 +119,24 @@ const skills = [
       <!-- Right: Skills -->
       <div>
         <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
-          <span class="w-8 h-8 bg-primary/20 text-primary rounded-lg flex items-center justify-center mr-3">⚡</span>
+          <span class="w-10 h-10 flex items-center justify-center mr-3 text-primary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </span>
           {t.skills}
         </h3>
 
         <div class="grid grid-cols-2 gap-4">
-          {skills.map((skill) => (
-            <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 hover:shadow-lg transition-shadow">
+          {skills.map((skill, index) => (
+            <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:scale-105" style={`animation: fade-in 0.5s ease-out ${index * 0.1}s backwards;`}>
               <div class="flex items-center justify-between mb-2">
-                <span class="text-2xl">{skill.icon}</span>
+                <p class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">{skill.name}</p>
                 <span class="text-sm text-gray-500 dark:text-gray-400">{skill.level}%</span>
               </div>
-              <p class="font-semibold text-gray-900 dark:text-white">{skill.name}</p>
-              <div class="mt-2 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+              <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                 <div
-                  class="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1000"
+                  class="h-full bg-primary rounded-full transition-all duration-1000 group-hover:brightness-110"
                   style={`width: ${skill.level}%`}
                 ></div>
               </div>
@@ -131,22 +146,32 @@ const skills = [
 
         <!-- Tech Partnership Badges -->
         <div class="mt-8 p-6 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/5 dark:to-accent/5 rounded-xl border border-primary/20">
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-4">
-            Trusted Tech Partners
-          </h4>
-          <div class="flex flex-wrap gap-3">
-            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-sm font-medium shadow-sm">
-              Facebook API
-            </span>
-            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-sm font-medium shadow-sm">
-              LinkedIn API
-            </span>
-            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-sm font-medium shadow-sm">
-              OpenAI
-            </span>
-            <span class="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg text-sm font-medium shadow-sm">
-              Bubble.io
-            </span>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-4">API Partnerships</h4>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
+              <svg class="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+              <span class="text-sm font-medium">Facebook API</span>
+            </div>
+            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
+              <svg class="w-5 h-5 mr-2 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <span class="text-sm font-medium">LinkedIn API</span>
+            </div>
+            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
+              <svg class="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+              </svg>
+              <span class="text-sm font-medium">Claude API</span>
+            </div>
+            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
+              <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+              </svg>
+              <span class="text-sm font-medium">Gemini API</span>
+            </div>
           </div>
         </div>
       </div>

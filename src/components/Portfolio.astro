@@ -9,10 +9,10 @@ const portfolio = {
   en: [
     {
       title: 'PicShifter',
-      description: 'Open-source image optimizer—privacy-first resizing & conversion.',
+      description: 'Open-source image optimizer-privacy-first resizing & conversion.',
       problem: 'Content creators waste hours manually resizing images.',
       solution: 'Browser-based tool that bulk resizes without server upload.',
-      impact: ['10,000+ users', '500+ GitHub stars', 'Privacy-first (GDPR compliant)'],
+      impact: ['10,000+ users', 'Privacy-first (GDPR compliant)'],
       tech: ['Bubble.js', 'Canvas API', 'GitHub Pages'],
       liveUrl: 'https://picshifter.com',
       githubUrl: 'https://github.com/Freundlyapps/picshifter',
@@ -25,7 +25,7 @@ const portfolio = {
       problem: 'Creating SEO-optimized content takes hours of research and writing.',
       solution: 'AI assistant that researches, writes, and formats blog posts.',
       impact: ['Reduces writing time by 70%', 'Beta users produce 3x more content', 'Closed beta'],
-      tech: ['Bubble.io', 'OpenAI API', 'WordPress API'],
+      tech: ['Next.js', 'Claude API', 'Gemini API'],
       liveUrl: 'https://writola.com',
       image: '/images/writola.png',
       tags: ['AI', 'SaaS', 'Content', 'Beta'],
@@ -38,18 +38,18 @@ const portfolio = {
       solution: 'Simple, instant conversion tool.',
       impact: ['No registration', 'Instant processing', 'Free forever'],
       tech: ['JavaScript', 'PDF.js', 'Canvas API'],
-      liveUrl: 'https://pdetoimage.picshifter.com',
-      image: '/images/pdetoimage.png',
+      liveUrl: 'https://pdftoimage.picshifter.com',
+      image: '/images/pdftoimage.png',
       tags: ['Free Tool', 'PDF', 'Utility'],
     },
     {
-      title: 'AI Video Generator',
-      description: 'Script-to-short videos, fully automated.',
-      problem: 'Creating short videos from scripts is time-consuming.',
-      solution: 'Automated video generation from text scripts.',
-      impact: ['In development', 'Early access available', 'Teaser coming soon'],
+      title: 'IdeaVid.co',
+      description: 'AI video repurposing tool-turn long content into short videos.',
+      problem: 'Creating short videos from long-form content is time-consuming.',
+      solution: 'Automated video repurposing from existing content.',
+      impact: ['In development', 'Early access available', 'Coming soon'],
       tech: ['OpenAI', 'Video APIs', 'Automation'],
-      image: '/images/ai-video.png',
+      image: '/images/ideavid.png',
       tags: ['AI', 'Video', 'In Development'],
       isInDevelopment: true,
     },
@@ -60,7 +60,7 @@ const portfolio = {
       description: 'Open-Source Bild-Optimierer—datenschutzsichere Größenänderung & Konvertierung.',
       problem: 'Content Creator verlieren Stunden beim manuellen Skalieren von Bildern.',
       solution: 'Browser-basiertes Tool für Bulk-Skalierung ohne Server-Upload.',
-      impact: ['10.000+ Nutzer', '500+ GitHub Stars', 'Datenschutzkonform (DSGVO)'],
+      impact: ['10.000+ Nutzer', 'Datenschutzkonform (DSGVO)'],
       tech: ['Bubble.js', 'Canvas API', 'GitHub Pages'],
       liveUrl: 'https://picshifter.com',
       githubUrl: 'https://github.com/Freundlyapps/picshifter',
@@ -73,7 +73,7 @@ const portfolio = {
       problem: 'Die Erstellung von SEO-optimierten Inhalten dauert Stunden.',
       solution: 'KI-Assistent, der recherchiert, schreibt und formatiert.',
       impact: ['Reduziert Schreibzeit um 70%', 'Beta-Nutzer erstellen 3x mehr Content', 'Geschlossene Beta'],
-      tech: ['Bubble.io', 'OpenAI API', 'WordPress API'],
+      tech: ['Next.js', 'Claude API', 'Gemini API'],
       liveUrl: 'https://writola.com',
       image: '/images/writola.png',
       tags: ['KI', 'SaaS', 'Content', 'Beta'],
@@ -86,18 +86,18 @@ const portfolio = {
       solution: 'Einfaches, sofortiges Konvertierungstool.',
       impact: ['Keine Registrierung', 'Sofortige Verarbeitung', 'Für immer kostenlos'],
       tech: ['JavaScript', 'PDF.js', 'Canvas API'],
-      liveUrl: 'https://pdetoimage.picshifter.com',
-      image: '/images/pdetoimage.png',
+      liveUrl: 'https://pdftoimage.picshifter.com',
+      image: '/images/pdftoimage.png',
       tags: ['Kostenloses Tool', 'PDF', 'Utility'],
     },
     {
-      title: 'AI Video Generator',
-      description: 'Script-zu-Short-Videos, vollautomatisch.',
-      problem: 'Die Erstellung von Kurzvideos aus Skripten ist zeitaufwendig.',
-      solution: 'Automatisierte Video-Generierung aus Textskripten.',
-      impact: ['In Entwicklung', 'Früher Zugang verfügbar', 'Teaser bald verfügbar'],
+      title: 'IdeaVid.co',
+      description: 'KI-Video-Repurposing-Tool—langen Content in Kurzvideos verwandeln.',
+      problem: 'Die Erstellung von Kurzvideos aus Langform-Content ist zeitaufwendig.',
+      solution: 'Automatisiertes Video-Repurposing aus vorhandenem Content.',
+      impact: ['In Entwicklung', 'Früher Zugang verfügbar', 'Bald verfügbar'],
       tech: ['OpenAI', 'Video APIs', 'Automatisierung'],
-      image: '/images/ai-video.png',
+      image: '/images/ideavid.png',
       tags: ['KI', 'Video', 'In Entwicklung'],
       isInDevelopment: true,
     },
@@ -134,7 +134,7 @@ const labels = t[lang];
 <section id="portfolio" class="py-20 bg-white dark:bg-[#0a0a0a]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Header -->
-    <div class="text-center mb-16">
+    <div class="text-center mb-16 reveal">
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
         {labels.sectionTitle}
       </h2>
@@ -145,19 +145,46 @@ const labels = t[lang];
 
     <!-- Projects Grid -->
     <div class="grid md:grid-cols-2 gap-8">
-      {projects.map((project) => (
-        <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-          <!-- Project Image/Placeholder -->
+      {projects.map((project, index) => (
+        <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-transparent hover:border-primary/30 reveal" style={`transition-delay: ${index * 0.15}s;`}>
+          <!-- Project Image -->
           <div class="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
-            <!-- Placeholder for project image -->
-            <div class="w-full h-full flex items-center justify-center">
-              <span class="text-6xl">{project.title.charAt(0)}</span>
-            </div>
+            {project.liveUrl ? (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="block w-full h-full">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-6xl font-bold text-primary/30">{project.title.charAt(0)}</span>
+                  </div>
+                )}
+              </a>
+            ) : (
+              <>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-6xl font-bold text-primary/30">{project.title.charAt(0)}</span>
+                  </div>
+                )}
+              </>
+            )}
 
             <!-- Badges -->
             <div class="absolute top-4 left-4 flex flex-wrap gap-2">
               {project.isBeta && (
-                <span class="px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full">
+                <span class="px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full animate-pulse">
                   {labels.beta}
                 </span>
               )}
@@ -190,11 +217,15 @@ const labels = t[lang];
             <!-- Problem/Solution -->
             <div class="space-y-2 mb-4 text-sm">
               <div class="flex items-start">
-                <span class="text-red-500 mr-2">❌</span>
+                <svg class="w-5 h-5 text-red-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
                 <span class="text-gray-600 dark:text-gray-400">{project.problem}</span>
               </div>
               <div class="flex items-start">
-                <span class="text-green-500 mr-2">✅</span>
+                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
                 <span class="text-gray-600 dark:text-gray-400">{project.solution}</span>
               </div>
             </div>
@@ -247,7 +278,7 @@ const labels = t[lang];
               )}
               {project.isInDevelopment && (
                 <a
-                  href="/contact"
+                  href="#contact"
                   class="flex items-center px-4 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white rounded-lg font-medium transition-colors text-sm"
                 >
                   {labels.earlyAccess}
