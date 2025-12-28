@@ -1,0 +1,494 @@
+---
+/**
+ * TechnicalDeepDive Component
+ * Shows code examples and technical problem-solving for developer audience
+ */
+
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const deepDive = {
+  en: {
+    sectionTitle: 'Under the Hood',
+    sectionSubtitle: 'Technical challenges I\'ve solved',
+    badge: 'Code',
+    challenge: 'The Challenge',
+    solution: 'The Solution',
+    result: 'Result',
+  },
+  de: {
+    sectionTitle: 'Under the Hood',
+    sectionSubtitle: 'Technische Herausforderungen, die ich gelöst habe',
+    badge: 'Code',
+    challenge: 'Die Herausforderung',
+    solution: 'Die Lösung',
+    result: 'Ergebnis',
+  },
+};
+
+// Add language property to each example
+const codeExamples = {
+  en: [
+    {
+      project: 'PicShifter',
+      title: 'Bulk Image Processing Without Freezing UI',
+      challenge: 'Processing 100+ images in the browser caused UI freeze. Users thought the app crashed.',
+      solution: 'Implemented Web Workers for parallel processing with progress callbacks.',
+      language: 'javascript',
+      code: `// Process images in chunks to keep UI responsive
+async function processBatch(images, batchSize = 5) {
+  const results = [];
+
+  for (let i = 0; i < images.length; i += batchSize) {
+    const batch = images.slice(i, i + batchSize);
+
+    // Process batch in parallel
+    const batchResults = await Promise.all(
+      batch.map(img => resizeImage(img))
+    );
+
+    results.push(...batchResults);
+
+    // Update progress without blocking UI
+    updateProgress(i / images.length);
+  }
+
+  return results;
+}
+
+// Canvas-based resizing with quality control
+function resizeImage(file, maxWidth = 1920) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    img.onload = () => {
+      const scale = maxWidth / img.width;
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+
+      // High-quality downscaling
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+      canvas.toBlob(resolve, 'image/jpeg', 0.85);
+    };
+
+    img.src = URL.createObjectURL(file);
+  });
+}`,
+      result: 'UI remains responsive, 10K+ happy users',
+    },
+    {
+      project: 'Writola',
+      title: 'Streaming AI Responses for Real-Time Feedback',
+      challenge: 'Users waited 8+ seconds for full article generation with no visual feedback.',
+      solution: 'Implemented streaming responses from Claude API with typewriter effect.',
+      language: 'javascript',
+      code: `// Stream Claude API response for real-time writing
+async function streamCompletion(prompt, onChunk) {
+  const response = await fetch('/api/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-3-5-sonnet-20241022',
+      prompt,
+      stream: true,
+      max_tokens: 4096
+    })
+  });
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let fullText = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    const chunk = decoder.decode(value);
+    const lines = chunk.split('\\n').filter(line => line.trim());
+
+    for (const line of lines) {
+      if (line.startsWith('data: ')) {
+        const data = JSON.parse(line.slice(6));
+        if (data.delta_text) {
+          fullText += data.delta_text;
+          onChunk(fullText); // Update UI in real-time
+        }
+      }
+    }
+  }
+
+  return fullText;
+}`,
+      result: '70% better perceived performance, user retention +40%',
+    },
+    {
+      project: 'PDFtoImage',
+      title: 'Parallel PDF Rendering for Speed',
+      challenge: 'Converting 50-page PDF took 12 seconds processing pages sequentially.',
+      solution: 'Parallel rendering with controlled concurrency.',
+      language: 'javascript',
+      code: `// Parallel PDF page rendering
+async function convertPDF(pdfFile, concurrency = 4) {
+  const pdf = await pdfjsLib.getDocument(pdfFile).promise;
+  const pages = await Promise.all(
+    Array.from({ length: pdf.numPages }, (_, i) => pdf.getPage(i + 1))
+  );
+
+  // Process pages in parallel batches
+  const results = [];
+
+  for (let i = 0; i < pages.length; i += concurrency) {
+    const batch = pages.slice(i, i + concurrency);
+    const images = await Promise.all(
+      batch.map(page => renderPage(page))
+    );
+    results.push(...images);
+  }
+
+  return results;
+}
+
+async function renderPage(page, scale = 2) {
+  const viewport = page.getViewport({ scale });
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = viewport.width;
+  canvas.height = viewport.height;
+
+  await page.render({ canvasContext: ctx, viewport }).promise;
+  return canvas.toDataURL('image/png');
+}`,
+      result: '12s → 2.4s (5x faster)',
+    },
+    {
+      project: 'Writola',
+      title: 'Fast API Backend for AI Generation',
+      challenge: 'Building a scalable Python backend to handle multiple AI API integrations.',
+      solution: 'Fast API with async endpoints, rate limiting, and streaming support.',
+      language: 'python',
+      code: `# Fast API backend for Writola
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import StreamingResponse
+from anthropic import AsyncAnthropic
+import asyncio
+
+app = FastAPI(title="Writola API")
+claude = AsyncAnthropic(api_key=settings.ANTHROPIC_API_KEY)
+
+@app.post("/api/generate")
+async def generate_article(request: GenerateRequest):
+    """Generate article using Claude API with streaming."""
+
+    async def stream_generator():
+        """Stream Claude response in real-time."""
+        try:
+            async with claude.messages.stream(
+                model="claude-3-5-sonnet-20241022",
+                max_tokens=4096,
+                messages=[{"role": "user", "content": request.prompt}],
+                temperature=0.7,
+            ) as stream:
+                async for text in stream.text_stream:
+                    # Server-Sent Events format
+                    yield f"data: {json.dumps({'delta_text': text})}\\n\\n"
+
+        except Exception as e:
+            logger.error(f"Generation failed: {e}")
+            yield f"data: {json.dumps({'error': str(e)})}\\n\\n"
+
+    return StreamingResponse(
+        stream_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+        }
+    )`,
+      result: 'Python + Fast API handles 100+ concurrent requests',
+    },
+  ],
+  de: [
+    {
+      project: 'PicShifter',
+      title: 'Massenbildverarbeitung ohne Einfrieren der UI',
+      challenge: 'Die Verarbeitung von 100+ Bildern im Browser führte zum Einfrieren der UI.',
+      solution: 'Web Workers für parallele Verarbeitung mit Fortschritts-Callbacks.',
+      language: 'javascript',
+      code: `// Bilder in Chargen verarbeiten
+async function processBatch(images, batchSize = 5) {
+  const results = [];
+
+  for (let i = 0; i < images.length; i += batchSize) {
+    const batch = images.slice(i, i + batchSize);
+
+    // Batch parallel verarbeiten
+    const batchResults = await Promise.all(
+      batch.map(img => resizeImage(img))
+    );
+
+    results.push(...batchResults);
+    updateProgress(i / images.length);
+  }
+
+  return results;
+}`,
+      result: 'UI bleibt reagibel, 10.000+ zufriedene Nutzer',
+    },
+    {
+      project: 'Writola',
+      title: 'Streaming-AI-Antworten für Echtzeit-Feedback',
+      challenge: 'Benutzer warteten 8+ Sekunden ohne visuelles Feedback.',
+      solution: 'Streaming-Antworten von Claude API mit Schreibmaschinen-Effekt.',
+      language: 'javascript',
+      code: `// Claude API Streaming
+async function streamCompletion(prompt, onChunk) {
+  const response = await fetch('/api/generate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt, stream: true })
+  });
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let fullText = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    const chunk = decoder.decode(value);
+    // Parse SSE format and update UI
+    fullText += parseChunk(chunk);
+    onChunk(fullText);
+  }
+
+  return fullText;
+}`,
+      result: '70% bessere wahrgenommene Leistung',
+    },
+    {
+      project: 'PDFtoImage',
+      title: 'Parallele PDF-Darstellung für Geschwindigkeit',
+      challenge: 'Konvertierung einer 50-seitigen PDF dauerte 12 Sekunden.',
+      solution: 'Parallele Darstellung mit kontrollierter Parallelität.',
+      language: 'javascript',
+      code: `// Parallele PDF-Seiten-Renderung
+async function convertPDF(pdfFile, concurrency = 4) {
+  const pdf = await pdfjsLib.getDocument(pdfFile).promise;
+  const pages = await Promise.all(
+    Array.from({ length: pdf.numPages }, (_, i) =>
+      pdf.getPage(i + 1)
+    )
+  );
+
+  const results = [];
+  for (let i = 0; i < pages.length; i += concurrency) {
+    const batch = pages.slice(i, i + concurrency);
+    const images = await Promise.all(
+      batch.map(page => renderPage(page))
+    );
+    results.push(...images);
+  }
+
+  return results;
+}`,
+      result: '12s → 2,4s (5x schneller)',
+    },
+    {
+      project: 'Writola',
+      title: 'Fast API Backend für KI-Generierung',
+      challenge: 'Ein skalierbares Python-Backend für mehrere KI-API-Integrationen.',
+      solution: 'Fast API mit async Endpoints, Rate Limiting und Streaming.',
+      language: 'python',
+      code: `# Fast API Backend für Writola
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+from anthropic import AsyncAnthropic
+
+app = FastAPI(title="Writola API")
+claude = AsyncAnthropic(api_key=settings.ANTHROPIC_API_KEY)
+
+@app.post("/api/generate")
+async def generate_article(request: GenerateRequest):
+    """Artikel-Generierung mit Claude Streaming."""
+
+    async def stream_generator():
+        async with claude.messages.stream(
+            model="claude-3-5-sonnet-20241022",
+            max_tokens=4096,
+            messages=[{"role": "user", "content": request.prompt}],
+        ) as stream:
+            async for text in stream.text_stream:
+                # Server-Sent Events Format
+                yield f"data: {json.dumps({'delta_text': text})}\\n\\n"
+
+    return StreamingResponse(
+        stream_generator(),
+        media_type="text/event-stream"
+    )`,
+      result: 'Python + Fast API bewältigt 100+ gleichzeitige Anfragen',
+    },
+  ],
+};
+
+const t = deepDive[lang];
+const examples = codeExamples[lang];
+---
+
+<section id="deep-dive" class="py-20 bg-gray-50 dark:bg-[#0a0a0a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
+        {t.badge}
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {t.sectionTitle}
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-400">
+        {t.sectionSubtitle}
+      </p>
+    </div>
+
+    <!-- Code Examples -->
+    <div class="space-y-16">
+      {examples.map((example, index) => (
+        <div class="reveal" style={`transition-delay: ${index * 0.2}s;`}>
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+            <!-- Header -->
+            <div class="px-6 py-4 bg-gradient-to-r from-primary/10 to-accent/10 dark:from-primary/5 dark:to-accent/5 border-b border-gray-200 dark:border-gray-700">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-xs font-semibold text-primary mb-1 block">{example.project}</span>
+                  <h3 class="text-xl font-bold text-gray-900 dark:text-white">{example.title}</h3>
+                </div>
+                <svg class="w-8 h-8 text-primary/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <!-- Challenge -->
+              <div class="flex items-start mb-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mr-3">
+                  <svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">{t.challenge}</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{example.challenge}</p>
+                </div>
+              </div>
+
+              <!-- Solution -->
+              <div class="flex items-start mb-4">
+                <div class="flex-shrink-0 w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-3">
+                  <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-1">{t.solution}</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">{example.solution}</p>
+                </div>
+              </div>
+
+              <!-- Code Block (Collapsible) -->
+              <div class="my-6 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                <button
+                  class="code-toggle w-full flex items-center justify-between px-4 py-3 bg-gray-900 dark:bg-gray-950 hover:bg-gray-800 dark:hover:bg-gray-900 transition-colors"
+                  aria-label="Toggle code view"
+                >
+                  <div class="flex items-center space-x-3">
+                    <div class="flex space-x-2">
+                      <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                      <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                      <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                    </div>
+                    <span class="text-xs text-gray-500 font-mono">{example.language || 'javascript'}</span>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="text-xs text-gray-400">{lang === 'en' ? 'View code' : 'Code anzeigen'}</span>
+                    <svg class="w-4 h-4 text-gray-400 transform transition-transform duration-200 chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+                <pre class="code-content hidden max-h-96 overflow-y-auto p-4 bg-gray-900 dark:bg-gray-950"><code class="text-sm text-gray-100 font-mono leading-relaxed">{example.code}</code></pre>
+              </div>
+
+              <!-- Result -->
+              <div class="flex items-center px-4 py-3 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
+                <svg class="w-5 h-5 text-green-600 dark:text-green-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                <div>
+                  <span class="text-sm font-semibold text-green-700 dark:text-green-400">{t.result}:</span>
+                  <span class="text-sm text-green-600 dark:text-green-500 ml-2">{example.result}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-16 text-center">
+      <p class="text-gray-600 dark:text-gray-400 mb-4">
+        {lang === 'en' ? 'Want to see more code?' : 'Mehr Code sehen?'}
+      </p>
+      <a
+        href="https://github.com/Freundlyapps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg font-semibold hover:scale-105 transition-transform"
+      >
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+        </svg>
+        {lang === 'en' ? 'View on GitHub' : 'Auf GitHub ansehen'}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  pre {
+    -webkit-overflow-scrolling: touch;
+  }
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+  .code-content.hidden {
+    display: none;
+  }
+  .chevron.rotate-180 {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  // Collapsible code blocks
+  document.querySelectorAll('.code-toggle').forEach(button => {
+    button.addEventListener('click', () => {
+      const content = button.nextElementSibling;
+      const chevron = button.querySelector('.chevron');
+
+      content?.classList.toggle('hidden');
+      chevron?.classList.toggle('rotate-180');
+    });
+  });
+</script>

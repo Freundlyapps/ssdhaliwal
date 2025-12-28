@@ -1,0 +1,11 @@
+# robots.txt for ssdhaliwal.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ssdhaliwal.dev/sitemap.xml
+
+Disallow: /admin/
+Disallow: /private/
+

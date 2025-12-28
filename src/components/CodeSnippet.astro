@@ -1,0 +1,36 @@
+---
+/**
+ * CodeSnippet Component
+ * Displays code examples with syntax highlighting style for portfolio
+ */
+
+interface Props {
+  code: string;
+  title?: string;
+  filename?: string;
+}
+
+const { code, title, filename } = Astro.props;
+---
+
+<div class="my-6 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+  {title && (
+    <div class="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{title}</span>
+      {filename && (
+        <span class="text-xs text-gray-500 dark:text-gray-400 font-mono">{filename}</span>
+      )}
+    </div>
+  )}
+  <pre class="p-4 bg-gray-900 dark:bg-gray-950 overflow-x-auto"><code class="text-sm text-gray-100 font-mono">{code}</code></pre>
+</div>
+
+<style>
+  pre {
+    -webkit-overflow-scrolling: touch;
+  }
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    line-height: 1.6;
+  }
+</style>

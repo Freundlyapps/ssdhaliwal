@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ScrollToTop from '../components/ScrollToTop.astro';
 
 interface Props {
   title?: string;
@@ -17,6 +18,12 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const baseUrl = 'https://ssdhaliwal.dev';
+const currentPath = Astro.url.pathname;
+
+// Build alternate language URLs
+const altEn = currentPath.startsWith('/de/') ? currentPath.replace('/de/', '/') : (currentPath === '/de/' ? '/' : currentPath);
+const altDe = currentPath.startsWith('/de/') ? currentPath : (currentPath === '/' ? '/de/' : '/de' + currentPath);
 ---
 
 <!doctype html>
@@ -29,6 +36,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Hreflang for multilingual SEO -->
+    <link rel="alternate" hreflang="en" href={baseUrl + altEn} />
+    <link rel="alternate" hreflang="de" href={baseUrl + altDe} />
+    <link rel="alternate" hreflang="x-default" href={baseUrl + '/'} />
 
     <!-- SEO -->
     <title>{title}</title>
@@ -48,6 +60,34 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.url)} />
+
+    <!-- JSON-LD Structured Data (Person Schema) -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Sarabjit Singh Dhaliwal",
+        "jobTitle": "No-Code/Low-Code AI Developer",
+        "url": "https://ssdhaliwal.dev",
+        "sameAs": [
+          "https://github.com/Freundlyapps",
+          "https://linkedin.com/in/yourprofile",
+          "https://picshifter.com",
+          "https://writola.com"
+        ],
+        "knowsAbout": ["Next.js", "WordPress", "Zapier", "Claude API", "Gemini API", "Facebook API", "LinkedIn API", "AI Integration", "SaaS Development"],
+        "description": "Custom AI SaaS & tools for content creators and SMBs. Creator of PicShifter, Writola. Facebook & LinkedIn API expert.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "AT",
+          "addressRegion": "Austria"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Freundlyapps"
+        }
+      }
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -90,6 +130,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer lang={lang} />
+    <ScrollToTop lang={lang} />
 
     <!-- Dark Mode Script (prevents flash) -->
     <script is:inline>

@@ -1,0 +1,76 @@
+---
+/**
+ * ScrollToTop Component
+ * A button that appears when scrolling down, returns user to top
+ */
+
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const labels = {
+  en: 'Back to top',
+  de: 'Nach oben',
+};
+---
+
+<button
+  id="scroll-to-top"
+  aria-label={labels[lang]}
+  class="fixed bottom-8 right-8 z-50 p-3 bg-primary hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 opacity-0 invisible translate-y-4 hover:-translate-y-1"
+  aria-hidden="true"
+>
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+  </svg>
+</button>
+
+<style>
+  #scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  const scrollButton = document.getElementById('scroll-to-top');
+  const scrollThreshold = 500;
+
+  // Show/hide button based on scroll position
+  function toggleScrollButton() {
+    if (window.scrollY > scrollThreshold) {
+      scrollButton?.classList.add('visible');
+    } else {
+      scrollButton?.classList.remove('visible');
+    }
+  }
+
+  // Smooth scroll to top
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  // Event listeners
+  window.addEventListener('scroll', toggleScrollButton);
+  scrollButton?.addEventListener('click', scrollToTop);
+
+  // Initial check
+  toggleScrollButton();
+</script>
