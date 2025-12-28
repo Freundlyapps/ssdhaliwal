@@ -109,7 +109,7 @@ Replace the placeholder in `src/components/Hero.astro`:
 
 ### Update Contact Email
 
-Find and replace `freundly.apps@gmail.com` with your email throughout the project.
+Find and replace `s.dhaliwal.dev@outlook.com` with your email throughout the project.
 
 ### Add Calendly Link
 
