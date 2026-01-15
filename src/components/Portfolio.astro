@@ -108,27 +108,34 @@ const t = {
   en: {
     sectionTitle: 'Portfolio',
     sectionSubtitle: 'Projects I\'ve built',
+    localBusinesses: 'Local Business Solutions',
+    localBusinessesSubtitle: 'What I can build for your business',
     viewProject: 'View Project',
     liveDemo: 'Live Demo',
     sourceCode: 'Source Code',
     beta: 'Beta',
     inDevelopment: 'In Development',
     earlyAccess: 'Get Early Access',
+    availableNow: 'Available Now',
   },
   de: {
     sectionTitle: 'Projekte',
     sectionSubtitle: 'Projekte, die ich gebaut habe',
+    localBusinesses: 'Lösungen für lokale Unternehmen',
+    localBusinessesSubtitle: 'Was ich für Ihr Unternehmen bauen kann',
     viewProject: 'Projekt ansehen',
     liveDemo: 'Live-Demo',
     sourceCode: 'Quellcode',
     beta: 'Beta',
     inDevelopment: 'In Entwicklung',
     earlyAccess: 'Frühen Zugang sichern',
+    availableNow: 'Jetzt verfügbar',
   },
 };
 
 const projects = portfolio[lang];
 const labels = t[lang];
+const isGerman = lang === 'de';
 ---
 
 <section id="portfolio" class="py-20 bg-white dark:bg-[#0a0a0a]">
@@ -303,6 +310,80 @@ const labels = t[lang];
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </a>
+    </div>
+
+    <!-- Local Business Solutions Section -->
+    <div class="mt-24 reveal">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          {labels.localBusinesses}
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          {labels.localBusinessesSubtitle}
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Restaurant Solution -->
+        <div class="group bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Restaurant Website</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Digital menu, online ordering, table booking</p>
+          <span class="text-xs font-semibold text-orange-600 dark:text-orange-400">From €450</span>
+        </div>
+
+        <!-- Barber Solution -->
+        <div class="group bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Barber Booking</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Appointment scheduling, client reminders</p>
+          <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">From €675</span>
+        </div>
+
+        <!-- Pet Services Solution -->
+        <div class="group bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Pet Services</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Service booking, pet profiles, payment</p>
+          <span class="text-xs font-semibold text-green-600 dark:text-green-400">From €675</span>
+        </div>
+
+        <!-- Delivery Solution -->
+        <div class="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all duration-300">
+          <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Delivery System</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Order tracking, driver app, analytics</p>
+          <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">From €900</span>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a
+          href={isGerman ? '/de#contact' : '#contact'}
+          class="inline-flex items-center px-6 py-3 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+        >
+          {isGerman ? 'Lösung für Ihr Unternehmen?' : 'Get a solution for your business?'}
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>

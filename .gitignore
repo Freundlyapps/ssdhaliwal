@@ -128,3 +128,9 @@ ui-debug.log
 *.bak
 *.backup
 site/assets/dist/
+
+# ----------
+# Documentation
+# ----------
+docs/
+CLAUDE.md
