@@ -1,0 +1,499 @@
+---
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+const isGerman = lang === 'de';
+
+const t = {
+  en: {
+    tag: 'Price Calculator',
+    title: 'How Much Will It Cost?',
+    subtitle: 'Get an instant estimate in 30 seconds. No email required.',
+    step1Title: 'What type of business do you have?',
+    step2Title: 'What do you need?',
+    step2Subtitle: 'Select everything that applies',
+    step3Title: 'Your Estimate',
+    back: 'Back',
+    next: 'Next',
+    subtotal: 'Running total',
+    from: 'from',
+    total: 'Estimated total',
+    startingFrom: 'starting from',
+    disclaimer: 'This is an estimate. Your exact price may vary depending on your specific needs. No hidden fees — what you see is what you get.',
+    ctaPrimary: 'Get Your Exact Quote',
+    ctaSecondary: 'Book Free Consultation',
+    stepLabel: 'Step',
+    of: 'of',
+    selectWebsite: 'Please select at least one website option',
+    recommended: 'Popular for',
+    includedNote: 'All websites include: Impressum, Privacy Policy, DSGVO compliance, mobile-responsive design, Google Maps & contact.',
+  },
+  de: {
+    tag: 'Preiskalkulator',
+    title: 'Was wird es kosten?',
+    subtitle: 'Erhalten Sie in 30 Sekunden eine Schätzung. Keine E-Mail nötig.',
+    step1Title: 'Welche Art von Unternehmen haben Sie?',
+    step2Title: 'Was brauchen Sie?',
+    step2Subtitle: 'Wählen Sie alles aus, was zutrifft',
+    step3Title: 'Ihre Schätzung',
+    back: 'Zurück',
+    next: 'Weiter',
+    subtotal: 'Zwischensumme',
+    from: 'ab',
+    total: 'Geschätzte Gesamtkosten',
+    startingFrom: 'ab',
+    disclaimer: 'Dies ist eine Schätzung. Ihr genauer Preis kann je nach Ihren spezifischen Anforderungen variieren. Keine versteckten Kosten — was Sie sehen, ist was Sie bekommen.',
+    ctaPrimary: 'Genaues Angebot anfordern',
+    ctaSecondary: 'Kostenloses Erstgespräch buchen',
+    stepLabel: 'Schritt',
+    of: 'von',
+    selectWebsite: 'Bitte wählen Sie mindestens eine Website-Option',
+    recommended: 'Beliebt bei',
+    includedNote: 'Alle Websites enthalten: Impressum, Datenschutz, DSGVO-Konformität, mobile-optimiertes Design, Google Maps & Kontakt.',
+  },
+};
+
+const labels = t[lang];
+const contactHref = isGerman ? '/de#contact' : '#contact';
+
+const businessTypes = {
+  en: [
+    { id: 'restaurant', label: 'Restaurant / Café', icon: 'utensils', recommended: ['multi', 'ordering'] },
+    { id: 'barber', label: 'Barber / Salon', icon: 'scissors', recommended: ['single', 'booking'] },
+    { id: 'pet', label: 'Pet Services', icon: 'paw', recommended: ['single', 'booking'] },
+    { id: 'retail', label: 'Retail / Shop', icon: 'shopping', recommended: ['multi', 'ordering'] },
+    { id: 'professional', label: 'Professional Services', icon: 'briefcase', recommended: ['multi', 'seo'] },
+    { id: 'other', label: 'Other Business', icon: 'building', recommended: ['single'] },
+  ],
+  de: [
+    { id: 'restaurant', label: 'Restaurant / Café', icon: 'utensils', recommended: ['multi', 'ordering'] },
+    { id: 'barber', label: 'Friseur / Salon', icon: 'scissors', recommended: ['single', 'booking'] },
+    { id: 'pet', label: 'Tierdienste', icon: 'paw', recommended: ['single', 'booking'] },
+    { id: 'retail', label: 'Geschäft / Laden', icon: 'shopping', recommended: ['multi', 'ordering'] },
+    { id: 'professional', label: 'Freiberufler / Praxis', icon: 'briefcase', recommended: ['multi', 'seo'] },
+    { id: 'other', label: 'Anderes Unternehmen', icon: 'building', recommended: ['single'] },
+  ],
+};
+
+const features = {
+  en: [
+    { id: 'single', label: 'One-Page Website', price: 290, description: 'Single page with all key info', group: 'website' },
+    { id: 'multi', label: 'Multi-Page Business Website', price: 890, description: 'Up to 10 pages, custom design', group: 'website' },
+    { id: 'booking', label: 'Online Booking System', price: 490, description: 'Appointments, tables, services' },
+    { id: 'ordering', label: 'Online Ordering / Shop', price: 690, description: 'Orders for pickup or delivery' },
+    { id: 'chatbot', label: 'AI Chatbot / Automation', price: 450, description: 'Automated customer support' },
+    { id: 'design', label: 'Custom Design', price: 350, description: 'Unique look, no templates' },
+    { id: 'seo', label: 'SEO Optimization Package', price: 290, description: 'Rank higher on Google' },
+    { id: 'multilingual', label: 'Multilingual (DE + EN)', price: 190, description: 'Reach more customers' },
+  ],
+  de: [
+    { id: 'single', label: 'One-Page Website', price: 290, description: 'Einzelseite mit allen wichtigen Infos', group: 'website' },
+    { id: 'multi', label: 'Mehrseitige Business Website', price: 890, description: 'Bis zu 10 Seiten, individuelles Design', group: 'website' },
+    { id: 'booking', label: 'Online-Buchungssystem', price: 490, description: 'Termine, Tische, Dienstleistungen' },
+    { id: 'ordering', label: 'Online-Bestellung / Shop', price: 690, description: 'Bestellungen zur Abholung oder Lieferung' },
+    { id: 'chatbot', label: 'KI-Chatbot / Automatisierung', price: 450, description: 'Automatischer Kundensupport' },
+    { id: 'design', label: 'Individuelles Design', price: 350, description: 'Einzigartiger Look, keine Templates' },
+    { id: 'seo', label: 'SEO-Optimierungspaket', price: 290, description: 'Besser bei Google ranken' },
+    { id: 'multilingual', label: 'Mehrsprachig (DE + EN)', price: 190, description: 'Mehr Kunden erreichen' },
+  ],
+};
+
+const currentBusinessTypes = businessTypes[lang];
+const currentFeatures = features[lang];
+---
+
+<section id="calculator" class="py-20 bg-white dark:bg-[#0a0a0a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section Header -->
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block px-4 py-1.5 bg-accent/10 text-accent dark:text-orange-400 rounded-full text-sm font-semibold tracking-wide mb-4">
+        {labels.tag}
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+        {labels.title}
+      </h2>
+      <p class="text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
+        {labels.subtitle}
+      </p>
+    </div>
+
+    <!-- Calculator Card -->
+    <div class="max-w-3xl mx-auto reveal">
+      <div class="bg-gray-50 dark:bg-gray-800/60 rounded-2xl border border-gray-200/60 dark:border-gray-700/40 shadow-xl overflow-hidden" id="calc-card">
+
+        <!-- Progress Bar -->
+        <div class="px-6 pt-6 pb-4">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-semibold text-gray-500 dark:text-gray-400" id="calc-step-label">
+              {labels.stepLabel} 1 {labels.of} 3
+            </span>
+            <span class="text-xs text-gray-400 dark:text-gray-500" id="calc-step-name"></span>
+          </div>
+          <div class="h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+            <div class="h-full bg-primary rounded-full transition-all duration-500 ease-out" id="calc-progress" style="width: 33.33%"></div>
+          </div>
+        </div>
+
+        <!-- Step 1: Business Type -->
+        <div class="p-6 pt-2" id="calc-step-1">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-5">
+            {labels.step1Title}
+          </h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {currentBusinessTypes.map((biz) => (
+              <button
+                class="calc-biz-btn group relative flex flex-col items-center p-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700/50 hover:border-primary/50 hover:shadow-md transition-all duration-200 text-center"
+                data-biz={biz.id}
+                data-recommended={JSON.stringify(biz.recommended)}
+              >
+                <div class="w-10 h-10 flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:text-primary transition-colors mb-2" data-icon={biz.icon}></div>
+                <span class="text-sm font-semibold text-gray-700 dark:text-gray-200 group-hover:text-primary transition-colors leading-tight">
+                  {biz.label}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Step 2: Features -->
+        <div class="p-6 pt-2 hidden" id="calc-step-2">
+          <div class="flex items-center justify-between mb-1">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+              {labels.step2Title}
+            </h3>
+          </div>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-5">{labels.step2Subtitle}</p>
+
+          <!-- Website options -->
+          <div class="space-y-3 mb-4">
+            {currentFeatures.filter(f => f.group === 'website').map((feat) => (
+              <label
+                class="calc-feat-label group flex items-center justify-between p-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700/50 hover:border-primary/30 cursor-pointer transition-all duration-200"
+                data-feat={feat.id}
+                data-price={feat.price}
+                data-group={feat.group || ''}
+              >
+                <div class="flex items-center gap-3">
+                  <div class="w-5 h-5 rounded border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center transition-colors calc-checkbox">
+                    <svg class="w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-200">{feat.label}</span>
+                    <span class="block text-xs text-gray-400 dark:text-gray-500">{feat.description}</span>
+                  </div>
+                </div>
+                <span class="text-sm font-bold text-gray-900 dark:text-white whitespace-nowrap ml-3">{labels.from} €{feat.price}</span>
+              </label>
+            ))}
+          </div>
+
+          <!-- Divider -->
+          <div class="border-t border-gray-200 dark:border-gray-600 my-4"></div>
+          <p class="text-xs text-gray-400 dark:text-gray-500 mb-3">{labels.includedNote}</p>
+
+          <!-- Add-on options -->
+          <div class="space-y-3">
+            {currentFeatures.filter(f => !f.group).map((feat) => (
+              <label
+                class="calc-feat-label group flex items-center justify-between p-4 rounded-xl border-2 border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700/50 hover:border-primary/30 cursor-pointer transition-all duration-200"
+                data-feat={feat.id}
+                data-price={feat.price}
+                data-group=""
+              >
+                <div class="flex items-center gap-3">
+                  <div class="w-5 h-5 rounded border-2 border-gray-300 dark:border-gray-500 flex items-center justify-center transition-colors calc-checkbox">
+                    <svg class="w-3.5 h-3.5 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="text-sm font-semibold text-gray-700 dark:text-gray-200">{feat.label}</span>
+                    <span class="block text-xs text-gray-400 dark:text-gray-500">{feat.description}</span>
+                  </div>
+                </div>
+                <span class="text-sm font-bold text-gray-900 dark:text-white whitespace-nowrap ml-3">+ €{feat.price}</span>
+              </label>
+            ))}
+          </div>
+
+          <!-- Validation message -->
+          <p class="text-red-500 text-xs mt-3 hidden" id="calc-validation">{labels.selectWebsite}</p>
+
+          <!-- Running total + navigation -->
+          <div class="mt-6 flex items-center justify-between">
+            <button id="calc-back-2" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+              {labels.back}
+            </button>
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-xs text-gray-500 dark:text-gray-400 block">{labels.subtotal}</span>
+                <span class="text-lg font-bold text-primary" id="calc-subtotal">{labels.from} €290</span>
+              </div>
+              <button id="calc-next-2" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-primary hover:bg-blue-700 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200">
+                {labels.next}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3: Estimate -->
+        <div class="p-6 pt-2 hidden" id="calc-step-3">
+          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-5">
+            {labels.step3Title}
+          </h3>
+
+          <!-- Itemized breakdown -->
+          <div class="space-y-2 mb-4" id="calc-breakdown"></div>
+
+          <!-- Total -->
+          <div class="border-t-2 border-primary/30 pt-4 mt-4">
+            <div class="flex items-center justify-between">
+              <span class="text-base font-bold text-gray-900 dark:text-white">{labels.total}</span>
+              <span class="text-2xl font-bold text-primary" id="calc-total">{labels.startingFrom} €290</span>
+            </div>
+          </div>
+
+          <!-- Disclaimer -->
+          <p class="text-xs text-gray-400 dark:text-gray-500 mt-4 leading-relaxed">
+            {labels.disclaimer}
+          </p>
+
+          <!-- CTAs -->
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a
+              href={contactHref}
+              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200"
+            >
+              {labels.ctaPrimary}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+            <a
+              href={contactHref}
+              class="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-primary text-primary dark:text-primary hover:bg-primary hover:text-white font-semibold rounded-xl transition-all duration-200"
+            >
+              {labels.ctaSecondary}
+            </a>
+          </div>
+
+          <!-- Back -->
+          <div class="mt-4 text-center">
+            <button id="calc-back-3" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-primary transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+              {labels.back}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function() {
+  // Icons rendered via JS to keep Astro template clean
+  var iconSvgs = {
+    utensils: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>',
+    scissors: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z" /></svg>',
+    paw: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>',
+    shopping: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>',
+    briefcase: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>',
+    building: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>',
+  };
+
+  // Inject icons
+  document.querySelectorAll('[data-icon]').forEach(function(el) {
+    var key = el.getAttribute('data-icon');
+    if (iconSvgs[key]) el.innerHTML = iconSvgs[key];
+  });
+
+  // Language detection
+  var isDE = document.documentElement.lang === 'de';
+  var fromLabel = isDE ? 'ab' : 'from';
+  var startingLabel = isDE ? 'ab' : 'starting from';
+  var stepLabel = isDE ? 'Schritt' : 'Step';
+  var ofLabel = isDE ? 'von' : 'of';
+
+  // State
+  var selectedBiz = null;
+  var selectedFeatures = {};
+  var recommendedFeatures = [];
+
+  // Elements
+  var step1 = document.getElementById('calc-step-1');
+  var step2 = document.getElementById('calc-step-2');
+  var step3 = document.getElementById('calc-step-3');
+  var progress = document.getElementById('calc-progress');
+  var stepLabelEl = document.getElementById('calc-step-label');
+  var subtotalEl = document.getElementById('calc-subtotal');
+  var totalEl = document.getElementById('calc-total');
+  var breakdownEl = document.getElementById('calc-breakdown');
+  var validationEl = document.getElementById('calc-validation');
+
+  function showStep(n) {
+    step1.classList.toggle('hidden', n !== 1);
+    step2.classList.toggle('hidden', n !== 2);
+    step3.classList.toggle('hidden', n !== 3);
+    progress.style.width = (n * 33.33) + '%';
+    stepLabelEl.textContent = stepLabel + ' ' + n + ' ' + ofLabel + ' 3';
+  }
+
+  function calculateTotal() {
+    var total = 0;
+    var hasSingle = selectedFeatures['single'];
+    var hasMulti = selectedFeatures['multi'];
+
+    var featureEls = document.querySelectorAll('.calc-feat-label');
+    var featureData = {};
+    featureEls.forEach(function(el) {
+      var id = el.getAttribute('data-feat');
+      var price = parseInt(el.getAttribute('data-price'));
+      featureData[id] = price;
+    });
+
+    Object.keys(selectedFeatures).forEach(function(id) {
+      if (!selectedFeatures[id]) return;
+      // If both website types selected, only count multi
+      if (id === 'single' && hasMulti) return;
+      total += featureData[id] || 0;
+    });
+
+    return total;
+  }
+
+  function updateSubtotal() {
+    var total = calculateTotal();
+    if (total === 0) {
+      subtotalEl.textContent = fromLabel + ' €0';
+    } else {
+      subtotalEl.textContent = fromLabel + ' €' + total.toLocaleString('de-AT');
+    }
+  }
+
+  function updateBreakdown() {
+    var html = '';
+    var hasSingle = selectedFeatures['single'];
+    var hasMulti = selectedFeatures['multi'];
+
+    var featureEls = document.querySelectorAll('.calc-feat-label');
+    featureEls.forEach(function(el) {
+      var id = el.getAttribute('data-feat');
+      if (!selectedFeatures[id]) return;
+      // Skip single if multi is also selected
+      if (id === 'single' && hasMulti) return;
+
+      var price = parseInt(el.getAttribute('data-price'));
+      var nameEl = el.querySelector('.text-sm.font-semibold');
+      var name = nameEl ? nameEl.textContent.trim() : id;
+
+      html += '<div class="flex items-center justify-between py-2 px-4 bg-white dark:bg-gray-700/50 rounded-lg">';
+      html += '<div class="flex items-center gap-2">';
+      html += '<svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+      html += '<span class="text-sm text-gray-700 dark:text-gray-300">' + name + '</span>';
+      html += '</div>';
+      html += '<span class="text-sm font-semibold text-gray-900 dark:text-white">€' + price.toLocaleString('de-AT') + '</span>';
+      html += '</div>';
+    });
+
+    if (hasSingle && hasMulti) {
+      html += '<div class="px-4 py-1">';
+      html += '<p class="text-xs text-gray-400 dark:text-gray-500 italic">';
+      html += isDE ? 'One-Page ist in der Business Website enthalten.' : 'One-Page is included in the Business Website.';
+      html += '</p></div>';
+    }
+
+    breakdownEl.innerHTML = html;
+
+    var total = calculateTotal();
+    totalEl.textContent = startingLabel + ' €' + total.toLocaleString('de-AT');
+  }
+
+  // Step 1: Business type selection
+  document.querySelectorAll('.calc-biz-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      selectedBiz = btn.getAttribute('data-biz');
+      recommendedFeatures = JSON.parse(btn.getAttribute('data-recommended') || '[]');
+
+      // Reset features and pre-select recommended ones
+      selectedFeatures = {};
+      document.querySelectorAll('.calc-feat-label').forEach(function(label) {
+        var id = label.getAttribute('data-feat');
+        var checkbox = label.querySelector('.calc-checkbox');
+        var svg = checkbox.querySelector('svg');
+
+        if (recommendedFeatures.indexOf(id) !== -1) {
+          selectedFeatures[id] = true;
+          label.classList.add('border-primary', 'bg-primary/5', 'dark:bg-primary/10');
+          label.classList.remove('border-gray-200', 'dark:border-gray-600');
+          checkbox.classList.add('bg-primary', 'border-primary');
+          checkbox.classList.remove('border-gray-300', 'dark:border-gray-500');
+          svg.classList.remove('hidden');
+        } else {
+          label.classList.remove('border-primary', 'bg-primary/5', 'dark:bg-primary/10');
+          label.classList.add('border-gray-200', 'dark:border-gray-600');
+          checkbox.classList.remove('bg-primary', 'border-primary');
+          checkbox.classList.add('border-gray-300', 'dark:border-gray-500');
+          svg.classList.add('hidden');
+        }
+      });
+
+      updateSubtotal();
+      showStep(2);
+    });
+  });
+
+  // Step 2: Feature toggle
+  document.querySelectorAll('.calc-feat-label').forEach(function(label) {
+    label.addEventListener('click', function(e) {
+      e.preventDefault();
+      var id = label.getAttribute('data-feat');
+      selectedFeatures[id] = !selectedFeatures[id];
+
+      var checkbox = label.querySelector('.calc-checkbox');
+      var svg = checkbox.querySelector('svg');
+
+      if (selectedFeatures[id]) {
+        label.classList.add('border-primary', 'bg-primary/5', 'dark:bg-primary/10');
+        label.classList.remove('border-gray-200', 'dark:border-gray-600');
+        checkbox.classList.add('bg-primary', 'border-primary');
+        checkbox.classList.remove('border-gray-300', 'dark:border-gray-500');
+        svg.classList.remove('hidden');
+      } else {
+        label.classList.remove('border-primary', 'bg-primary/5', 'dark:bg-primary/10');
+        label.classList.add('border-gray-200', 'dark:border-gray-600');
+        checkbox.classList.remove('bg-primary', 'border-primary');
+        checkbox.classList.add('border-gray-300', 'dark:border-gray-500');
+        svg.classList.add('hidden');
+      }
+
+      validationEl.classList.add('hidden');
+      updateSubtotal();
+    });
+  });
+
+  // Step 2 → 3: validate and proceed
+  document.getElementById('calc-next-2').addEventListener('click', function() {
+    var hasWebsite = selectedFeatures['single'] || selectedFeatures['multi'];
+    if (!hasWebsite) {
+      validationEl.classList.remove('hidden');
+      return;
+    }
+    updateBreakdown();
+    showStep(3);
+  });
+
+  // Back buttons
+  document.getElementById('calc-back-2').addEventListener('click', function() {
+    showStep(1);
+  });
+  document.getElementById('calc-back-3').addEventListener('click', function() {
+    showStep(2);
+  });
+});
+</script>

@@ -3,24 +3,24 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Services from '../components/Services.astro';
+import CostCalculator from '../components/CostCalculator.astro';
 import Portfolio from '../components/Portfolio.astro';
-import VideoDemos from '../components/VideoDemos.astro';
-import TechnicalDeepDive from '../components/TechnicalDeepDive.astro';
+import DemoTemplates from '../components/DemoTemplates.astro';
 import Contact from '../components/Contact.astro';
 
 const meta = {
-  title: 'Sarabjit Singh Dhaliwal | AI Solutions Developer',
-  description: 'Custom AI SaaS & tools for content creators and SMBs. Creator of PicShifter, Writola. Facebook & LinkedIn API expert based in Austria.',
+  title: 'Sarabjit Singh Dhaliwal | Websites & Digital Solutions for Small Businesses',
+  description: 'Professional websites, booking systems, online ordering & AI automation for restaurants, barbers, cafés and local businesses in Austria. From €290.',
   image: '/images/og-image.jpg',
 };
 ---
 
 <Layout title={meta.title} description={meta.description} image={meta.image} lang="en">
   <Hero lang="en" />
-  <About lang="en" />
   <Services lang="en" />
-  <Portfolio lang="en" />
-  <VideoDemos lang="en" />
-  <TechnicalDeepDive lang="en" />
+  <DemoTemplates lang="en" />
+  <CostCalculator lang="en" />
+  <About lang="en" />
   <Contact lang="en" />
+  <Portfolio lang="en" />
 </Layout>

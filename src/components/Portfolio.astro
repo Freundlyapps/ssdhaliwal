@@ -127,9 +127,6 @@ const t = {
     inDev: 'In Dev',
     showMore: 'Show More Projects',
     showLess: 'Show Less',
-    localBusinesses: 'Solutions for Local Businesses',
-    localBusinessesSubtitle: 'Ready-to-launch packages for your business',
-    getStarted: 'Get a solution for your business',
     viewAll: 'View all on GitHub',
   },
   de: {
@@ -148,9 +145,6 @@ const t = {
     inDev: 'In Entw.',
     showMore: 'Mehr Projekte anzeigen',
     showLess: 'Weniger anzeigen',
-    localBusinesses: 'Lösungen für lokale Unternehmen',
-    localBusinessesSubtitle: 'Fertige Pakete für Ihr Unternehmen',
-    getStarted: 'Lösung für Ihr Unternehmen?',
     viewAll: 'Alle auf GitHub ansehen',
   },
 };
@@ -465,65 +459,6 @@ const isGerman = lang === 'de';
       </a>
     </div>
 
-    <!-- Local Business Solutions -->
-    <div class="mt-20 reveal">
-      <div class="text-center mb-10">
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          {labels.localBusinesses}
-        </h2>
-        <p class="text-gray-500 dark:text-gray-400 text-sm">
-          {labels.localBusinessesSubtitle}
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="group bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/10 dark:to-red-900/10 rounded-xl p-5 border border-orange-200/50 dark:border-orange-800/30 hover:shadow-lg transition-all duration-300">
-          <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center mb-3 text-white">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-          </div>
-          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Restaurant</h3>
-          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Digitale Speisekarte, Online-Bestellung, Tischreservierung' : 'Digital menu, online ordering, table booking'}</p>
-          <span class="text-xs font-bold text-orange-600 dark:text-orange-400">{isGerman ? 'Ab' : 'From'} €450</span>
-        </div>
-
-        <div class="group bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl p-5 border border-blue-200/50 dark:border-blue-800/30 hover:shadow-lg transition-all duration-300">
-          <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mb-3 text-white">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-          </div>
-          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Barber Booking</h3>
-          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Terminbuchung, Kundenerinnerungen' : 'Appointment scheduling, client reminders'}</p>
-          <span class="text-xs font-bold text-blue-600 dark:text-blue-400">{isGerman ? 'Ab' : 'From'} €675</span>
-        </div>
-
-        <div class="group bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/10 dark:to-teal-900/10 rounded-xl p-5 border border-green-200/50 dark:border-green-800/30 hover:shadow-lg transition-all duration-300">
-          <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mb-3 text-white">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-          </div>
-          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Pet Services</h3>
-          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Servicebuchung, Tierprofile, Zahlung' : 'Service booking, pet profiles, payment'}</p>
-          <span class="text-xs font-bold text-green-600 dark:text-green-400">{isGerman ? 'Ab' : 'From'} €675</span>
-        </div>
-
-        <div class="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 rounded-xl p-5 border border-purple-200/50 dark:border-purple-800/30 hover:shadow-lg transition-all duration-300">
-          <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center mb-3 text-white">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-          </div>
-          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Delivery System</h3>
-          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Auftragsverfolgung, Fahrer-App, Analytics' : 'Order tracking, driver app, analytics'}</p>
-          <span class="text-xs font-bold text-purple-600 dark:text-purple-400">{isGerman ? 'Ab' : 'From'} €900</span>
-        </div>
-      </div>
-
-      <div class="mt-6 text-center">
-        <a
-          href={isGerman ? '/de#contact' : '#contact'}
-          class="inline-flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-blue-700 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-        >
-          {labels.getStarted}
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-        </a>
-      </div>
-    </div>
   </div>
 </section>
 

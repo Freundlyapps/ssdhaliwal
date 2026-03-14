@@ -1,0 +1,199 @@
+---
+interface Props {
+  lang?: 'en' | 'de';
+}
+
+const { lang = 'en' } = Astro.props;
+const isGerman = lang === 'de';
+
+const t = {
+  en: {
+    tag: 'Live Demos',
+    title: 'See What Your Website Could Look Like',
+    subtitle: 'Click on any demo to see a full, interactive website template. This is what you get.',
+    viewDemo: 'View Demo',
+    comingSoon: 'Coming Soon',
+    startingFrom: 'from',
+    cta: 'Want a website like these?',
+    ctaBtn: 'Get Your Free Quote',
+  },
+  de: {
+    tag: 'Live-Demos',
+    title: 'So könnte Ihre Website aussehen',
+    subtitle: 'Klicken Sie auf eine Demo, um eine vollständige, interaktive Website-Vorlage zu sehen. Das bekommen Sie.',
+    viewDemo: 'Demo ansehen',
+    comingSoon: 'Demnächst',
+    startingFrom: 'ab',
+    cta: 'Wollen Sie eine Website wie diese?',
+    ctaBtn: 'Kostenloses Angebot anfordern',
+  },
+};
+
+const labels = t[lang];
+
+const demos = [
+  {
+    id: 'barber',
+    name: { en: 'Barber / Salon', de: 'Friseur / Salon' },
+    business: { en: 'Salon Marco — Wien', de: 'Salon Marco — Wien' },
+    color: 'from-amber-900/20 to-yellow-900/10',
+    borderColor: 'border-amber-700/20 hover:border-amber-500/40',
+    textColor: 'text-amber-500',
+    icon: '&#9986;',
+    url: '/demos/barber.html',
+    price: 290,
+    ready: true,
+  },
+  {
+    id: 'restaurant',
+    name: { en: 'Restaurant', de: 'Restaurant' },
+    business: { en: 'Gasthaus zur Linde — Graz', de: 'Gasthaus zur Linde — Graz' },
+    color: 'from-green-900/20 to-emerald-900/10',
+    borderColor: 'border-green-700/20 hover:border-green-500/40',
+    textColor: 'text-green-500',
+    icon: '&#127869;',
+    url: '/demos/restaurant.html',
+    price: 890,
+    ready: true,
+  },
+  {
+    id: 'cafe',
+    name: { en: 'Café', de: 'Café' },
+    business: { en: 'Kaffeehaus Mila — Salzburg', de: 'Kaffeehaus Mila — Salzburg' },
+    color: 'from-orange-900/20 to-red-900/10',
+    borderColor: 'border-orange-700/20 hover:border-orange-500/40',
+    textColor: 'text-orange-400',
+    icon: '&#9749;',
+    url: '/demos/cafe.html',
+    price: 290,
+    ready: true,
+  },
+  {
+    id: 'ai-chatbot',
+    name: { en: 'AI Chatbot', de: 'KI-Chatbot' },
+    business: { en: 'Interactive Demo — Try it live', de: 'Interaktive Demo — Jetzt testen' },
+    color: 'from-violet-900/20 to-purple-900/10',
+    borderColor: 'border-violet-700/20 hover:border-violet-500/40',
+    textColor: 'text-violet-400',
+    icon: '&#129302;',
+    url: '/demos/ai-chatbot.html',
+    price: 450,
+    ready: true,
+  },
+  {
+    id: 'electrician',
+    name: { en: 'Electrician', de: 'Elektriker' },
+    business: { en: 'Elektro Huber — Linz', de: 'Elektro Huber — Linz' },
+    color: 'from-blue-900/20 to-sky-900/10',
+    borderColor: 'border-blue-700/20 hover:border-blue-500/40',
+    textColor: 'text-blue-400',
+    icon: '&#9889;',
+    url: '#',
+    price: 290,
+    ready: false,
+  },
+  {
+    id: 'plumber',
+    name: { en: 'Plumber', de: 'Installateur' },
+    business: { en: 'Installateur Berger — Innsbruck', de: 'Installateur Berger — Innsbruck' },
+    color: 'from-cyan-900/20 to-teal-900/10',
+    borderColor: 'border-cyan-700/20 hover:border-cyan-500/40',
+    textColor: 'text-cyan-400',
+    icon: '&#128295;',
+    url: '#',
+    price: 290,
+    ready: false,
+  },
+  {
+    id: 'pet',
+    name: { en: 'Pet Services', de: 'Tierdienste' },
+    business: { en: 'Pfötchen & Co — Wien', de: 'Pfötchen & Co — Wien' },
+    color: 'from-pink-900/20 to-rose-900/10',
+    borderColor: 'border-pink-700/20 hover:border-pink-500/40',
+    textColor: 'text-pink-400',
+    icon: '&#128062;',
+    url: '#',
+    price: 490,
+    ready: false,
+  },
+];
+---
+
+<section id="demos" class="py-20 bg-gray-50 dark:bg-[#0a0a0a]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary dark:text-primary-light rounded-full text-sm font-semibold tracking-wide mb-4">
+        {labels.tag}
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
+        {labels.title}
+      </h2>
+      <p class="text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
+        {labels.subtitle}
+      </p>
+    </div>
+
+    <!-- Demo Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {demos.map((demo, i) => (
+        <a
+          href={demo.ready ? demo.url : undefined}
+          target={demo.ready ? '_blank' : undefined}
+          rel={demo.ready ? 'noopener noreferrer' : undefined}
+          class:list={[
+            'group relative block rounded-2xl overflow-hidden border transition-all duration-300 reveal',
+            demo.ready
+              ? `bg-gradient-to-br ${demo.color} dark:bg-gray-800/60 ${demo.borderColor} hover:shadow-xl hover:-translate-y-1 cursor-pointer`
+              : 'bg-gray-100 dark:bg-gray-800/30 border-gray-200/50 dark:border-gray-700/30 opacity-60 cursor-default',
+          ]}
+          style={`transition-delay: ${i * 0.08}s;`}
+        >
+          <div class="p-6">
+            <!-- Icon + Category -->
+            <div class="flex items-center justify-between mb-4">
+              <span class={`text-3xl ${demo.ready ? '' : 'grayscale opacity-50'}`} set:html={demo.icon} />
+              {demo.ready ? (
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/80 dark:bg-gray-900/60 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-300 group-hover:bg-primary group-hover:text-white transition-colors">
+                  {labels.viewDemo}
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                </span>
+              ) : (
+                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-semibold text-gray-500 dark:text-gray-400">
+                  {labels.comingSoon}
+                </span>
+              )}
+            </div>
+
+            <!-- Business Info -->
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">
+              {demo.name[lang]}
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
+              {demo.business[lang]}
+            </p>
+
+            <!-- Price -->
+            <span class={`text-sm font-bold ${demo.ready ? demo.textColor : 'text-gray-400 dark:text-gray-500'}`}>
+              {labels.startingFrom} €{demo.price}
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-12 text-center reveal">
+      <p class="text-gray-500 dark:text-gray-400 mb-4">{labels.cta}</p>
+      <a
+        href={isGerman ? '/de#contact' : '#contact'}
+        class="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+      >
+        {labels.ctaBtn}
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

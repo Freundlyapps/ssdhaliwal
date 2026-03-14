@@ -9,10 +9,18 @@ const services = {
   en: [
     {
       icon: 'store',
-      title: 'Websites for Local Businesses',
-      description: 'Fast, professional websites for restaurants, coffee houses, barbers, pet services & more.',
-      features: ['Mobile-optimized menus', 'Click-to-call ordering', 'Google Maps integration', 'GDPR compliant'],
-      price: '€450-2,700',
+      title: 'One-Page Website',
+      description: 'Professional single-page website with all legal essentials. Perfect for barbers, cafés & small shops.',
+      features: ['Responsive design', 'Impressum & Privacy Policy', 'Google Maps & contact', 'GDPR compliant'],
+      price: 'from €290',
+      cta: 'Get Quote',
+    },
+    {
+      icon: 'globe',
+      title: 'Business Website',
+      description: 'Multi-page website for restaurants, services & growing businesses. Custom design, real results.',
+      features: ['Up to 10 pages', 'Mobile-optimized menus', 'SEO basics included', 'Content management'],
+      price: 'from €890',
       cta: 'Get Quote',
     },
     {
@@ -20,7 +28,7 @@ const services = {
       title: 'Booking & Scheduling Systems',
       description: 'Online booking for appointments, tables, and services. No more phone tag.',
       features: ['Real-time availability', 'Automated reminders', 'Calendar sync', 'Mobile-friendly'],
-      price: '€675-1,800',
+      price: 'from €490',
       cta: 'Get Quote',
     },
     {
@@ -28,7 +36,7 @@ const services = {
       title: 'Online Ordering Systems',
       description: 'Take orders online for pickup or delivery. Perfect for restaurants & food service.',
       features: ['Digital menu builder', 'Payment integration', 'Order management', 'Customer notifications'],
-      price: '€900-2,250',
+      price: 'from €690',
       cta: 'Get Quote',
     },
     {
@@ -36,15 +44,15 @@ const services = {
       title: 'AI Automation',
       description: 'Automate repetitive tasks like customer responses, social media, and data entry.',
       features: ['AI chatbots', 'Auto-replies', 'Workflow automation', '24/7 operation'],
-      price: '€90/hour',
+      price: 'from €90/hr',
       cta: 'Book Call',
     },
     {
       icon: 'plug',
       title: 'API Integrations',
       description: 'Connect your tools like delivery platforms, payment processors, and CRM systems.',
-      features: ['Delivery.com', 'Mollendo/Stripe', 'HubSpot/Salesforce', 'Custom webhooks'],
-      price: '€270-450',
+      features: ['Lieferando/Wolt', 'Mollie/Stripe', 'HubSpot/Salesforce', 'Custom webhooks'],
+      price: 'Custom Quote',
       cta: 'Discuss',
     },
     {
@@ -59,10 +67,18 @@ const services = {
   de: [
     {
       icon: 'store',
-      title: 'Websites für lokale Unternehmen',
-      description: 'Schnelle, professionelle Websites für Restaurants, Cafés, Friseure, Tierdienste und mehr.',
-      features: ['Mobile-optimierte Speisekarten', 'Click-to-Call Bestellung', 'Google Maps Integration', 'DSGVO-konform'],
-      price: '€450-2.700',
+      title: 'One-Page Website',
+      description: 'Professionelle Einzelseiten-Website mit allen rechtlichen Grundlagen. Ideal für Friseure, Cafés & kleine Geschäfte.',
+      features: ['Responsives Design', 'Impressum & Datenschutz', 'Google Maps & Kontakt', 'DSGVO-konform'],
+      price: 'ab €290',
+      cta: 'Angebot anfordern',
+    },
+    {
+      icon: 'globe',
+      title: 'Business Website',
+      description: 'Mehrseitige Website für Restaurants, Dienstleister & wachsende Unternehmen. Individuelles Design, echte Ergebnisse.',
+      features: ['Bis zu 10 Seiten', 'Mobile-optimierte Speisekarten', 'SEO-Grundlagen inklusive', 'Content-Management'],
+      price: 'ab €890',
       cta: 'Angebot anfordern',
     },
     {
@@ -70,7 +86,7 @@ const services = {
       title: 'Buchungs- & Terminsysteme',
       description: 'Online-Buchung für Termine, Tische und Dienstleistungen. Kein Telefon-Tag mehr.',
       features: ['Echtzeit-Verfügbarkeit', 'Automatische Erinnerungen', 'Kalender-Sync', 'Mobile-freundlich'],
-      price: '€675-1.800',
+      price: 'ab €490',
       cta: 'Angebot anfordern',
     },
     {
@@ -78,7 +94,7 @@ const services = {
       title: 'Online-Bestellsysteme',
       description: 'Bestellungen online für Abholung oder Lieferung. Perfekt für Restaurants & Gastronomie.',
       features: ['Digitale Speisekarten', 'Zahlungsintegration', 'Bestellmanagement', 'Kundenbenachrichtigung'],
-      price: '€900-2.250',
+      price: 'ab €690',
       cta: 'Angebot anfordern',
     },
     {
@@ -86,15 +102,15 @@ const services = {
       title: 'KI-Automatisierung',
       description: 'Automatisieren Sie wiederkehrende Aufgaben wie Kundenantworten, Social Media und Dateneingabe.',
       features: ['KI-Chatbots', 'Auto-Antworten', 'Workflow-Automatisierung', '24/7 Betrieb'],
-      price: '€90/Stunde',
+      price: 'ab €90/Std.',
       cta: 'Gespräch buchen',
     },
     {
       icon: 'plug',
       title: 'API-Integrationen',
       description: 'Verbinden Sie Ihre Tools wie Lieferplattformen, Zahlungsanbieter und CRM-Systeme.',
-      features: ['Delivery.com', 'Mollendo/Stripe', 'HubSpot/Salesforce', 'Eigene Webhooks'],
-      price: '€270-450',
+      features: ['Lieferando/Wolt', 'Mollie/Stripe', 'HubSpot/Salesforce', 'Eigene Webhooks'],
+      price: 'Individuell',
       cta: 'Besprechen',
     },
     {
@@ -110,6 +126,7 @@ const services = {
 
 const icons: Record<string, string> = {
   store: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>`,
+  globe: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>`,
   calendar: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>`,
   cart: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>`,
   chip: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /></svg>`,

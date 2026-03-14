@@ -8,53 +8,55 @@ const { lang = 'en' } = Astro.props;
 const about = {
   en: {
     sectionTitle: 'About Me',
-    sectionSubtitle: 'Austria-based developer serving businesses worldwide',
-    journey: 'My Journey',
-    journeyText: 'Everything started with a simple question: "Why does this have to be so complicated?" As a content creator myself, I was frustrated by tedious workflows. But I realized something. Local businesses have it even harder. Restaurants, coffee houses, barbers, pet services. They all need digital solutions but cannot afford enterprise prices.',
-    skills: 'My Skills',
-    whatIDo: 'What I Do Today',
-    whatIDoText1: 'I help businesses get online fast with websites, booking systems, online ordering and AI automation at fair prices. Austria-based, serving clients globally.',
-    whatIDoText2: 'DSGVO compliant. German and English support. Available for on-site meetings in Austria and remote work worldwide.',
-    specializations: 'Business Solutions',
-    spec1: 'Restaurants and Cafes',
-    spec1Text: 'Online ordering, digital menus, table booking, delivery integration',
-    spec2: 'Service Businesses',
-    spec2Text: 'Appointment scheduling, client management, automated reminders',
-    philosophy: 'My Philosophy',
-    philosophyText: '"Fair pricing, real results." No hidden fees, no endless timelines. Just practical solutions that work for your business.',
+    sectionSubtitle: 'Why small businesses trust me with their online presence',
+    journey: 'My Story',
+    journeyText: 'I started by building tools for content creators. Then I noticed something: local businesses — restaurants, barbers, pet services — all need digital solutions but can\'t afford agency prices. So I focused on what matters: practical, affordable websites and systems that actually bring in customers.',
+    whatIDo: 'What You Get',
+    whatIDoText1: 'I don\'t just build websites — I help you get more customers. Online ordering that works. Booking systems that save you phone calls. Websites that show up on Google.',
+    whatIDoText2: 'Everything DSGVO-compliant, in German and English. Available for meetings in Austria and remote work worldwide.',
+    philosophy: 'My Promise',
+    philosophyText: '"Fair prices, real results." No hidden costs, no 6-month timelines. Your website ready in days, not months.',
+    whyMe: 'Why Work With Me',
+    reason1Title: 'Affordable',
+    reason1Text: 'Websites from €290. No agency markups, no surprise invoices.',
+    reason2Title: 'Fast Delivery',
+    reason2Text: 'Most projects completed within 1–2 weeks. You don\'t wait months.',
+    reason3Title: 'Local & Personal',
+    reason3Text: 'Based in Austria. You talk directly to me — no middlemen, no support tickets.',
+    reason4Title: 'DSGVO Compliant',
+    reason4Text: 'Impressum, Datenschutz, cookie consent — all legal requirements handled.',
+    reason5Title: 'Mobile-First',
+    reason5Text: '80% of your customers search on their phone. Every site I build works perfectly on mobile.',
+    reason6Title: 'Ongoing Support',
+    reason6Text: 'Questions after launch? I\'m here. No expensive maintenance contracts required.',
   },
   de: {
     sectionTitle: 'Über mich',
-    sectionSubtitle: 'In Österreich ansässiger Developer für weltweit tätige Unternehmen',
-    journey: 'Meine Reise',
-    journeyText: 'Alles begann mit einer einfachen Frage: "Warum muss das so kompliziert sein?" Als Content Creator war ich frustriert von zeitraubenden Workflows. Dann wurde mir klar. Lokale Unternehmen haben es noch schwerer. Restaurants, Cafés, Friseure, Tierdienste. Alle brauchen digitale Lösungen, aber keine Unternehmens-Preise.',
-    skills: 'Meine Skills',
-    whatIDo: 'Was ich heute mache',
-    whatIDoText1: 'Ich helfe Unternehmen, schnell online zu gehen mit Websites, Buchungssystemen, Online-Bestellung und KI-Automatisierung zu fairen Preisen. In Österreich ansässig, weltweit tätig.',
-    whatIDoText2: 'DSGVO-konform. Deutsch und Englisch. Vor-Ort-Termine in Österreich und Remote-Arbeit weltweit.',
-    specializations: 'Unternehmenslösungen',
-    spec1: 'Restaurants und Cafés',
-    spec1Text: 'Online-Bestellung, digitale Speisekarten, Tischreservierung, Lieferintegration',
-    spec2: 'Dienstleistungsbetriebe',
-    spec2Text: 'Terminbuchung, Kundenverwaltung, automatische Erinnerungen',
-    philosophy: 'Meine Philosophie',
-    philosophyText: '"Faire Preise, echte Ergebnisse." Keine versteckten Kosten, keine endlosen Timelines. Praktische Lösungen, die für Ihr Unternehmen funktionieren.',
+    sectionSubtitle: 'Warum Kleinunternehmen mir ihre Online-Präsenz anvertrauen',
+    journey: 'Meine Geschichte',
+    journeyText: 'Ich habe damit angefangen, Tools für Content Creator zu entwickeln. Dann ist mir aufgefallen: Lokale Unternehmen — Restaurants, Friseure, Tierdienste — brauchen alle digitale Lösungen, können sich aber keine Agenturpreise leisten. Also habe ich mich auf das konzentriert, was zählt: praktische, leistbare Websites und Systeme, die tatsächlich Kunden bringen.',
+    whatIDo: 'Was Sie bekommen',
+    whatIDoText1: 'Ich baue nicht nur Websites — ich helfe Ihnen, mehr Kunden zu gewinnen. Online-Bestellung die funktioniert. Buchungssysteme, die Ihnen Anrufe ersparen. Websites, die bei Google gefunden werden.',
+    whatIDoText2: 'Alles DSGVO-konform, auf Deutsch und Englisch. Verfügbar für Termine in Österreich und Remote-Arbeit weltweit.',
+    philosophy: 'Mein Versprechen',
+    philosophyText: '"Faire Preise, echte Ergebnisse." Keine versteckten Kosten, keine 6-Monats-Timelines. Ihre Website in Tagen fertig, nicht Monaten.',
+    whyMe: 'Warum mit mir arbeiten',
+    reason1Title: 'Leistbar',
+    reason1Text: 'Websites ab €290. Keine Agentur-Aufschläge, keine Überraschungsrechnungen.',
+    reason2Title: 'Schnelle Lieferung',
+    reason2Text: 'Die meisten Projekte in 1–2 Wochen fertig. Sie warten keine Monate.',
+    reason3Title: 'Lokal & Persönlich',
+    reason3Text: 'In Österreich ansässig. Sie sprechen direkt mit mir — keine Mittelsmänner, keine Support-Tickets.',
+    reason4Title: 'DSGVO-konform',
+    reason4Text: 'Impressum, Datenschutz, Cookie-Consent — alle rechtlichen Anforderungen erledigt.',
+    reason5Title: 'Mobile-First',
+    reason5Text: '80% Ihrer Kunden suchen am Handy. Jede Website, die ich baue, funktioniert perfekt mobil.',
+    reason6Title: 'Laufender Support',
+    reason6Text: 'Fragen nach dem Launch? Ich bin da. Keine teuren Wartungsverträge nötig.',
   },
 };
 
 const t = about[lang];
-const skills = [
-  { name: 'Next.js', level: 90 },
-  { name: 'React', level: 88 },
-  { name: 'Fast API', level: 82 },
-  { name: 'WordPress', level: 85 },
-  { name: 'Zapier/Make', level: 90 },
-  { name: 'Claude API', level: 85 },
-  { name: 'Gemini API', level: 80 },
-  { name: 'Facebook API', level: 75 },
-  { name: 'LinkedIn API', level: 75 },
-  { name: 'Tailwind CSS', level: 80 },
-];
 ---
 
 <section id="about" class="py-20 bg-white dark:bg-[#0a0a0a]">
@@ -118,7 +120,7 @@ const skills = [
         </div>
       </div>
 
-      <!-- Right: Skills -->
+      <!-- Right: Why Work With Me (replaces skill bars) -->
       <div>
         <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-6 flex items-center">
           <span class="w-10 h-10 flex items-center justify-center mr-3 text-primary">
@@ -126,54 +128,75 @@ const skills = [
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
           </span>
-          {t.skills}
+          {t.whyMe}
         </h3>
 
-        <div class="grid grid-cols-2 gap-4">
-          {skills.map((skill, index) => (
-            <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 hover:shadow-lg transition-all duration-300 hover:scale-105" style={`animation: fade-in 0.5s ease-out ${index * 0.1}s backwards;`}>
-              <div class="flex items-center justify-between mb-2">
-                <p class="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">{skill.name}</p>
-                <span class="text-sm text-gray-500 dark:text-gray-400">{skill.level}%</span>
-              </div>
-              <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-primary rounded-full transition-all duration-1000 group-hover:brightness-110"
-                  style={`width: ${skill.level}%`}
-                ></div>
-              </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Reason 1: Affordable -->
+          <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div class="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
-          ))}
-        </div>
+            <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.reason1Title}</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{t.reason1Text}</p>
+          </div>
 
-        <!-- Tech Partnership Badges -->
-        <div class="mt-8 p-6 bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/5 dark:to-accent/5 rounded-xl border border-primary/20">
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-4">API Partnerships</h4>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
-              <svg class="w-5 h-5 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          <!-- Reason 2: Fast -->
+          <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              <span class="text-sm font-medium">Facebook API</span>
             </div>
-            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
-              <svg class="w-5 h-5 mr-2 text-blue-700" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.reason2Title}</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{t.reason2Text}</p>
+          </div>
+
+          <!-- Reason 3: Local -->
+          <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span class="text-sm font-medium">LinkedIn API</span>
             </div>
-            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
-              <svg class="w-5 h-5 mr-2 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.reason3Title}</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{t.reason3Text}</p>
+          </div>
+
+          <!-- Reason 4: DSGVO -->
+          <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
-              <span class="text-sm font-medium">Claude API</span>
             </div>
-            <div class="flex items-center px-3 py-2 bg-white dark:bg-gray-800 rounded-lg">
-              <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+            <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.reason4Title}</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{t.reason4Text}</p>
+          </div>
+
+          <!-- Reason 5: Mobile -->
+          <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div class="w-10 h-10 bg-teal-100 dark:bg-teal-900/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-teal-600 dark:text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
               </svg>
-              <span class="text-sm font-medium">Gemini API</span>
             </div>
+            <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.reason5Title}</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{t.reason5Text}</p>
+          </div>
+
+          <!-- Reason 6: Support -->
+          <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-5 hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div class="w-10 h-10 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center mb-3">
+              <svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <h4 class="font-bold text-gray-900 dark:text-white mb-1">{t.reason6Title}</h4>
+            <p class="text-sm text-gray-600 dark:text-gray-400">{t.reason6Text}</p>
           </div>
         </div>
       </div>

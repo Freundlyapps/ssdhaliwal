@@ -4,7 +4,7 @@
   <!-- English Homepage -->
   <url>
     <loc>https://ssdhaliwal.dev/</loc>
-    <lastmod>2024-12-27</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ssdhaliwal.dev/" />
@@ -14,7 +14,7 @@
   <!-- German Homepage -->
   <url>
     <loc>https://ssdhaliwal.dev/de/</loc>
-    <lastmod>2024-12-27</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://ssdhaliwal.dev/" />
@@ -23,25 +23,73 @@
 
   <!-- English Privacy Policy -->
   <url>
-    <loc>https://ssdhaliwal.dev/privacy</loc>
-    <lastmod>2024-12-27</lastmod>
+    <loc>https://ssdhaliwal.dev/privacy/</loc>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ssdhaliwal.dev/privacy/" />
   </url>
 
-  <!-- German Legal Pages -->
+  <!-- English Impressum -->
   <url>
-    <loc>https://ssdhaliwal.dev/de/impressum</loc>
-    <lastmod>2024-12-27</lastmod>
+    <loc>https://ssdhaliwal.dev/impressum/</loc>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ssdhaliwal.dev/impressum/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://ssdhaliwal.dev/de/impressum/" />
   </url>
 
+  <!-- German Impressum -->
   <url>
-    <loc>https://ssdhaliwal.dev/de/datenschutz</loc>
-    <lastmod>2024-12-27</lastmod>
+    <loc>https://ssdhaliwal.dev/de/impressum/</loc>
+    <lastmod>2026-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ssdhaliwal.dev/impressum/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://ssdhaliwal.dev/de/impressum/" />
   </url>
 
+  <!-- German Datenschutz -->
+  <url>
+    <loc>https://ssdhaliwal.dev/de/datenschutz/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://ssdhaliwal.dev/de/datenschutz/" />
+  </url>
+
+  <!-- Success Page -->
+  <url>
+    <loc>https://ssdhaliwal.dev/success/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <!-- Demo Templates (indexable for SEO) -->
+  <url>
+    <loc>https://ssdhaliwal.dev/demos/barber.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ssdhaliwal.dev/demos/restaurant.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ssdhaliwal.dev/demos/cafe.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ssdhaliwal.dev/demos/ai-chatbot.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

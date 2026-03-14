@@ -1,0 +1,18 @@
+{
+  "name": "ssdhaliwal.dev — Websites for Small Businesses",
+  "short_name": "ssdhaliwal.dev",
+  "description": "Professional websites, booking systems & AI automation for local businesses in Austria.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#007BFF",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "lang": "en",
+  "categories": ["business", "web"]
+}

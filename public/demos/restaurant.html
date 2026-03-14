@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gasthaus zur Linde — Restaurant in Graz | Demo Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--forest:#2D5016;--forest-light:#4A7C2E;--cream:#FDF8F0;--warm:#F5EDE0;--brown:#3D2B1F;--text:#4A4035;--text-light:#7A7068;--accent:#B8860B;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* Demo Banner */
+.demo-banner{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,#007BFF,#0056b3);color:#fff;text-align:center;padding:10px 20px;font-size:14px;font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.demo-banner a{color:#fff;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:600;transition:background 0.2s}
+.demo-banner a:hover{background:rgba(255,255,255,0.35)}
+body{padding-top:44px}
+
+/* Header */
+.header{position:sticky;top:44px;z-index:100;background:rgba(253,248,240,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,80,22,0.1)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--forest)}
+.logo span{font-size:12px;font-weight:400;color:var(--text-light);display:block;letter-spacing:2px}
+nav{display:flex;gap:28px;align-items:center}
+nav a{color:var(--text-light);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.3s}
+nav a:hover{color:var(--forest)}
+.nav-cta{background:var(--forest)!important;color:#fff!important;padding:10px 22px;border-radius:8px;font-weight:600}
+.nav-cta:hover{background:var(--forest-light)!important}
+.mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer}
+
+/* Hero */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;background:linear-gradient(170deg,var(--warm) 0%,#EDE4D4 100%);overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(45,80,22,0.08) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-10%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(184,134,11,0.06) 0%,transparent 70%);border-radius:50%}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;padding:80px 24px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-text .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(45,80,22,0.08);color:var(--forest);padding:6px 16px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,6vw,72px);font-weight:700;line-height:1.05;color:var(--brown);margin-bottom:16px}
+.hero h1 em{color:var(--forest);font-style:italic}
+.hero-sub{font-size:17px;color:var(--text-light);line-height:1.7;margin-bottom:32px;max-width:420px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.3s}
+.btn-primary{background:var(--forest);color:#fff}
+.btn-primary:hover{background:var(--forest-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(45,80,22,0.2)}
+.btn-outline{border:2px solid var(--forest);color:var(--forest);background:transparent}
+.btn-outline:hover{background:var(--forest);color:#fff}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero-image{aspect-ratio:4/5;background:linear-gradient(135deg,rgba(45,80,22,0.06),rgba(184,134,11,0.04));border-radius:24px;border:1px solid rgba(45,80,22,0.1);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-image-inner{text-align:center;color:var(--text-light);opacity:0.5;font-size:14px}
+.hero-image-inner div{font-size:72px;margin-bottom:8px}
+
+/* Section */
+section{padding:90px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--forest);margin-bottom:10px}
+.section-title{font-family:var(--serif);font-size:clamp(30px,5vw,44px);font-weight:700;color:var(--brown);margin-bottom:12px}
+.section-desc{color:var(--text-light);font-size:16px;max-width:500px;line-height:1.7}
+
+/* Menu */
+.menu{background:#fff}
+.menu-categories{display:flex;gap:8px;flex-wrap:wrap;margin:32px 0 40px}
+.menu-cat{padding:10px 20px;border-radius:50px;border:2px solid rgba(45,80,22,0.15);background:transparent;color:var(--text-light);font-weight:600;font-size:14px;cursor:pointer;font-family:var(--sans);transition:all 0.2s}
+.menu-cat:hover,.menu-cat.active{background:var(--forest);color:#fff;border-color:var(--forest)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:20px 24px;background:var(--cream);border-radius:14px;border:1px solid rgba(45,80,22,0.06);transition:all 0.3s}
+.menu-item:hover{border-color:var(--forest);box-shadow:0 4px 20px rgba(0,0,0,0.05)}
+.menu-item h4{font-family:var(--serif);font-size:19px;color:var(--brown);margin-bottom:4px}
+.menu-item p{font-size:13px;color:var(--text-light);line-height:1.5}
+.menu-item .price{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--forest);white-space:nowrap;margin-left:20px}
+.menu-note{margin-top:24px;padding:16px 20px;background:rgba(45,80,22,0.04);border-radius:10px;border-left:3px solid var(--forest);font-size:13px;color:var(--text-light)}
+
+/* Features */
+.features{background:var(--cream)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.feature{text-align:center;padding:36px 24px;background:#fff;border-radius:16px;border:1px solid rgba(45,80,22,0.08);transition:all 0.3s}
+.feature:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.06);border-color:var(--forest)}
+.feature-icon{font-size:36px;margin-bottom:16px}
+.feature h3{font-family:var(--serif);font-size:20px;color:var(--brown);margin-bottom:8px}
+.feature p{font-size:14px;color:var(--text-light);line-height:1.6}
+
+/* Contact */
+.contact{background:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.contact-details .item{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}
+.contact-details .icon{width:44px;height:44px;background:rgba(45,80,22,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.contact-details h4{font-size:14px;color:var(--brown);margin-bottom:2px}
+.contact-details p{font-size:14px;color:var(--text-light)}
+.map-placeholder{aspect-ratio:16/10;background:var(--cream);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:14px;border:1px solid rgba(45,80,22,0.08);margin-top:24px}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;background:var(--cream);border:1px solid rgba(45,80,22,0.12);border-radius:10px;padding:14px 18px;color:var(--text);font-family:var(--sans);font-size:14px;margin-bottom:14px;transition:border 0.3s}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:var(--forest)}
+.contact-form textarea{min-height:100px;resize:vertical}
+.contact-form select{cursor:pointer}
+
+/* Footer */
+footer{background:var(--brown);color:rgba(255,255,255,0.7);padding:48px 24px;text-align:center}
+footer .logo-footer{font-family:var(--serif);font-size:28px;color:#fff;margin-bottom:8px}
+footer p{font-size:13px;margin-bottom:4px}
+.footer-links{display:flex;justify-content:center;gap:24px;margin:20px 0}
+.footer-links a{color:rgba(255,255,255,0.5);font-size:13px;text-decoration:none}
+.footer-links a:hover{color:#fff}
+footer .credit{margin-top:20px;font-size:11px;color:rgba(255,255,255,0.3)}
+footer .credit a{color:rgba(255,255,255,0.5)}
+
+/* Mobile */
+@media(max-width:768px){
+  nav{display:none}
+  .mobile-toggle{display:block}
+  .hero-content{grid-template-columns:1fr}
+  .hero-image{display:none}
+  .menu-grid,.contact-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  Dies ist eine Demo-Website. So kann Ihre Restaurant-Website aussehen.
+  <a href="https://ssdhaliwal.dev/#contact">Ich will das auch &rarr;</a>
+</div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">Zur Linde<span>Gasthaus seit 1987</span></div>
+    <nav>
+      <a href="#speisekarte">Speisekarte</a>
+      <a href="#ueber">Über uns</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#kontakt" class="nav-cta">Tisch reservieren</a>
+    </nav>
+    <button class="mobile-toggle" onclick="this.nextElementSibling?.classList.toggle('show')" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="badge">&#127807; Regionale Küche aus der Steiermark</div>
+      <h1>Ehrliche Küche.<br><em>Warme Gastfreundschaft.</em></h1>
+      <p class="hero-sub">Saisonale Gerichte aus regionalen Zutaten. Gemütliches Ambiente, hausgemachte Mehlspeisen und der beste Schweinsbraten in Graz. Seit 1987.</p>
+      <div class="hero-btns">
+        <a href="#kontakt" class="btn btn-primary">Tisch reservieren</a>
+        <a href="#speisekarte" class="btn btn-outline">Speisekarte ansehen</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-inner">
+        <div>&#127869;</div>
+        <p>Ihr Restaurant-Foto hier</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu -->
+<section class="menu" id="speisekarte">
+  <div class="section-inner">
+    <span class="section-tag">Speisekarte</span>
+    <h2 class="section-title">Unsere Gerichte</h2>
+    <p class="section-desc">Frisch zubereitet, saisonal und regional. Täglich wechselndes Mittagsmenü.</p>
+
+    <div class="menu-categories">
+      <button class="menu-cat active">Vorspeisen</button>
+      <button class="menu-cat">Hauptspeisen</button>
+      <button class="menu-cat">Mehlspeisen</button>
+      <button class="menu-cat">Getränke</button>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div><h4>Kürbiscremesuppe</h4><p>mit Kürbiskernöl und Sauerrahm</p></div>
+        <div class="price">€6,90</div>
+      </div>
+      <div class="menu-item">
+        <div><h4>Steirischer Salat</h4><p>Blattsalate mit Kürbiskernöl-Dressing</p></div>
+        <div class="price">€8,50</div>
+      </div>
+      <div class="menu-item">
+        <div><h4>Schweinsbraten</h4><p>mit Semmelknödel und Sauerkraut</p></div>
+        <div class="price">€16,90</div>
+      </div>
+      <div class="menu-item">
+        <div><h4>Backhendl</h4><p>Knuspriges Huhn mit Erdäpfelsalat</p></div>
+        <div class="price">€15,50</div>
+      </div>
+      <div class="menu-item">
+        <div><h4>Wiener Schnitzel</h4><p>vom Kalb mit Preiselbeeren und Petersilerdäpfel</p></div>
+        <div class="price">€18,90</div>
+      </div>
+      <div class="menu-item">
+        <div><h4>Kasnocken</h4><p>mit Bergkäse überbacken, grüner Salat</p></div>
+        <div class="price">€13,50</div>
+      </div>
+    </div>
+
+    <div class="menu-note">
+      &#127793; Mittagsmenü (Mo-Fr, 11:30-14:00): Suppe + Hauptspeise ab €9,90. Alle Preise inkl. MwSt.
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="ueber">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:12px">
+      <span class="section-tag">Warum zu uns</span>
+      <h2 class="section-title" style="margin:0 auto">Das macht uns besonders</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">&#127793;</div>
+        <h3>Regionale Zutaten</h3>
+        <p>Wir beziehen unsere Produkte von Bauern aus der Steiermark. Frisch, saisonal, nachhaltig.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#128106;</div>
+        <h3>Familienbetrieb</h3>
+        <p>Seit drei Generationen in Familienhand. Persönlich, herzlich, authentisch.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#127860;</div>
+        <h3>Gastgarten</h3>
+        <p>120 Sitzplätze unter alten Lindenbäumen. Der schönste Gastgarten in Graz-Andritz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="kontakt">
+  <div class="section-inner">
+    <span class="section-tag">Reservierung</span>
+    <h2 class="section-title">Tisch reservieren</h2>
+    <p class="section-desc">Rufen Sie an oder nutzen Sie unser Kontaktformular. Wir freuen uns auf Ihren Besuch!</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-details">
+          <div class="item">
+            <div class="icon">&#128205;</div>
+            <div><h4>Adresse</h4><p>Andritzer Hauptstraße 78<br>8045 Graz</p></div>
+          </div>
+          <div class="item">
+            <div class="icon">&#128222;</div>
+            <div><h4>Telefon</h4><p>+43 316 123 456</p></div>
+          </div>
+          <div class="item">
+            <div class="icon">&#128338;</div>
+            <div><h4>Öffnungszeiten</h4><p>Di-Sa: 11:00 - 22:00<br>So: 11:00 - 15:00<br>Mo: Ruhetag</p></div>
+          </div>
+          <div class="item">
+            <div class="icon">&#127860;</div>
+            <div><h4>Küche</h4><p>Warme Küche bis 21:00<br>So bis 14:00</p></div>
+          </div>
+        </div>
+        <div class="map-placeholder">Google Maps — Andritzer Hauptstraße 78, 8045 Graz</div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="event.preventDefault();alert('Dies ist eine Demo-Website.')">
+          <input type="text" placeholder="Ihr Name" required>
+          <input type="email" placeholder="Ihre E-Mail">
+          <input type="tel" placeholder="Telefonnummer" required>
+          <select>
+            <option>Anzahl Personen wählen</option>
+            <option>2 Personen</option>
+            <option>3-4 Personen</option>
+            <option>5-6 Personen</option>
+            <option>7+ Personen (Gruppenanfrage)</option>
+          </select>
+          <input type="text" placeholder="Gewünschtes Datum & Uhrzeit">
+          <textarea placeholder="Besondere Wünsche (Allergien, Anlass, etc.)"></textarea>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Tisch reservieren</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo-footer">Zur Linde</div>
+  <p>Gasthaus seit 1987 — Graz-Andritz</p>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">AGB</a>
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+  </div>
+  <p class="credit">Demo-Template von <a href="https://ssdhaliwal.dev">ssdhaliwal.dev</a> — <a href="https://ssdhaliwal.dev/#contact">Website erstellen lassen</a></p>
+</footer>
+
+</body>
+</html>
