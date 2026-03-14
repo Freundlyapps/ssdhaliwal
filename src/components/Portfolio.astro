@@ -8,97 +8,103 @@ const { lang = 'en' } = Astro.props;
 const portfolio = {
   en: [
     {
+      title: 'TaskJin',
+      description: 'Your personal AI assistant for everyday tasks.',
+      tech: ['Next.js', 'Claude API', 'AI Automation'],
+      liveUrl: 'https://taskjin.com',
+      images: ['/images/taskjin-1.png', '/images/taskjin-2.png', '/images/taskjin-3.png'],
+      tags: ['AI', 'Assistant', 'SaaS'],
+      category: 'ai',
+      featured: true,
+      featuredDetail: 'TaskJin is your personal AI assistant — handling everyday tasks, automating workflows, and saving you hours of manual work.',
+    },
+    {
       title: 'PicShifter',
-      description: 'Open-source image optimizer-privacy-first resizing & conversion.',
-      problem: 'Content creators waste hours manually resizing images.',
-      solution: 'Browser-based tool that bulk resizes without server upload.',
-      impact: ['10,000+ users', 'Privacy-first (GDPR compliant)'],
+      description: 'Open-source image optimizer — privacy-first resizing & conversion.',
       tech: ['Bubble.js', 'Canvas API', 'GitHub Pages'],
       liveUrl: 'https://picshifter.com',
       githubUrl: 'https://github.com/Freundlyapps/picshifter',
-      image: '/images/picshifter.png',
+      images: ['/images/picshifter.png'],
       tags: ['Open Source', 'Image Processing', 'Privacy'],
+      category: 'tools',
     },
     {
       title: 'Writola',
       description: 'AI-powered writing and publishing SaaS for content creators.',
-      problem: 'Creating SEO-optimized content takes hours of research and writing.',
-      solution: 'AI assistant that researches, writes, and formats blog posts.',
-      impact: ['Reduces writing time by 70%', 'Beta users produce 3x more content', 'Closed beta'],
-      tech: ['Next.js', 'React', 'Fast API', 'Claude API', 'Gemini API'],
+      tech: ['Next.js', 'Fast API', 'Claude API', 'Gemini API'],
       liveUrl: 'https://writola.com',
-      image: '/images/writola.png',
-      tags: ['AI', 'SaaS', 'Content', 'Beta'],
+      images: ['/images/writola.png', '/images/writola.png', '/images/writola.png'],
+      tags: ['AI', 'SaaS', 'Content'],
+      category: 'ai',
       isBeta: true,
     },
     {
       title: 'PDFtoImage',
       description: 'Free drag-drop PDF converter for quick thumbnails and newsletters.',
-      problem: 'Quick PDF-to-image conversion without registration.',
-      solution: 'Simple, instant conversion tool.',
-      impact: ['No registration', 'Instant processing', 'Free forever'],
       tech: ['JavaScript', 'PDF.js', 'Canvas API'],
       liveUrl: 'https://pdftoimage.picshifter.com',
-      image: '/images/pdftoimage.png',
+      images: ['/images/pdftoimage.png', '/images/pdftoimage.png', '/images/pdftoimage.png'],
       tags: ['Free Tool', 'PDF', 'Utility'],
+      category: 'tools',
     },
     {
       title: 'IdeaVid.co',
-      description: 'AI video repurposing tool-turn long content into short videos.',
-      problem: 'Creating short videos from long-form content is time-consuming.',
-      solution: 'Automated video repurposing from existing content.',
-      impact: ['In development', 'Early access available', 'Coming soon'],
+      description: 'AI video repurposing — turn long content into short videos.',
       tech: ['OpenAI', 'Video APIs', 'Automation'],
-      image: '/images/ideavid.png',
+      images: ['/images/ideavid.png', '/images/ideavid.png', '/images/ideavid.png'],
       tags: ['AI', 'Video', 'In Development'],
+      category: 'ai',
       isInDevelopment: true,
     },
   ],
   de: [
     {
+      title: 'TaskJin',
+      description: 'Ihr persönlicher KI-Assistent für alltägliche Aufgaben.',
+      tech: ['Next.js', 'Claude API', 'KI-Automatisierung'],
+      liveUrl: 'https://taskjin.com',
+      images: ['/images/taskjin-1.png', '/images/taskjin-2.png', '/images/taskjin-3.png'],
+      tags: ['KI', 'Assistent', 'SaaS'],
+      category: 'ai',
+      featured: true,
+      featuredDetail: 'TaskJin ist Ihr persönlicher KI-Assistent — erledigt alltägliche Aufgaben, automatisiert Workflows und spart Ihnen Stunden manueller Arbeit.',
+    },
+    {
       title: 'PicShifter',
-      description: 'Open-Source Bild-Optimierer—datenschutzsichere Größenänderung & Konvertierung.',
-      problem: 'Content Creator verlieren Stunden beim manuellen Skalieren von Bildern.',
-      solution: 'Browser-basiertes Tool für Bulk-Skalierung ohne Server-Upload.',
-      impact: ['10.000+ Nutzer', 'Datenschutzkonform (DSGVO)'],
+      description: 'Open-Source Bild-Optimierer — datenschutzsichere Größenänderung & Konvertierung.',
       tech: ['Bubble.js', 'Canvas API', 'GitHub Pages'],
       liveUrl: 'https://picshifter.com',
       githubUrl: 'https://github.com/Freundlyapps/picshifter',
-      image: '/images/picshifter.png',
+      images: ['/images/picshifter.png'],
       tags: ['Open Source', 'Bildverarbeitung', 'Datenschutz'],
+      category: 'tools',
     },
     {
       title: 'Writola',
       description: 'KI-gestützte Schreib- und Publishing-SaaS für Content Creator.',
-      problem: 'Die Erstellung von SEO-optimierten Inhalten dauert Stunden.',
-      solution: 'KI-Assistent, der recherchiert, schreibt und formatiert.',
-      impact: ['Reduziert Schreibzeit um 70%', 'Beta-Nutzer erstellen 3x mehr Content', 'Geschlossene Beta'],
-      tech: ['Next.js', 'React', 'Fast API', 'Claude API', 'Gemini API'],
+      tech: ['Next.js', 'Fast API', 'Claude API', 'Gemini API'],
       liveUrl: 'https://writola.com',
-      image: '/images/writola.png',
-      tags: ['KI', 'SaaS', 'Content', 'Beta'],
+      images: ['/images/writola.png', '/images/writola.png', '/images/writola.png'],
+      tags: ['KI', 'SaaS', 'Content'],
+      category: 'ai',
       isBeta: true,
     },
     {
       title: 'PDFtoImage',
       description: 'Kostenloser Drag-&-Drop PDF-Konverter für schnelle Thumbnails.',
-      problem: 'Schnelle PDF-zu-Bild-Konvertierung ohne Registrierung.',
-      solution: 'Einfaches, sofortiges Konvertierungstool.',
-      impact: ['Keine Registrierung', 'Sofortige Verarbeitung', 'Für immer kostenlos'],
       tech: ['JavaScript', 'PDF.js', 'Canvas API'],
       liveUrl: 'https://pdftoimage.picshifter.com',
-      image: '/images/pdftoimage.png',
+      images: ['/images/pdftoimage.png', '/images/pdftoimage.png', '/images/pdftoimage.png'],
       tags: ['Kostenloses Tool', 'PDF', 'Utility'],
+      category: 'tools',
     },
     {
       title: 'IdeaVid.co',
-      description: 'KI-Video-Repurposing-Tool—langen Content in Kurzvideos verwandeln.',
-      problem: 'Die Erstellung von Kurzvideos aus Langform-Content ist zeitaufwendig.',
-      solution: 'Automatisiertes Video-Repurposing aus vorhandenem Content.',
-      impact: ['In Entwicklung', 'Früher Zugang verfügbar', 'Bald verfügbar'],
+      description: 'KI-Video-Repurposing — langen Content in Kurzvideos verwandeln.',
       tech: ['OpenAI', 'Video APIs', 'Automatisierung'],
-      image: '/images/ideavid.png',
+      images: ['/images/ideavid.png', '/images/ideavid.png', '/images/ideavid.png'],
       tags: ['KI', 'Video', 'In Entwicklung'],
+      category: 'ai',
       isInDevelopment: true,
     },
   ],
@@ -106,189 +112,325 @@ const portfolio = {
 
 const t = {
   en: {
-    sectionTitle: 'Portfolio',
-    sectionSubtitle: 'Projects I\'ve built',
-    localBusinesses: 'Local Business Solutions',
-    localBusinessesSubtitle: 'What I can build for your business',
-    viewProject: 'View Project',
+    sectionTag: 'Portfolio',
+    sectionTitle: 'Projects I\'ve Built',
+    sectionSubtitle: 'From idea to production — tools that solve real problems.',
+    featured: 'Featured',
+    filterAll: 'All',
+    filterAI: 'AI',
+    filterTools: 'Tools',
+    filterSaaS: 'SaaS',
+    filterDev: 'In Development',
     liveDemo: 'Live Demo',
-    sourceCode: 'Source Code',
+    sourceCode: 'Source',
     beta: 'Beta',
-    inDevelopment: 'In Development',
-    earlyAccess: 'Get Early Access',
-    availableNow: 'Available Now',
+    inDev: 'In Dev',
+    showMore: 'Show More Projects',
+    showLess: 'Show Less',
+    localBusinesses: 'Solutions for Local Businesses',
+    localBusinessesSubtitle: 'Ready-to-launch packages for your business',
+    getStarted: 'Get a solution for your business',
+    viewAll: 'View all on GitHub',
   },
   de: {
-    sectionTitle: 'Projekte',
-    sectionSubtitle: 'Projekte, die ich gebaut habe',
-    localBusinesses: 'Lösungen für lokale Unternehmen',
-    localBusinessesSubtitle: 'Was ich für Ihr Unternehmen bauen kann',
-    viewProject: 'Projekt ansehen',
+    sectionTag: 'Projekte',
+    sectionTitle: 'Projekte, die ich gebaut habe',
+    sectionSubtitle: 'Von der Idee zur Produktion — Tools, die echte Probleme lösen.',
+    featured: 'Empfohlen',
+    filterAll: 'Alle',
+    filterAI: 'KI',
+    filterTools: 'Tools',
+    filterSaaS: 'SaaS',
+    filterDev: 'In Entwicklung',
     liveDemo: 'Live-Demo',
     sourceCode: 'Quellcode',
     beta: 'Beta',
-    inDevelopment: 'In Entwicklung',
-    earlyAccess: 'Frühen Zugang sichern',
-    availableNow: 'Jetzt verfügbar',
+    inDev: 'In Entw.',
+    showMore: 'Mehr Projekte anzeigen',
+    showLess: 'Weniger anzeigen',
+    localBusinesses: 'Lösungen für lokale Unternehmen',
+    localBusinessesSubtitle: 'Fertige Pakete für Ihr Unternehmen',
+    getStarted: 'Lösung für Ihr Unternehmen?',
+    viewAll: 'Alle auf GitHub ansehen',
   },
 };
 
-const projects = portfolio[lang];
 const labels = t[lang];
+const projects = portfolio[lang];
+const featuredProject = projects.find((p) => p.featured);
+const otherProjects = projects.filter((p) => !p.featured);
 const isGerman = lang === 'de';
 ---
 
 <section id="portfolio" class="py-20 bg-white dark:bg-[#0a0a0a]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
     <!-- Section Header -->
-    <div class="text-center mb-16 reveal">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary dark:text-primary-light rounded-full text-sm font-semibold tracking-wide mb-4">
+        {labels.sectionTag}
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
         {labels.sectionTitle}
       </h2>
-      <p class="text-xl text-gray-600 dark:text-gray-400">
+      <p class="text-gray-500 dark:text-gray-400 max-w-lg mx-auto">
         {labels.sectionSubtitle}
       </p>
     </div>
 
-    <!-- Projects Grid -->
-    <div class="grid md:grid-cols-2 gap-8">
-      {projects.map((project, index) => (
-        <div class="group bg-gray-50 dark:bg-gray-800/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-transparent hover:border-primary/30 reveal" style={`transition-delay: ${index * 0.15}s;`}>
-          <!-- Project Image -->
-          <div class="relative h-48 bg-gradient-to-br from-primary/20 to-accent/20 overflow-hidden">
-            {project.liveUrl ? (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="block w-full h-full">
-                {project.image ? (
+    <!-- Featured Project Hero Card -->
+    {featuredProject && (
+      <div class="reveal mb-14">
+        <div class="relative group rounded-2xl overflow-hidden bg-gray-50 dark:bg-gray-800/60 border border-gray-200/60 dark:border-gray-700/40 hover:border-primary/40 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5">
+          <div class="grid md:grid-cols-5 gap-0">
+            <!-- Image Slider — takes 2 cols -->
+            <div class="md:col-span-2 relative h-64 md:h-80 overflow-hidden bg-gray-900 dark:bg-black">
+              <div class="img-slider relative w-full h-full" data-slider="featured">
+                {featuredProject.images?.map((img, i) => (
                   <img
-                    src={project.image}
-                    alt={project.title}
-                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
+                    src={img}
+                    alt={`${featuredProject.title} screenshot ${i + 1}`}
+                    class:list={['slider-img absolute inset-0 w-full h-full object-contain transition-opacity duration-500', i === 0 ? 'opacity-100' : 'opacity-0']}
+                    data-slide={i}
+                    loading={i === 0 ? 'eager' : 'lazy'}
                   />
-                ) : (
-                  <div class="w-full h-full flex items-center justify-center">
-                    <span class="text-6xl font-bold text-primary/30">{project.title.charAt(0)}</span>
-                  </div>
+                ))}
+                {(featuredProject.images?.length ?? 0) > 1 && (
+                  <>
+                    <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition-all z-10" onclick="event.stopPropagation();">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                    </button>
+                    <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition-all z-10" onclick="event.stopPropagation();">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                    </button>
+                    <div class="slider-dots absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                      {featuredProject.images.map((_, i) => (
+                        <button
+                          class:list={['w-2 h-2 rounded-full transition-all', i === 0 ? 'bg-white scale-110' : 'bg-white/50']}
+                          data-dot={i}
+                          onclick="event.stopPropagation();"
+                        />
+                      ))}
+                    </div>
+                  </>
                 )}
-              </a>
-            ) : (
-              <>
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                ) : (
-                  <div class="w-full h-full flex items-center justify-center">
-                    <span class="text-6xl font-bold text-primary/30">{project.title.charAt(0)}</span>
-                  </div>
-                )}
-              </>
-            )}
-
-            <!-- Badges -->
-            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-              {project.isBeta && (
-                <span class="px-3 py-1 bg-accent text-white text-xs font-semibold rounded-full animate-pulse">
-                  {labels.beta}
+              </div>
+              <div class="absolute top-4 left-4 z-20">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-accent text-white text-xs font-bold rounded-full shadow-lg">
+                  <span class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                  {labels.featured}
                 </span>
-              )}
-              {project.isInDevelopment && (
-                <span class="px-3 py-1 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-semibold rounded-full">
-                  {labels.inDevelopment}
-                </span>
-              )}
+              </div>
             </div>
 
-            <!-- Tech Tags -->
-            <div class="absolute top-4 right-4 flex flex-wrap gap-1 justify-end">
-              {project.tags.slice(0, 2).map((tag) => (
-                <span class="px-2 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-medium rounded-md">
-                  {tag}
+            <!-- Content — takes 3 cols -->
+            <div class="md:col-span-3 p-6 md:p-8 flex flex-col justify-center">
+              <h3 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                {featuredProject.title}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-3 text-sm md:text-base leading-relaxed">
+                {featuredProject.featuredDetail || featuredProject.description}
+              </p>
+
+              <!-- Tech -->
+              <div class="flex flex-wrap gap-2 mb-5">
+                {featuredProject.tech.map((t) => (
+                  <span class="px-2.5 py-1 bg-gray-200/70 dark:bg-gray-700/70 text-gray-700 dark:text-gray-300 text-xs font-mono rounded-md">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <!-- Links -->
+              <div class="flex items-center gap-3">
+                {featuredProject.liveUrl && (
+                  <a
+                    href={featuredProject.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-blue-700 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    {labels.liveDemo}
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+                )}
+                {featuredProject.githubUrl && (
+                  <a
+                    href={featuredProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white text-sm font-semibold rounded-lg transition-all duration-300"
+                  >
+                    {labels.sourceCode}
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Filter Bar -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10 reveal" id="portfolio-filters">
+      <button class="portfolio-filter active px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 bg-primary text-white shadow-md" data-filter="all">
+        {labels.filterAll}
+      </button>
+      <button class="portfolio-filter px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="ai">
+        {labels.filterAI}
+      </button>
+      <button class="portfolio-filter px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="tools">
+        {labels.filterTools}
+      </button>
+      <button class="portfolio-filter px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="saas">
+        {labels.filterSaaS}
+      </button>
+      <button class="portfolio-filter px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="development">
+        {labels.filterDev}
+      </button>
+    </div>
+
+    <!-- Compact Project Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="projects-grid">
+      {otherProjects.map((project, index) => (
+        <div
+          class="project-card group relative bg-gray-50 dark:bg-gray-800/40 rounded-xl border border-gray-200/50 dark:border-gray-700/30 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 reveal cursor-pointer"
+          data-category={project.category}
+          data-index={index}
+          style={`transition-delay: ${index * 0.08}s;`}
+        >
+          <!-- Collapsed View (always visible) -->
+          <div class="card-header p-5">
+            <!-- Status badge -->
+            {project.isBeta && (
+              <span class="absolute top-3 right-3 px-2 py-0.5 bg-accent/15 text-accent text-[10px] font-bold uppercase tracking-wider rounded-full">
+                {labels.beta}
+              </span>
+            )}
+            {project.isInDevelopment && (
+              <span class="absolute top-3 right-3 px-2 py-0.5 bg-gray-500/15 text-gray-500 dark:text-gray-400 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                {labels.inDev}
+              </span>
+            )}
+
+            <!-- Title row -->
+            <div class="flex items-start gap-3 mb-2.5">
+              <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                {project.images?.[0] ? (
+                  <img src={project.images[0]} alt="" class="w-full h-full object-cover" loading="lazy" />
+                ) : (
+                  <span class="text-sm font-bold text-primary">{project.title.charAt(0)}</span>
+                )}
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-base font-bold text-gray-900 dark:text-white truncate">
+                  {project.title}
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed line-clamp-2">
+                  {project.description}
+                </p>
+              </div>
+              <!-- Expand indicator -->
+              <svg class="card-chevron w-4 h-4 text-gray-400 dark:text-gray-500 flex-shrink-0 mt-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+
+            <!-- Tech pills -->
+            <div class="flex flex-wrap gap-1.5">
+              {project.tech.slice(0, 3).map((t) => (
+                <span class="px-2 py-0.5 bg-gray-200/60 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 text-[11px] font-mono rounded">
+                  {t}
                 </span>
               ))}
             </div>
           </div>
 
-          <!-- Content -->
-          <div class="p-6">
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              {project.title}
-            </h3>
-            <p class="text-gray-600 dark:text-gray-400 mb-4">
-              {project.description}
-            </p>
-
-            <!-- Problem/Solution -->
-            <div class="space-y-2 mb-4 text-sm">
-              <div class="flex items-start">
-                <svg class="w-5 h-5 text-red-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span class="text-gray-600 dark:text-gray-400">{project.problem}</span>
+          <!-- Expanded Detail (hidden by default) -->
+          <div class="card-detail" style="display: none;">
+            <!-- Project image slider -->
+            {project.images && project.images.length > 0 && (
+              <div class="mx-5 mb-4 rounded-lg overflow-hidden bg-gray-900 dark:bg-black h-48 relative">
+                <div class="img-slider relative w-full h-full" data-slider={`card-${index}`}>
+                  {project.images.map((img, i) => (
+                    <img
+                      src={img}
+                      alt={`${project.title} screenshot ${i + 1}`}
+                      class:list={['slider-img absolute inset-0 w-full h-full object-contain transition-opacity duration-500', i === 0 ? 'opacity-100' : 'opacity-0']}
+                      data-slide={i}
+                      loading="lazy"
+                    />
+                  ))}
+                  {project.images.length > 1 && (
+                    <>
+                      <button class="slider-prev absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition-all z-10" onclick="event.stopPropagation();">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                      </button>
+                      <button class="slider-next absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/60 text-white rounded-full flex items-center justify-center transition-all z-10" onclick="event.stopPropagation();">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                      </button>
+                      <div class="slider-dots absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                        {project.images.map((_, i) => (
+                          <button
+                            class:list={['w-1.5 h-1.5 rounded-full transition-all', i === 0 ? 'bg-white scale-110' : 'bg-white/50']}
+                            data-dot={i}
+                            onclick="event.stopPropagation();"
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
-              <div class="flex items-start">
-                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="text-gray-600 dark:text-gray-400">{project.solution}</span>
+            )}
+
+            <!-- All tech -->
+            {project.tech.length > 3 && (
+              <div class="px-5 mb-3">
+                <div class="flex flex-wrap gap-1.5">
+                  {project.tech.slice(3).map((t) => (
+                    <span class="px-2 py-0.5 bg-gray-200/60 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 text-[11px] font-mono rounded">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <!-- Impact -->
-            <div class="flex flex-wrap gap-2 mb-4">
-              {project.impact.map((item) => (
-                <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-medium rounded-full">
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            <!-- Tech Stack -->
-            <div class="flex flex-wrap gap-2 mb-6">
-              {project.tech.map((tech) => (
-                <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-md">
-                  {tech}
-                </span>
-              ))}
-            </div>
+            )}
 
             <!-- Links -->
-            <div class="flex items-center space-x-4">
-              {project.liveUrl && (
+            <div class="px-5 pb-5 flex items-center gap-3">
+              {project.liveUrl ? (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg font-medium transition-colors text-sm"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-all duration-300"
+                  onclick="event.stopPropagation();"
                 >
                   {labels.liveDemo}
-                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                 </a>
-              )}
+              ) : project.isInDevelopment ? (
+                <a
+                  href={isGerman ? '/de#contact' : '#contact'}
+                  class="inline-flex items-center gap-1.5 px-4 py-2 bg-accent hover:bg-orange-600 text-white text-xs font-semibold rounded-lg shadow-sm transition-all duration-300"
+                  onclick="event.stopPropagation();"
+                >
+                  {isGerman ? 'Frühen Zugang sichern' : 'Get Early Access'}
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </a>
+              ) : null}
               {project.githubUrl && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="flex items-center px-4 py-2 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white rounded-lg font-medium transition-colors text-sm"
+                  class="inline-flex items-center gap-1.5 px-4 py-2 bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 dark:hover:bg-gray-600 text-white text-xs font-semibold rounded-lg transition-all duration-300"
+                  onclick="event.stopPropagation();"
                 >
                   {labels.sourceCode}
-                  <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                  </svg>
-                </a>
-              )}
-              {project.isInDevelopment && (
-                <a
-                  href="#contact"
-                  class="flex items-center px-4 py-2 border-2 border-accent text-accent hover:bg-accent hover:text-white rounded-lg font-medium transition-colors text-sm"
-                >
-                  {labels.earlyAccess}
+                  <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" /></svg>
                 </a>
               )}
             </div>
@@ -297,93 +439,255 @@ const isGerman = lang === 'de';
       ))}
     </div>
 
-    <!-- More Projects CTA -->
-    <div class="mt-12 text-center">
+    <!-- Show More Button -->
+    <div class="text-center mt-8 reveal" id="show-more-container" style="display: none;">
+      <button
+        id="show-more-btn"
+        class="inline-flex items-center gap-2 px-6 py-2.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm font-semibold rounded-full transition-all duration-300"
+      >
+        <span id="show-more-text">{labels.showMore}</span>
+        <svg id="show-more-icon" class="w-4 h-4 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- GitHub Link -->
+    <div class="mt-8 text-center reveal">
       <a
         href="https://github.com/Freundlyapps?tab=repositories"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center text-primary dark:text-primary-light hover:underline font-medium"
+        class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary-light text-sm font-medium transition-colors"
       >
-        View all on GitHub
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+        {labels.viewAll}
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
       </a>
     </div>
 
-    <!-- Local Business Solutions Section -->
-    <div class="mt-24 reveal">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <!-- Local Business Solutions -->
+    <div class="mt-20 reveal">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
           {labels.localBusinesses}
         </h2>
-        <p class="text-xl text-gray-600 dark:text-gray-400">
+        <p class="text-gray-500 dark:text-gray-400 text-sm">
           {labels.localBusinessesSubtitle}
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Restaurant Solution -->
-        <div class="group bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-6 border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-4 text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="group bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/10 dark:to-red-900/10 rounded-xl p-5 border border-orange-200/50 dark:border-orange-800/30 hover:shadow-lg transition-all duration-300">
+          <div class="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center mb-3 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Restaurant Website</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Digital menu, online ordering, table booking</p>
-          <span class="text-xs font-semibold text-orange-600 dark:text-orange-400">From €450</span>
+          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Restaurant</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Digitale Speisekarte, Online-Bestellung, Tischreservierung' : 'Digital menu, online ordering, table booking'}</p>
+          <span class="text-xs font-bold text-orange-600 dark:text-orange-400">{isGerman ? 'Ab' : 'From'} €450</span>
         </div>
 
-        <!-- Barber Solution -->
-        <div class="group bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl p-6 border border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4 text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+        <div class="group bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/10 dark:to-indigo-900/10 rounded-xl p-5 border border-blue-200/50 dark:border-blue-800/30 hover:shadow-lg transition-all duration-300">
+          <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mb-3 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Barber Booking</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Appointment scheduling, client reminders</p>
-          <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">From €675</span>
+          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Barber Booking</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Terminbuchung, Kundenerinnerungen' : 'Appointment scheduling, client reminders'}</p>
+          <span class="text-xs font-bold text-blue-600 dark:text-blue-400">{isGerman ? 'Ab' : 'From'} €675</span>
         </div>
 
-        <!-- Pet Services Solution -->
-        <div class="group bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4 text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
+        <div class="group bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/10 dark:to-teal-900/10 rounded-xl p-5 border border-green-200/50 dark:border-green-800/30 hover:shadow-lg transition-all duration-300">
+          <div class="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mb-3 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Pet Services</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Service booking, pet profiles, payment</p>
-          <span class="text-xs font-semibold text-green-600 dark:text-green-400">From €675</span>
+          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Pet Services</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Servicebuchung, Tierprofile, Zahlung' : 'Service booking, pet profiles, payment'}</p>
+          <span class="text-xs font-bold text-green-600 dark:text-green-400">{isGerman ? 'Ab' : 'From'} €675</span>
         </div>
 
-        <!-- Delivery Solution -->
-        <div class="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-6 border border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all duration-300">
-          <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4 text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+        <div class="group bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/10 dark:to-pink-900/10 rounded-xl p-5 border border-purple-200/50 dark:border-purple-800/30 hover:shadow-lg transition-all duration-300">
+          <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center mb-3 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
           </div>
-          <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2">Delivery System</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">Order tracking, driver app, analytics</p>
-          <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">From €900</span>
+          <h3 class="text-base font-bold text-gray-900 dark:text-white mb-1">Delivery System</h3>
+          <p class="text-xs text-gray-600 dark:text-gray-400 mb-2">{isGerman ? 'Auftragsverfolgung, Fahrer-App, Analytics' : 'Order tracking, driver app, analytics'}</p>
+          <span class="text-xs font-bold text-purple-600 dark:text-purple-400">{isGerman ? 'Ab' : 'From'} €900</span>
         </div>
       </div>
 
-      <div class="mt-8 text-center">
+      <div class="mt-6 text-center">
         <a
           href={isGerman ? '/de#contact' : '#contact'}
-          class="inline-flex items-center px-6 py-3 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+          class="inline-flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-blue-700 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
         >
-          {isGerman ? 'Lösung für Ihr Unternehmen?' : 'Get a solution for your business?'}
-          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          {labels.getStarted}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
         </a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Portfolio Filter & Show More Script -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const INITIAL_SHOW = 6;
+    const grid = document.getElementById('projects-grid');
+    const cards = grid ? Array.from(grid.querySelectorAll('.project-card')) : [];
+    const filters = document.querySelectorAll('.portfolio-filter');
+    const showMoreContainer = document.getElementById('show-more-container');
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const showMoreText = document.getElementById('show-more-text');
+    const showMoreIcon = document.getElementById('show-more-icon');
+
+    let activeFilter = 'all';
+    let expanded = false;
+
+    const showMoreLabel = showMoreText?.textContent || 'Show More Projects';
+    const showLessLabel = showMoreText?.dataset?.lessLabel || (document.documentElement.lang === 'de' ? 'Weniger anzeigen' : 'Show Less');
+
+    function applyFilter() {
+      let visibleCards = [];
+
+      cards.forEach((card) => {
+        const cat = card.dataset.category;
+        const matchesFilter = activeFilter === 'all' || cat === activeFilter ||
+          (activeFilter === 'development' && card.querySelector('[class*="In Dev"], [class*="In Entw"]'));
+
+        if (matchesFilter) {
+          visibleCards.push(card);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      visibleCards.forEach((card, i) => {
+        if (!expanded && i >= INITIAL_SHOW) {
+          card.style.display = 'none';
+        } else {
+          card.style.display = '';
+        }
+      });
+
+      // Show/hide the "show more" button
+      if (showMoreContainer) {
+        showMoreContainer.style.display = visibleCards.length > INITIAL_SHOW ? '' : 'none';
+      }
+
+      // Update button text
+      if (showMoreText) {
+        showMoreText.textContent = expanded ? showLessLabel : showMoreLabel;
+      }
+      if (showMoreIcon) {
+        showMoreIcon.style.transform = expanded ? 'rotate(180deg)' : '';
+      }
+    }
+
+    // Filter buttons
+    filters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filters.forEach((b) => {
+          b.classList.remove('active', 'bg-primary', 'text-white', 'shadow-md');
+          b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+        });
+        btn.classList.add('active', 'bg-primary', 'text-white', 'shadow-md');
+        btn.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+
+        activeFilter = btn.dataset.filter;
+        expanded = false;
+        applyFilter();
+      });
+    });
+
+    // Show more/less
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener('click', () => {
+        expanded = !expanded;
+        applyFilter();
+      });
+    }
+
+    // Image slider logic
+    function initSlider(container) {
+      const slides = container.querySelectorAll('.slider-img');
+      const prevBtn = container.querySelector('.slider-prev');
+      const nextBtn = container.querySelector('.slider-next');
+      const dots = container.querySelectorAll('[data-dot]');
+      if (slides.length <= 1) return;
+
+      let current = 0;
+
+      function goTo(index) {
+        slides[current].classList.remove('opacity-100');
+        slides[current].classList.add('opacity-0');
+        dots[current]?.classList.remove('bg-white', 'scale-110');
+        dots[current]?.classList.add('bg-white/50');
+
+        current = (index + slides.length) % slides.length;
+
+        slides[current].classList.remove('opacity-0');
+        slides[current].classList.add('opacity-100');
+        dots[current]?.classList.remove('bg-white/50');
+        dots[current]?.classList.add('bg-white', 'scale-110');
+      }
+
+      prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); goTo(current - 1); });
+      nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); goTo(current + 1); });
+      dots.forEach((dot) => {
+        dot.addEventListener('click', (e) => { e.stopPropagation(); goTo(parseInt(dot.dataset.dot)); });
+      });
+    }
+
+    // Init all sliders on page
+    document.querySelectorAll('.img-slider').forEach(initSlider);
+
+    // Card expand/collapse
+    cards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        const detail = card.querySelector('.card-detail');
+        const chevron = card.querySelector('.card-chevron');
+        if (!detail) return;
+
+        const isOpen = detail.style.display !== 'none';
+
+        // Close all other cards first
+        cards.forEach((other) => {
+          if (other !== card) {
+            const otherDetail = other.querySelector('.card-detail');
+            const otherChevron = other.querySelector('.card-chevron');
+            if (otherDetail) otherDetail.style.display = 'none';
+            if (otherChevron) otherChevron.style.transform = '';
+            other.classList.remove('ring-2', 'ring-primary/30');
+          }
+        });
+
+        if (isOpen) {
+          detail.style.display = 'none';
+          if (chevron) chevron.style.transform = '';
+          card.classList.remove('ring-2', 'ring-primary/30');
+        } else {
+          detail.style.display = 'block';
+          if (chevron) chevron.style.transform = 'rotate(180deg)';
+          card.classList.add('ring-2', 'ring-primary/30');
+          // Init slider inside expanded card if not already done
+          const slider = detail.querySelector('.img-slider');
+          if (slider && !slider.dataset.initialized) {
+            initSlider(slider);
+            slider.dataset.initialized = 'true';
+          }
+        }
+      });
+    });
+
+    // Initial render
+    applyFilter();
+  });
+</script>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
