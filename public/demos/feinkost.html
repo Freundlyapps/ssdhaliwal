@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpenkorb — Regionale Feinkost Online | Demo Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--wine:#7B2D3B;--wine-light:#A64253;--gold:#C9A96E;--cream:#FBF7F0;--linen:#F3EDE4;--dark:#2A1F1F;--card:#fff;--text:#3D3230;--text-light:#8A7E7A;--serif:'DM Serif Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);overflow-x:hidden}
+.demo-banner{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,#007BFF,#0056b3);color:#fff;text-align:center;padding:10px 20px;font-size:14px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.demo-banner a{color:#fff;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:600}
+body{padding-top:44px}
+.header{position:sticky;top:44px;z-index:100;background:rgba(251,247,240,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(123,45,59,0.08)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:26px;color:var(--wine)}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:24px;align-items:center}
+nav a{color:var(--text-light);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.2s}
+nav a:hover{color:var(--wine)}
+.nav-cta{background:var(--wine)!important;color:#fff!important;padding:10px 20px;border-radius:8px;font-weight:600}
+.nav-cart{position:relative;background:var(--wine);color:#fff;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.nav-cart span{position:absolute;top:-4px;right:-4px;background:var(--gold);color:var(--dark);width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mobile-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text)}
+.hero{padding:80px 24px 60px;background:linear-gradient(170deg,var(--linen) 0%,var(--cream) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(123,45,59,0.04) 0%,transparent 70%);border-radius:50%}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;position:relative}
+.hero h1{font-family:var(--serif);font-size:clamp(34px,5vw,56px);line-height:1.1;color:var(--dark);margin-bottom:16px}
+.hero h1 em{color:var(--wine);font-style:normal}
+.hero p{color:var(--text-light);font-size:16px;line-height:1.7;margin-bottom:28px;max-width:440px}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.hero-tag{display:flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(123,45,59,0.06);border-radius:50px;font-size:12px;font-weight:600;color:var(--wine)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.3s;font-family:var(--sans);border:none;cursor:pointer}
+.btn-wine{background:var(--wine);color:#fff}
+.btn-wine:hover{background:var(--wine-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(123,45,59,0.25)}
+.hero-image{aspect-ratio:4/5;background:var(--linen);border-radius:24px;border:1px solid rgba(123,45,59,0.08);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:14px;color:var(--text-light)}
+.hero-image .emoji{font-size:64px;opacity:0.5}
+.categories{padding:48px 24px 0;background:var(--cream)}
+.cat-row{max-width:1100px;margin:0 auto;display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px}
+.cat-row::-webkit-scrollbar{display:none}
+.cat-btn{flex-shrink:0;padding:10px 20px;border-radius:50px;border:2px solid rgba(123,45,59,0.1);background:#fff;color:var(--text-light);font-weight:600;font-size:14px;cursor:pointer;transition:all 0.2s;font-family:var(--sans)}
+.cat-btn:hover,.cat-btn.active{background:var(--wine);color:#fff;border-color:var(--wine)}
+section{padding:60px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{font-family:var(--serif);font-size:clamp(24px,4vw,34px);color:var(--dark);margin-bottom:8px}
+.section-desc{color:var(--text-light);font-size:14px;margin-bottom:28px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.product-card{background:var(--card);border-radius:16px;border:1px solid rgba(0,0,0,0.04);overflow:hidden;transition:all 0.3s}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(123,45,59,0.08)}
+.product-img{aspect-ratio:1;background:linear-gradient(135deg,var(--linen),rgba(201,169,110,0.1));display:flex;align-items:center;justify-content:center;font-size:52px;position:relative}
+.product-badge{position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700}
+.badge-region{background:var(--wine);color:#fff}
+.badge-new{background:var(--gold);color:var(--dark)}
+.badge-set{background:var(--wine-light);color:#fff}
+.product-info{padding:16px}
+.product-info h3{font-family:var(--serif);font-size:16px;margin-bottom:3px;color:var(--dark)}
+.product-info .origin{font-size:11px;color:var(--wine);font-weight:600;margin-bottom:6px}
+.product-info .desc{font-size:12px;color:var(--text-light);line-height:1.4;margin-bottom:10px}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-family:var(--serif);font-size:18px;color:var(--wine)}
+.product-price .unit{font-family:var(--sans);font-size:11px;color:var(--text-light);font-weight:400}
+.add-btn{width:36px;height:36px;border-radius:10px;border:none;background:var(--wine);color:#fff;font-size:16px;cursor:pointer;transition:all 0.2s}
+.add-btn:hover{background:var(--wine-light);transform:scale(1.1)}
+.story{background:#fff}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.story-img{aspect-ratio:4/3;background:var(--linen);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:48px;color:var(--text-light);opacity:0.3}
+.story-text p{color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:14px}
+.trust-bar{background:var(--wine);color:#fff;padding:32px 24px}
+.trust-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.trust-item .num{font-family:var(--serif);font-size:28px;margin-bottom:2px}
+.trust-item .label{font-size:12px;opacity:0.7}
+.gift-banner{background:var(--linen);padding:48px 24px;text-align:center}
+.gift-banner h2{font-family:var(--serif);font-size:28px;color:var(--dark);margin-bottom:10px}
+.gift-banner p{color:var(--text-light);margin-bottom:24px;max-width:440px;margin-left:auto;margin-right:auto}
+footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:48px 24px;text-align:center}
+footer .logo-f{font-family:var(--serif);font-size:24px;color:#fff;margin-bottom:4px}
+footer .logo-f span{color:var(--gold)}
+.footer-links{display:flex;justify-content:center;gap:24px;margin:16px 0}
+.footer-links a{color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none}
+.footer-links a:hover{color:#fff}
+footer .credit{font-size:11px;color:rgba(255,255,255,0.2);margin-top:16px}
+footer .credit a{color:rgba(255,255,255,0.4)}
+@media(max-width:768px){nav{display:none}.mobile-toggle{display:block}.hero-inner,.story-grid{grid-template-columns:1fr}.hero-image{display:none}.product-grid{grid-template-columns:repeat(2,1fr)}.trust-row{grid-template-columns:repeat(2,1fr);gap:16px}}
+</style>
+</head>
+<body>
+<div class="demo-banner">Dies ist eine Demo-Website für einen Feinkost-Online-Shop.<a href="https://ssdhaliwal.dev/#contact">Shop erstellen lassen &rarr;</a></div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">Alpen<span>korb</span></div>
+    <nav>
+      <a href="#produkte">Sortiment</a>
+      <a href="#geschichte">Unsere Geschichte</a>
+      <a href="#geschenke">Geschenkboxen</a>
+      <div class="nav-cart">&#128722;<span>1</span></div>
+    </nav>
+    <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Österreichische <em>Feinkost</em> direkt zu Ihnen.</h1>
+      <p>Handverlesene Spezialitäten von Bauern und Manufakturen aus ganz Österreich. Käse, Wein, Marmeladen und mehr — direkt vom Erzeuger.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">&#127807; Bio & Regional</span>
+        <span class="hero-tag">&#128666; Versand in 2-3 Tagen</span>
+        <span class="hero-tag">&#127873; Geschenkboxen</span>
+      </div>
+      <a href="#produkte" class="btn btn-wine">Sortiment entdecken</a>
+    </div>
+    <div class="hero-image">
+      <span class="emoji">&#127850;</span>
+      <span>Ihr Produktfoto hier</span>
+    </div>
+  </div>
+</section>
+
+<div class="categories">
+  <div class="cat-row">
+    <button class="cat-btn active">Alles</button>
+    <button class="cat-btn">Käse</button>
+    <button class="cat-btn">Wurst & Speck</button>
+    <button class="cat-btn">Marmeladen</button>
+    <button class="cat-btn">Honig</button>
+    <button class="cat-btn">Wein & Schnaps</button>
+    <button class="cat-btn">Öle & Essig</button>
+    <button class="cat-btn">Geschenkboxen</button>
+  </div>
+</div>
+
+<section id="produkte">
+  <div class="section-inner">
+    <div class="section-title">Unsere Bestseller</div>
+    <p class="section-desc">Handverlesen, regional und in kleinen Chargen produziert.</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-region">Tirol</span>&#129472;</div>
+        <div class="product-info"><h3>Tiroler Bergkäse</h3><div class="origin">Sennerei Zillertal</div><p class="desc">12 Monate gereift, aus Heumilch, ca. 300g</p><div class="product-footer"><span class="product-price">€12,90 <span class="unit">/ Stk.</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-region">Steiermark</span>&#127863;</div>
+        <div class="product-info"><h3>Steirisches Kürbiskernöl</h3><div class="origin">Ölmühle Fandler</div><p class="desc">250ml, g.g.A., kaltgepresst</p><div class="product-footer"><span class="product-price">€9,90 <span class="unit">/ Flasche</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-new">Neu</span>&#127853;</div>
+        <div class="product-info"><h3>Wachauer Marillenmarmelade</h3><div class="origin">Marillenhof Dunkelsteiner</div><p class="desc">220g, handgerührt, 70% Fruchtanteil</p><div class="product-footer"><span class="product-price">€6,90 <span class="unit">/ Glas</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-region">Kärnten</span>&#127855;</div>
+        <div class="product-info"><h3>Kärntner Speck</h3><div class="origin">Fleischerei Moser</div><p class="desc">200g, luftgetrocknet, traditionell gewürzt</p><div class="product-footer"><span class="product-price">€8,90 <span class="unit">/ Pkg.</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">&#127863;</div>
+        <div class="product-info"><h3>Grüner Veltliner 2024</h3><div class="origin">Weingut Bründlmayer, Kamptal</div><p class="desc">0,75l, trocken, DAC</p><div class="product-footer"><span class="product-price">€14,90 <span class="unit">/ Flasche</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-region">Salzburg</span>&#127854;</div>
+        <div class="product-info"><h3>Waldhonig Bio</h3><div class="origin">Imkerei Gruber, Lungau</div><p class="desc">500g, Bio-zertifiziert, naturbelassen</p><div class="product-footer"><span class="product-price">€11,90 <span class="unit">/ Glas</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-set">Set</span>&#127873;</div>
+        <div class="product-info"><h3>Geschenkbox "Alpengenuss"</h3><div class="origin">5 Produkte, handverpackt</div><p class="desc">Käse, Speck, Marmelade, Honig, Öl</p><div class="product-footer"><span class="product-price">€44,90 <span class="unit">/ Box</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">&#127861;</div>
+        <div class="product-info"><h3>Apfelessig naturtrüb</h3><div class="origin">Obsthof Retter, Steiermark</div><p class="desc">500ml, aus Bio-Streuobst</p><div class="product-footer"><span class="product-price">€7,90 <span class="unit">/ Flasche</span></span><button class="add-btn">+</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-row">
+    <div class="trust-item"><div class="num">50+</div><div class="label">Partnerbetriebe</div></div>
+    <div class="trust-item"><div class="num">200+</div><div class="label">Produkte</div></div>
+    <div class="trust-item"><div class="num">9</div><div class="label">Bundesländer</div></div>
+    <div class="trust-item"><div class="num">4.8&#11088;</div><div class="label">Kundenbewertung</div></div>
+  </div>
+</div>
+
+<section class="story" id="geschichte">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div class="story-img">&#127968;</div>
+      <div>
+        <div class="section-title">Vom Bauernhof zu Ihnen</div>
+        <div class="story-text">
+          <p>Alpenkorb wurde 2021 gegründet, weil wir finden: Die besten Lebensmittel Österreichs verdienen eine größere Bühne.</p>
+          <p>Wir arbeiten direkt mit über 50 kleinen Bauernhöfen, Sennereien, Imkereien und Manufakturen zusammen. Jedes Produkt wird persönlich ausgewählt und verkostet.</p>
+          <p>Keine Zwischenhändler, keine Massenware. Nur ehrliche Qualität aus allen 9 Bundesländern — direkt zu Ihnen nach Hause.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gift-banner" id="geschenke">
+  <h2>Das perfekte Geschenk &#127873;</h2>
+  <p>Unsere Geschenkboxen mit österreichischen Spezialitäten — handverpackt und mit persönlicher Grußkarte.</p>
+  <a href="#" class="btn btn-wine" onclick="event.preventDefault();alert('Dies ist eine Demo-Website.')">Geschenkboxen ansehen</a>
+</div>
+
+<footer>
+  <div class="logo-f">Alpen<span>korb</span></div>
+  <p>Regionale Feinkost aus Österreich — seit 2021</p>
+  <div class="footer-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a><a href="#">Widerrufsrecht</a><a href="#">Versand</a><a href="#">Instagram</a></div>
+  <p class="credit">Demo-Template von <a href="https://ssdhaliwal.dev">ssdhaliwal.dev</a> — <a href="https://ssdhaliwal.dev/#contact">Online-Shop erstellen lassen</a></p>
+</footer>
+</body>
+</html>

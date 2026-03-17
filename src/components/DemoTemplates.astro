@@ -10,111 +10,181 @@ const t = {
   en: {
     tag: 'Live Demos',
     title: 'See What Your Website Could Look Like',
-    subtitle: 'Click on any demo to see a full, interactive website template. This is what you get.',
+    subtitle: 'Browse real demos. Click to open a full, interactive website.',
     viewDemo: 'View Demo',
-    comingSoon: 'Coming Soon',
+    comingSoon: 'Soon',
     startingFrom: 'from',
     cta: 'Want a website like these?',
     ctaBtn: 'Get Your Free Quote',
+    filterAll: 'All',
+    filterWebsites: 'Websites',
+    filterShops: 'Online Shops',
+    filterAI: 'AI Tools',
+    count: 'demos',
   },
   de: {
     tag: 'Live-Demos',
     title: 'So könnte Ihre Website aussehen',
-    subtitle: 'Klicken Sie auf eine Demo, um eine vollständige, interaktive Website-Vorlage zu sehen. Das bekommen Sie.',
+    subtitle: 'Durchstöbern Sie echte Demos. Klicken für die vollständige, interaktive Website.',
     viewDemo: 'Demo ansehen',
-    comingSoon: 'Demnächst',
+    comingSoon: 'Bald',
     startingFrom: 'ab',
     cta: 'Wollen Sie eine Website wie diese?',
     ctaBtn: 'Kostenloses Angebot anfordern',
+    filterAll: 'Alle',
+    filterWebsites: 'Websites',
+    filterShops: 'Online-Shops',
+    filterAI: 'KI-Tools',
+    count: 'Demos',
   },
 };
 
 const labels = t[lang];
+const contactHref = isGerman ? '/de#contact' : '#contact';
 
 const demos = [
   {
     id: 'barber',
     name: { en: 'Barber / Salon', de: 'Friseur / Salon' },
     business: { en: 'Salon Marco — Wien', de: 'Salon Marco — Wien' },
-    color: 'from-amber-900/20 to-yellow-900/10',
-    borderColor: 'border-amber-700/20 hover:border-amber-500/40',
     textColor: 'text-amber-500',
+    bgAccent: 'bg-amber-500/10',
+    borderAccent: 'border-amber-500/30',
     icon: '&#9986;',
     url: '/demos/barber.html',
     price: 290,
+    category: 'websites',
     ready: true,
   },
   {
     id: 'restaurant',
     name: { en: 'Restaurant', de: 'Restaurant' },
     business: { en: 'Gasthaus zur Linde — Graz', de: 'Gasthaus zur Linde — Graz' },
-    color: 'from-green-900/20 to-emerald-900/10',
-    borderColor: 'border-green-700/20 hover:border-green-500/40',
     textColor: 'text-green-500',
+    bgAccent: 'bg-green-500/10',
+    borderAccent: 'border-green-500/30',
     icon: '&#127869;',
     url: '/demos/restaurant.html',
     price: 890,
+    category: 'websites',
     ready: true,
   },
   {
     id: 'cafe',
     name: { en: 'Café', de: 'Café' },
     business: { en: 'Kaffeehaus Mila — Salzburg', de: 'Kaffeehaus Mila — Salzburg' },
-    color: 'from-orange-900/20 to-red-900/10',
-    borderColor: 'border-orange-700/20 hover:border-orange-500/40',
     textColor: 'text-orange-400',
+    bgAccent: 'bg-orange-400/10',
+    borderAccent: 'border-orange-400/30',
     icon: '&#9749;',
     url: '/demos/cafe.html',
     price: 290,
+    category: 'websites',
     ready: true,
   },
   {
     id: 'ai-chatbot',
     name: { en: 'AI Chatbot', de: 'KI-Chatbot' },
-    business: { en: 'Interactive Demo — Try it live', de: 'Interaktive Demo — Jetzt testen' },
-    color: 'from-violet-900/20 to-purple-900/10',
-    borderColor: 'border-violet-700/20 hover:border-violet-500/40',
+    business: { en: 'Interactive Demo', de: 'Interaktive Demo' },
     textColor: 'text-violet-400',
+    bgAccent: 'bg-violet-400/10',
+    borderAccent: 'border-violet-400/30',
     icon: '&#129302;',
     url: '/demos/ai-chatbot.html',
     price: 450,
+    category: 'ai',
     ready: true,
   },
   {
     id: 'electrician',
     name: { en: 'Electrician', de: 'Elektriker' },
     business: { en: 'Elektro Huber — Linz', de: 'Elektro Huber — Linz' },
-    color: 'from-blue-900/20 to-sky-900/10',
-    borderColor: 'border-blue-700/20 hover:border-blue-500/40',
     textColor: 'text-blue-400',
+    bgAccent: 'bg-blue-400/10',
+    borderAccent: 'border-blue-400/30',
     icon: '&#9889;',
     url: '#',
     price: 290,
+    category: 'websites',
     ready: false,
   },
   {
     id: 'plumber',
     name: { en: 'Plumber', de: 'Installateur' },
     business: { en: 'Installateur Berger — Innsbruck', de: 'Installateur Berger — Innsbruck' },
-    color: 'from-cyan-900/20 to-teal-900/10',
-    borderColor: 'border-cyan-700/20 hover:border-cyan-500/40',
     textColor: 'text-cyan-400',
+    bgAccent: 'bg-cyan-400/10',
+    borderAccent: 'border-cyan-400/30',
     icon: '&#128295;',
     url: '#',
     price: 290,
+    category: 'websites',
     ready: false,
   },
   {
     id: 'pet',
-    name: { en: 'Pet Services', de: 'Tierdienste' },
+    name: { en: 'Pet Shop', de: 'Tierbedarf Shop' },
     business: { en: 'Pfötchen & Co — Wien', de: 'Pfötchen & Co — Wien' },
-    color: 'from-pink-900/20 to-rose-900/10',
-    borderColor: 'border-pink-700/20 hover:border-pink-500/40',
     textColor: 'text-pink-400',
-    icon: '&#128062;',
+    bgAccent: 'bg-pink-400/10',
+    borderAccent: 'border-pink-400/30',
+    icon: '&#128054;',
+    url: '/demos/pet-shop.html',
+    price: 890,
+    category: 'shops',
+    ready: true,
+  },
+  {
+    id: 'yoga',
+    name: { en: 'Yoga / Fitness', de: 'Yoga / Fitness' },
+    business: { en: 'Namaste Wien', de: 'Namaste Wien' },
+    textColor: 'text-teal-400',
+    bgAccent: 'bg-teal-400/10',
+    borderAccent: 'border-teal-400/30',
+    icon: '&#129495;',
     url: '#',
     price: 490,
+    category: 'websites',
     ready: false,
+  },
+  {
+    id: 'beauty',
+    name: { en: 'Beauty / Cosmetics', de: 'Kosmetik / Beauty' },
+    business: { en: 'Studio Bella — Wien', de: 'Studio Bella — Wien' },
+    textColor: 'text-rose-400',
+    bgAccent: 'bg-rose-400/10',
+    borderAccent: 'border-rose-400/30',
+    icon: '&#128133;',
+    url: '#',
+    price: 290,
+    category: 'websites',
+    ready: false,
+  },
+  {
+    id: 'cbd',
+    name: { en: 'CBD / Hanf Shop', de: 'CBD / Hanf Shop' },
+    business: { en: 'Grüne Blatt — Graz', de: 'Grüne Blatt — Graz' },
+    textColor: 'text-lime-400',
+    bgAccent: 'bg-lime-400/10',
+    borderAccent: 'border-lime-400/30',
+    icon: '&#127807;',
+    url: '/demos/cbd-shop.html',
+    price: 890,
+    category: 'shops',
+    ready: true,
+  },
+  {
+    id: 'feinkost',
+    name: { en: 'Delicatessen Shop', de: 'Feinkost Shop' },
+    business: { en: 'Alpenkorb — Regional', de: 'Alpenkorb — Regional' },
+    textColor: 'text-amber-600',
+    bgAccent: 'bg-amber-600/10',
+    borderAccent: 'border-amber-600/30',
+    icon: '&#127850;',
+    url: '/demos/feinkost.html',
+    price: 890,
+    category: 'shops',
+    ready: true,
   },
 ];
 ---
@@ -122,7 +192,7 @@ const demos = [
 <section id="demos" class="py-20 bg-gray-50 dark:bg-[#0a0a0a]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-center mb-12 reveal">
+    <div class="text-center mb-10 reveal">
       <span class="inline-block px-4 py-1.5 bg-primary/10 text-primary dark:text-primary-light rounded-full text-sm font-semibold tracking-wide mb-4">
         {labels.tag}
       </span>
@@ -134,59 +204,110 @@ const demos = [
       </p>
     </div>
 
-    <!-- Demo Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {demos.map((demo, i) => (
-        <a
-          href={demo.ready ? demo.url : undefined}
-          target={demo.ready ? '_blank' : undefined}
-          rel={demo.ready ? 'noopener noreferrer' : undefined}
-          class:list={[
-            'group relative block rounded-2xl overflow-hidden border transition-all duration-300 reveal',
-            demo.ready
-              ? `bg-gradient-to-br ${demo.color} dark:bg-gray-800/60 ${demo.borderColor} hover:shadow-xl hover:-translate-y-1 cursor-pointer`
-              : 'bg-gray-100 dark:bg-gray-800/30 border-gray-200/50 dark:border-gray-700/30 opacity-60 cursor-default',
-          ]}
-          style={`transition-delay: ${i * 0.08}s;`}
-        >
-          <div class="p-6">
-            <!-- Icon + Category -->
-            <div class="flex items-center justify-between mb-4">
-              <span class={`text-3xl ${demo.ready ? '' : 'grayscale opacity-50'}`} set:html={demo.icon} />
-              {demo.ready ? (
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/80 dark:bg-gray-900/60 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-300 group-hover:bg-primary group-hover:text-white transition-colors">
-                  {labels.viewDemo}
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+    <!-- Filter Tabs + Count -->
+    <div class="flex items-center justify-between mb-6 reveal">
+      <div class="flex gap-2" id="demo-filters">
+        <button class="demo-filter active px-4 py-2 text-sm font-semibold rounded-full transition-all bg-primary text-white shadow-sm" data-filter="all">
+          {labels.filterAll}
+        </button>
+        <button class="demo-filter px-4 py-2 text-sm font-semibold rounded-full transition-all bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="websites">
+          {labels.filterWebsites}
+        </button>
+        <button class="demo-filter px-4 py-2 text-sm font-semibold rounded-full transition-all bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="shops">
+          {labels.filterShops}
+        </button>
+        <button class="demo-filter px-4 py-2 text-sm font-semibold rounded-full transition-all bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700" data-filter="ai">
+          {labels.filterAI}
+        </button>
+      </div>
+      <span class="text-xs text-gray-400 dark:text-gray-500 hidden sm:block" id="demo-count">
+        {demos.length} {labels.count}
+      </span>
+    </div>
+
+    <!-- Carousel Wrapper -->
+    <div class="relative reveal">
+      <!-- Scroll arrows -->
+      <button
+        class="demo-arrow demo-arrow-left absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 z-10 w-10 h-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white hover:border-primary transition-all hidden"
+        aria-label="Scroll left"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+      </button>
+      <button
+        class="demo-arrow demo-arrow-right absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 z-10 w-10 h-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-lg flex items-center justify-center text-gray-600 dark:text-gray-300 hover:bg-primary hover:text-white hover:border-primary transition-all"
+        aria-label="Scroll right"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </button>
+
+      <!-- Fade edges -->
+      <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-gray-50 dark:from-[#0a0a0a] to-transparent z-[5] opacity-0 demo-fade-left"></div>
+      <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-gray-50 dark:from-[#0a0a0a] to-transparent z-[5] demo-fade-right"></div>
+
+      <!-- Scrollable track -->
+      <div class="demo-track flex gap-4 overflow-x-auto pb-4 scroll-smooth" id="demo-track" style="scrollbar-width:none;-ms-overflow-style:none;">
+        {demos.map((demo) => (
+          <a
+            href={demo.ready ? demo.url : undefined}
+            target={demo.ready ? '_blank' : undefined}
+            rel={demo.ready ? 'noopener noreferrer' : undefined}
+            class:list={[
+              'demo-card group flex-shrink-0 w-[220px] rounded-xl border transition-all duration-300',
+              demo.ready
+                ? `bg-white dark:bg-gray-800/60 border-gray-200/60 dark:border-gray-700/40 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1 cursor-pointer`
+                : 'bg-gray-100/50 dark:bg-gray-800/20 border-gray-200/30 dark:border-gray-700/20 opacity-50 cursor-default',
+            ]}
+            data-category={demo.category}
+          >
+            <div class="p-5">
+              <!-- Icon + Status -->
+              <div class="flex items-center justify-between mb-3">
+                <div class:list={['w-10 h-10 rounded-lg flex items-center justify-center text-xl', demo.ready ? demo.bgAccent : 'bg-gray-200/50 dark:bg-gray-700/30']}>
+                  <span set:html={demo.icon} />
+                </div>
+                {demo.ready ? (
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-green-600 dark:text-green-400 bg-green-500/10">
+                    <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    Live
+                  </span>
+                ) : (
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-gray-400 dark:text-gray-500 bg-gray-200/50 dark:bg-gray-700/30">
+                    {labels.comingSoon}
+                  </span>
+                )}
+              </div>
+
+              <!-- Info -->
+              <h3 class="text-sm font-bold text-gray-900 dark:text-white mb-0.5 truncate group-hover:text-primary transition-colors">
+                {demo.name[lang]}
+              </h3>
+              <p class="text-xs text-gray-400 dark:text-gray-500 mb-3 truncate">
+                {demo.business[lang]}
+              </p>
+
+              <!-- Price + Action -->
+              <div class="flex items-center justify-between">
+                <span class={`text-xs font-bold ${demo.ready ? demo.textColor : 'text-gray-400'}`}>
+                  {labels.startingFrom} €{demo.price}
                 </span>
-              ) : (
-                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded-full text-xs font-semibold text-gray-500 dark:text-gray-400">
-                  {labels.comingSoon}
-                </span>
-              )}
+                {demo.ready && (
+                  <span class="text-[11px] font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    {labels.viewDemo} &rarr;
+                  </span>
+                )}
+              </div>
             </div>
-
-            <!-- Business Info -->
-            <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">
-              {demo.name[lang]}
-            </h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">
-              {demo.business[lang]}
-            </p>
-
-            <!-- Price -->
-            <span class={`text-sm font-bold ${demo.ready ? demo.textColor : 'text-gray-400 dark:text-gray-500'}`}>
-              {labels.startingFrom} €{demo.price}
-            </span>
-          </div>
-        </a>
-      ))}
+          </a>
+        ))}
+      </div>
     </div>
 
     <!-- Bottom CTA -->
-    <div class="mt-12 text-center reveal">
+    <div class="mt-10 text-center reveal">
       <p class="text-gray-500 dark:text-gray-400 mb-4">{labels.cta}</p>
       <a
-        href={isGerman ? '/de#contact' : '#contact'}
+        href={contactHref}
         class="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
       >
         {labels.ctaBtn}
@@ -197,3 +318,73 @@ const demos = [
     </div>
   </div>
 </section>
+
+<style>
+  .demo-track::-webkit-scrollbar { display: none; }
+</style>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', function() {
+  var track = document.getElementById('demo-track');
+  var cards = track ? Array.from(track.querySelectorAll('.demo-card')) : [];
+  var leftBtn = document.querySelector('.demo-arrow-left');
+  var rightBtn = document.querySelector('.demo-arrow-right');
+  var fadeLeft = document.querySelector('.demo-fade-left');
+  var fadeRight = document.querySelector('.demo-fade-right');
+  var filters = document.querySelectorAll('.demo-filter');
+  var countEl = document.getElementById('demo-count');
+  var countLabel = countEl ? countEl.textContent.replace(/\d+/, '').trim() : 'demos';
+
+  function updateArrows() {
+    if (!track) return;
+    var sl = track.scrollLeft;
+    var maxScroll = track.scrollWidth - track.clientWidth;
+    leftBtn.classList.toggle('hidden', sl < 10);
+    fadeLeft.style.opacity = sl < 10 ? '0' : '1';
+    rightBtn.classList.toggle('hidden', sl > maxScroll - 10);
+    fadeRight.style.opacity = sl > maxScroll - 10 ? '0' : '1';
+  }
+
+  if (track) {
+    track.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+  }
+
+  if (leftBtn) leftBtn.addEventListener('click', function() {
+    track.scrollBy({ left: -240, behavior: 'smooth' });
+  });
+  if (rightBtn) rightBtn.addEventListener('click', function() {
+    track.scrollBy({ left: 240, behavior: 'smooth' });
+  });
+
+  // Filters
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filters.forEach(function(b) {
+        b.classList.remove('active', 'bg-primary', 'text-white', 'shadow-sm');
+        b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-500', 'dark:text-gray-400');
+      });
+      btn.classList.add('active', 'bg-primary', 'text-white', 'shadow-sm');
+      btn.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-500', 'dark:text-gray-400');
+
+      var filter = btn.dataset.filter;
+      var visibleCount = 0;
+
+      cards.forEach(function(card) {
+        var cat = card.dataset.category;
+        if (filter === 'all' || cat === filter) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (countEl) countEl.textContent = visibleCount + ' ' + countLabel;
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+      setTimeout(updateArrows, 350);
+    });
+  });
+});
+</script>

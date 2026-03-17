@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pfötchen & Co — Tierbedarf Online | Demo Template</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--coral:#FF6B6B;--coral-light:#FF8E8E;--sky:#4ECDC4;--yellow:#FFE66D;--dark:#2C3E50;--cream:#FFF9F0;--card:#fff;--text:#3D3D3D;--text-light:#888;--sans:'Nunito',system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--text);overflow-x:hidden}
+.demo-banner{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,#007BFF,#0056b3);color:#fff;text-align:center;padding:10px 20px;font-size:14px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.demo-banner a{color:#fff;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:600}
+body{padding-top:44px}
+.header{position:sticky;top:44px;z-index:100;background:rgba(255,249,240,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,107,107,0.1)}
+.header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800;color:var(--dark)}
+.logo span{color:var(--coral)}
+nav{display:flex;gap:24px;align-items:center}
+nav a{color:var(--text-light);text-decoration:none;font-size:14px;font-weight:600;transition:color 0.2s}
+nav a:hover{color:var(--coral)}
+.nav-cart{position:relative;background:var(--coral);color:#fff;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.nav-cart span{position:absolute;top:-4px;right:-4px;background:var(--sky);color:#fff;width:18px;height:18px;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mobile-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer}
+.hero{padding:60px 24px 50px;background:linear-gradient(135deg,#FFF0E8 0%,#E8FFF5 50%,#FFF0E8 100%)}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,46px);font-weight:800;line-height:1.15;color:var(--dark);margin-bottom:14px}
+.hero h1 span{color:var(--coral)}
+.hero p{color:var(--text-light);font-size:15px;line-height:1.7;margin-bottom:24px}
+.hero-features{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.hero-feat{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--dark)}
+.hero-feat .dot{width:8px;height:8px;border-radius:50%}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.3s;font-family:var(--sans);border:none;cursor:pointer}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-coral:hover{background:var(--coral-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,107,107,0.3)}
+.hero-mascots{display:flex;justify-content:center;gap:20px;font-size:64px;flex-wrap:wrap}
+.hero-mascots span{animation:bounce 2s ease-in-out infinite}
+.hero-mascots span:nth-child(2){animation-delay:0.3s}
+.hero-mascots span:nth-child(3){animation-delay:0.6s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.pet-tabs{padding:40px 24px 0;background:var(--cream)}
+.tab-row{max-width:1100px;margin:0 auto;display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px}
+.tab-row::-webkit-scrollbar{display:none}
+.pet-tab{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:50px;border:2px solid rgba(255,107,107,0.12);background:#fff;color:var(--text-light);font-weight:700;font-size:14px;cursor:pointer;transition:all 0.2s;font-family:var(--sans)}
+.pet-tab:hover,.pet-tab.active{background:var(--coral);color:#fff;border-color:var(--coral)}
+.pet-tab .emoji{font-size:18px}
+section{padding:60px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{font-size:clamp(24px,4vw,32px);font-weight:800;color:var(--dark);margin-bottom:24px;text-align:center}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+.product-card{background:var(--card);border-radius:18px;border:2px solid transparent;overflow:hidden;transition:all 0.3s}
+.product-card:hover{border-color:var(--coral);transform:translateY(-4px);box-shadow:0 12px 32px rgba(255,107,107,0.1)}
+.product-img{aspect-ratio:1;background:linear-gradient(135deg,#FFE8E8,#E8FFF5);display:flex;align-items:center;justify-content:center;font-size:52px;position:relative}
+.product-badge{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:8px;font-size:11px;font-weight:800}
+.badge-top{background:var(--yellow);color:var(--dark)}
+.badge-new{background:var(--sky);color:#fff}
+.badge-sale{background:var(--coral);color:#fff}
+.product-info{padding:14px 16px}
+.product-info h3{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--dark)}
+.product-info .desc{font-size:12px;color:var(--text-light);margin-bottom:10px}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-size:17px;font-weight:800;color:var(--coral)}
+.product-price .old{font-size:12px;color:var(--text-light);text-decoration:line-through;margin-left:4px;font-weight:400}
+.add-btn{width:34px;height:34px;border-radius:10px;border:none;background:var(--coral);color:#fff;font-size:16px;cursor:pointer;transition:all 0.2s;font-weight:700}
+.add-btn:hover{background:var(--coral-light);transform:scale(1.15)}
+.perks{background:#fff;border-radius:20px;margin:0 24px;padding:48px 32px;max-width:1100px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;border:2px solid rgba(255,107,107,0.08)}
+.perk .icon{font-size:32px;margin-bottom:10px}
+.perk h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.perk p{font-size:12px;color:var(--text-light);line-height:1.5}
+.cta-banner{text-align:center;padding:60px 24px}
+.cta-banner h2{font-size:26px;font-weight:800;color:var(--dark);margin-bottom:12px}
+.cta-banner p{color:var(--text-light);margin-bottom:24px;max-width:440px;margin-left:auto;margin-right:auto}
+footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:40px 24px;text-align:center}
+footer .logo-f{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px}
+footer .logo-f span{color:var(--coral)}
+.footer-links{display:flex;justify-content:center;gap:24px;margin:16px 0}
+.footer-links a{color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none}
+.footer-links a:hover{color:#fff}
+footer .credit{font-size:11px;color:rgba(255,255,255,0.25);margin-top:16px}
+footer .credit a{color:rgba(255,255,255,0.4)}
+@media(max-width:768px){nav{display:none}.mobile-toggle{display:block}.hero-inner{grid-template-columns:1fr}.hero-mascots{display:none}.product-grid{grid-template-columns:repeat(2,1fr)}.perks{grid-template-columns:repeat(2,1fr);margin:0 16px}}
+</style>
+</head>
+<body>
+<div class="demo-banner">Dies ist eine Demo-Website für einen Tierbedarf-Shop.<a href="https://ssdhaliwal.dev/#contact">Shop erstellen lassen &rarr;</a></div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo">Pfötchen <span>&</span> Co</div>
+    <nav>
+      <a href="#produkte">Shop</a>
+      <a href="#ueber">Über uns</a>
+      <a href="#kontakt">Kontakt</a>
+      <div class="nav-cart">&#128722;<span>3</span></div>
+    </nav>
+    <button class="mobile-toggle" aria-label="Menu">&#9776;</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Alles für Ihren <span>Liebling.</span></h1>
+      <p>Premium-Tierfutter, Spielzeug und Zubehör für Hunde, Katzen und Kleintiere. Österreichische Qualität, faire Preise.</p>
+      <div class="hero-features">
+        <span class="hero-feat"><span class="dot" style="background:var(--sky)"></span>Kostenloser Versand ab €49</span>
+        <span class="hero-feat"><span class="dot" style="background:var(--coral)"></span>Lieferung in 1-3 Tagen</span>
+        <span class="hero-feat"><span class="dot" style="background:var(--yellow)"></span>30 Tage Rückgabe</span>
+      </div>
+      <a href="#produkte" class="btn btn-coral">Jetzt shoppen &#128062;</a>
+    </div>
+    <div class="hero-mascots">
+      <span>&#128054;</span><span>&#128049;</span><span>&#128048;</span>
+    </div>
+  </div>
+</section>
+
+<div class="pet-tabs">
+  <div class="tab-row">
+    <button class="pet-tab active"><span class="emoji">&#127775;</span>Alle</button>
+    <button class="pet-tab"><span class="emoji">&#128054;</span>Hunde</button>
+    <button class="pet-tab"><span class="emoji">&#128049;</span>Katzen</button>
+    <button class="pet-tab"><span class="emoji">&#128048;</span>Kleintiere</button>
+    <button class="pet-tab"><span class="emoji">&#129413;</span>Vögel</button>
+    <button class="pet-tab"><span class="emoji">&#128031;</span>Fische</button>
+  </div>
+</div>
+
+<section id="produkte">
+  <div class="section-inner">
+    <h2 class="section-title">Beliebteste Produkte</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-top">&#11088; Bestseller</span>&#128054;</div>
+        <div class="product-info"><h3>Bio-Hundefutter Rind</h3><p class="desc">2kg, getreidefrei, aus österreichischer Landwirtschaft</p><div class="product-footer"><span class="product-price">€24,90</span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-new">Neu</span>&#128049;</div>
+        <div class="product-info"><h3>Katzen-Spielturm Deluxe</h3><p class="desc">120cm, Sisal, Plüsch, 3 Etagen</p><div class="product-footer"><span class="product-price">€69,90</span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-sale">-25%</span>&#128054;</div>
+        <div class="product-info"><h3>Hundebett "Wolke 7"</h3><p class="desc">Orthopädisch, waschbar, 80x60cm</p><div class="product-footer"><span class="product-price">€44,90 <span class="old">€59,90</span></span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">&#128049;</div>
+        <div class="product-info"><h3>Premium Katzenfutter Lachs</h3><p class="desc">12x 85g Beutel, ohne Zucker & Getreide</p><div class="product-footer"><span class="product-price">€14,90</span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-top">&#11088; Top</span>&#128054;</div>
+        <div class="product-info"><h3>Hunde-Regenmantel</h3><p class="desc">Wasserdicht, reflektierend, Gr. S-XL</p><div class="product-footer"><span class="product-price">€29,90</span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">&#128048;</div>
+        <div class="product-info"><h3>Kaninchenstall "Natur"</h3><p class="desc">Holz, wetterfest, 120x60x80cm</p><div class="product-footer"><span class="product-price">€89,90</span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img"><span class="product-badge badge-new">Neu</span>&#128054;</div>
+        <div class="product-info"><h3>Intelligenz-Spielzeug</h3><p class="desc">Futterlabyrinth für Hunde, BPA-frei</p><div class="product-footer"><span class="product-price">€18,90</span><button class="add-btn">+</button></div></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">&#128049;</div>
+        <div class="product-info"><h3>Katzenstreu "Frisch"</h3><p class="desc">10L, klumpend, staubarm, Babypuder-Duft</p><div class="product-footer"><span class="product-price">€9,90</span><button class="add-btn">+</button></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="perks" id="ueber">
+  <div class="perk"><div class="icon">&#128666;</div><h4>Gratis-Versand</h4><p>Kostenloser Versand ab €49 Bestellwert.</p></div>
+  <div class="perk"><div class="icon">&#128154;</div><h4>Bio-Qualität</h4><p>Futter aus kontrolliertem Anbau.</p></div>
+  <div class="perk"><div class="icon">&#128260;</div><h4>30 Tage Rückgabe</h4><p>Nicht zufrieden? Geld zurück.</p></div>
+  <div class="perk"><div class="icon">&#128222;</div><h4>Beratung</h4><p>Tierliebe Experten helfen Ihnen.</p></div>
+</div>
+
+<div class="cta-banner" id="kontakt">
+  <h2>Fragen? Wir beraten Sie gerne! &#128062;</h2>
+  <p>Rufen Sie an oder schreiben Sie uns. Wir helfen bei der Produktauswahl für Ihren Liebling.</p>
+  <a href="#" class="btn btn-coral" onclick="event.preventDefault();alert('Dies ist eine Demo-Website.')">Kontakt aufnehmen</a>
+</div>
+
+<footer>
+  <div class="logo-f">Pfötchen <span>&</span> Co</div>
+  <p>Tierbedarf mit Herz — seit 2020 in Wien</p>
+  <div class="footer-links"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a><a href="#">Widerrufsrecht</a><a href="#">Instagram</a></div>
+  <p class="credit">Demo-Template von <a href="https://ssdhaliwal.dev">ssdhaliwal.dev</a> — <a href="https://ssdhaliwal.dev/#contact">Online-Shop erstellen lassen</a></p>
+</footer>
+</body>
+</html>
