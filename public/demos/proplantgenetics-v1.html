@@ -35,8 +35,10 @@ body{padding-top:44px}
 .header{position:sticky;top:44px;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,92,46,0.08);transition:box-shadow 0.3s}
 .header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.06)}
 .header-inner{max-width:1200px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:var(--display);font-size:24px;font-weight:900;color:var(--green-dark);letter-spacing:-0.5px;text-decoration:none}
-.logo span{color:var(--green-mid);font-style:italic}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{height:40px;width:40px;border-radius:50%;object-fit:cover}
+.logo-text{font-family:var(--display);font-size:22px;font-weight:900;color:var(--green-dark);letter-spacing:-0.5px}
+.logo-text span{color:var(--green-mid);font-style:italic}
 
 /* Navigation */
 nav{display:flex;gap:8px;align-items:center}
@@ -179,7 +181,8 @@ footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:48px 32px}
   nav{display:none}
   .mobile-toggle{display:block}
   .header-inner{padding:12px 16px}
-  .logo{font-size:20px}
+  .logo img{height:34px;width:34px}
+  .logo-text{font-size:18px}
   .hero{padding:40px 16px 36px}
   .hero-tag{font-size:12px;padding:6px 14px;margin-bottom:16px}
   .hero h1{font-size:28px;margin-bottom:12px}
@@ -233,7 +236,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:48px 32px}
 <!-- Header -->
 <header class="header" id="top">
   <div class="header-inner">
-    <a href="#top" class="logo">ProPlant<span>Genetics</span></a>
+    <a href="#top" class="logo"><img src="/images/ppg-logo.png" alt="PPG Logo"><span class="logo-text">Pro Plant<span>Genetics</span></span></a>
     <nav>
       <div class="dropdown">
         <a href="#stecklinge" class="nav-link">Unsere Stecklinge <span class="nav-arrow">&#9660;</span></a>
@@ -280,7 +283,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:48px 32px}
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-plant">&#127793;</div>
+      <img src="/images/ppg-logo.png" alt="Pro Plant Genetics" style="width:100%;max-width:320px;border-radius:50%;animation:float 4s ease-in-out infinite">
     </div>
   </div>
 </section>
@@ -366,7 +369,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:48px 32px}
 <section class="about" id="ueber-uns">
   <div class="about-inner">
     <div class="about-visual">
-      <div class="about-circle">&#129716;</div>
+      <img src="/images/ppg-logo.png" alt="Pro Plant Genetics" style="width:280px;height:280px;border-radius:50%;object-fit:cover">
     </div>
     <div class="about-content">
       <div class="section-tag">&Uuml;ber uns</div>
@@ -395,7 +398,7 @@ footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:48px 32px}
 <!-- Footer -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">ProPlant<span>Genetics</span></div>
+    <div class="footer-logo" style="display:flex;align-items:center;gap:8px;justify-content:center"><img src="/images/ppg-logo.png" alt="PPG" style="height:32px;width:32px;border-radius:50%">Pro Plant<span>Genetics</span></div>
     <div class="footer-links">
       <a href="#stecklinge">Stecklinge</a>
       <a href="#ueber-uns">&Uuml;ber uns</a>

@@ -39,7 +39,7 @@ body{padding-top:44px}
 .header{position:sticky;top:44px;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-100)}
 .header-inner{max-width:1100px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--display);font-size:20px;font-weight:800;color:var(--green-800);text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo-mark{width:32px;height:32px;background:var(--green-700);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:16px}
+.logo img{height:36px;width:36px;border-radius:50%;object-fit:cover}
 
 /* Nav */
 nav{display:flex;align-items:center;gap:4px}
@@ -164,7 +164,7 @@ footer{background:var(--gray-900);padding:40px 28px}
   .mobile-toggle{display:block}
   .header-inner{padding:0 16px;height:56px}
   .logo{font-size:17px;gap:8px}
-  .logo-mark{width:28px;height:28px;font-size:14px}
+  .logo img{height:30px;width:30px}
   .hero{padding:48px 16px 40px}
   .hero-pill{font-size:11px;padding:5px 12px;margin-bottom:14px}
   .hero h1{font-size:28px;margin-bottom:10px}
@@ -232,8 +232,8 @@ footer{background:var(--gray-900);padding:40px 28px}
 <header class="header">
   <div class="header-inner">
     <a href="#" class="logo">
-      <span class="logo-mark">&#127793;</span>
-      ProPlantGenetics
+      <img src="/images/ppg-logo.png" alt="PPG Logo">
+      Pro Plant Genetics
     </a>
     <nav>
       <a href="#stecklinge" class="nav-item has-dd">
@@ -396,7 +396,7 @@ footer{background:var(--gray-900);padding:40px 28px}
 <!-- Footer -->
 <footer>
   <div class="ft-inner">
-    <div class="ft-logo">ProPlantGenetics</div>
+    <div class="ft-logo" style="display:flex;align-items:center;gap:8px;justify-content:center"><img src="/images/ppg-logo.png" alt="PPG" style="height:28px;width:28px;border-radius:50%">Pro Plant Genetics</div>
     <div class="ft-links">
       <a href="#stecklinge">Stecklinge</a>
       <a href="#ueber-uns">&Uuml;ber uns</a>
