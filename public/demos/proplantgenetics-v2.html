@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProPlantGenetics — Premium Stecklinge | Demo V2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green-900:#0d3b1a;
+  --green-800:#145a28;
+  --green-700:#1a7535;
+  --green-600:#22914a;
+  --green-500:#2aad5a;
+  --green-400:#5cc47e;
+  --green-100:#e6f5ec;
+  --green-50:#f2faf5;
+  --white:#ffffff;
+  --gray-50:#f8faf8;
+  --gray-100:#eef2ef;
+  --gray-400:#8a9a8d;
+  --gray-600:#4a5c4d;
+  --gray-900:#111b14;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --display:'Syne',system-ui,sans-serif;
+  --radius:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--gray-900);overflow-x:hidden;line-height:1.6}
+
+/* Demo Banner */
+.demo-banner{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,#007BFF,#0056b3);color:#fff;text-align:center;padding:10px 20px;font-size:14px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.demo-banner a{color:#fff;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:600}
+body{padding-top:44px}
+
+/* Header */
+.header{position:sticky;top:44px;z-index:100;background:var(--white);border-bottom:1px solid var(--gray-100)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 28px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-size:20px;font-weight:800;color:var(--green-800);text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo-mark{width:32px;height:32px;background:var(--green-700);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:16px}
+
+/* Nav */
+nav{display:flex;align-items:center;gap:4px}
+.nav-item{position:relative;padding:8px 14px;color:var(--gray-600);font-size:14px;font-weight:500;text-decoration:none;border-radius:8px;transition:all 0.15s}
+.nav-item:hover{color:var(--green-800);background:var(--green-50)}
+.nav-item.has-dd::after{content:' \25BE';font-size:10px}
+
+/* Dropdown */
+.dd{position:absolute;top:calc(100% + 4px);left:0;min-width:200px;background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius);box-shadow:0 8px 32px rgba(0,0,0,0.08);padding:6px;opacity:0;visibility:hidden;transform:translateY(4px);transition:all 0.2s}
+.nav-item:hover .dd{opacity:1;visibility:visible;transform:translateY(0)}
+.dd a{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;font-size:13px;color:var(--gray-900);text-decoration:none;border-radius:8px;font-weight:500;transition:background 0.1s}
+.dd a:hover{background:var(--green-50)}
+.dd a .code{font-size:11px;color:var(--gray-400);font-weight:400}
+
+.nav-ig{display:flex;align-items:center;gap:6px;margin-left:8px;padding:7px 14px;border:1.5px solid var(--green-600);color:var(--green-700);border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.15s}
+.nav-ig:hover{background:var(--green-700);color:var(--white)}
+.nav-ig svg{width:16px;height:16px}
+
+.mobile-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--green-800)}
+.mobile-menu{display:none;position:fixed;top:108px;left:0;right:0;bottom:0;background:var(--white);z-index:99;padding:20px 28px;flex-direction:column;gap:2px;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{display:block;padding:14px 12px;color:var(--gray-900);text-decoration:none;font-size:15px;font-weight:500;border-radius:8px;border-bottom:1px solid var(--gray-100)}
+.mobile-menu a:last-child{border:none}
+.mobile-menu .mm-sub{padding-left:28px;color:var(--gray-600);font-size:14px}
+
+/* Hero */
+.hero{padding:80px 28px 60px;background:var(--green-50)}
+.hero-inner{max-width:1100px;margin:0 auto;text-align:center}
+.hero-pill{display:inline-block;padding:6px 16px;background:var(--green-100);color:var(--green-700);border-radius:50px;font-size:12px;font-weight:600;letter-spacing:0.5px;margin-bottom:20px}
+.hero h1{font-family:var(--display);font-size:clamp(32px,5vw,54px);font-weight:800;color:var(--green-900);line-height:1.1;margin-bottom:14px;max-width:700px;margin-left:auto;margin-right:auto}
+.hero h1 .accent{color:var(--green-600)}
+.hero-sub{color:var(--gray-600);font-size:16px;max-width:480px;margin:0 auto 32px;line-height:1.7}
+.hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--radius);font-size:14px;font-weight:600;text-decoration:none;transition:all 0.2s;font-family:var(--sans);border:none;cursor:pointer}
+.btn-fill{background:var(--green-700);color:var(--white)}
+.btn-fill:hover{background:var(--green-800);transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,117,53,0.2)}
+.btn-ghost{background:var(--white);color:var(--green-800);border:1.5px solid var(--gray-100)}
+.btn-ghost:hover{border-color:var(--green-600);color:var(--green-700)}
+
+/* Stats bar */
+.stats-bar{padding:0 28px;margin-top:-20px;position:relative;z-index:2}
+.stats-inner{max-width:700px;margin:0 auto;background:var(--white);border-radius:16px;border:1px solid var(--gray-100);display:flex;box-shadow:0 4px 24px rgba(0,0,0,0.04)}
+.stats-inner .si{flex:1;padding:20px 16px;text-align:center;border-right:1px solid var(--gray-100)}
+.stats-inner .si:last-child{border:none}
+.si-num{font-family:var(--display);font-size:24px;font-weight:800;color:var(--green-700)}
+.si-label{font-size:12px;color:var(--gray-400);margin-top:2px}
+
+/* Product listing */
+.products{padding:80px 28px;background:var(--white)}
+.sh{max-width:1100px;margin:0 auto 40px}
+.sh-overline{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-600);margin-bottom:6px}
+.sh h2{font-family:var(--display);font-size:clamp(24px,3.5vw,36px);font-weight:800;color:var(--green-900)}
+.sh p{color:var(--gray-400);font-size:14px;margin-top:6px}
+
+.p-list{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.p-card{display:grid;grid-template-columns:200px 1fr auto;gap:28px;align-items:center;background:var(--gray-50);border:1px solid var(--gray-100);border-radius:16px;padding:20px 24px;transition:all 0.25s;cursor:pointer}
+.p-card:hover{border-color:var(--green-400);box-shadow:0 8px 32px rgba(42,173,90,0.06);transform:translateY(-2px)}
+.p-thumb{width:160px;height:120px;background:linear-gradient(135deg,var(--green-100),var(--green-50));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:56px;flex-shrink:0}
+.p-info h3{font-size:18px;font-weight:700;color:var(--green-900);margin-bottom:2px}
+.p-info .p-code{font-size:12px;font-weight:600;color:var(--green-600);margin-bottom:6px}
+.p-info .p-desc{font-size:13px;color:var(--gray-400);line-height:1.6;max-width:400px}
+.p-action{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.p-price{font-size:20px;font-weight:700;color:var(--green-800)}
+.p-btn{padding:10px 20px;border-radius:10px;border:1.5px solid var(--green-600);background:transparent;color:var(--green-700);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:var(--sans);white-space:nowrap}
+.p-btn:hover{background:var(--green-700);color:var(--white)}
+
+/* Modal */
+.modal-bg{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px}
+.modal-bg.open{display:flex}
+.m-box{background:var(--white);border-radius:20px;max-width:520px;width:100%;max-height:85vh;overflow-y:auto;padding:32px;position:relative;animation:mIn 0.25s ease}
+@keyframes mIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.m-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;border:1px solid var(--gray-100);background:var(--white);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);transition:all 0.15s}
+.m-close:hover{border-color:var(--green-600);color:var(--green-800)}
+.m-emoji{font-size:64px;margin-bottom:12px}
+.m-box h2{font-family:var(--display);font-size:26px;font-weight:800;color:var(--green-900);margin-bottom:2px}
+.m-code{font-size:13px;font-weight:600;color:var(--green-600);margin-bottom:14px}
+.m-desc{font-size:14px;color:var(--gray-600);line-height:1.7;margin-bottom:18px}
+.m-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}
+.m-gi{background:var(--green-50);padding:10px 12px;border-radius:8px}
+.m-gi-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--green-600)}
+.m-gi-value{font-size:14px;font-weight:600;color:var(--green-900);margin-top:2px}
+.m-price-tag{font-size:22px;font-weight:800;color:var(--green-800);margin-bottom:16px}
+.m-cta{display:flex;align-items:center;gap:10px;background:var(--green-50);border:1px solid var(--green-100);padding:14px 16px;border-radius:12px}
+.m-cta .cta-icon{font-size:20px}
+.m-cta .cta-text{font-size:13px;color:var(--gray-600);line-height:1.5}
+.m-cta a{color:var(--green-800);font-weight:700;text-decoration:none}
+.m-cta a:hover{text-decoration:underline}
+
+/* About */
+.about-section{padding:80px 28px;background:var(--green-50)}
+.about-inner{max-width:800px;margin:0 auto;text-align:center}
+.about-inner h2{font-family:var(--display);font-size:clamp(26px,4vw,38px);font-weight:800;color:var(--green-900);margin-bottom:16px}
+.about-inner p{color:var(--gray-600);font-size:15px;line-height:1.8;margin-bottom:12px;max-width:600px;margin-left:auto;margin-right:auto}
+.about-features{display:flex;gap:20px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.af{background:var(--white);padding:20px 24px;border-radius:14px;border:1px solid var(--gray-100);min-width:180px;text-align:center}
+.af-icon{font-size:28px;margin-bottom:8px}
+.af h4{font-size:14px;font-weight:700;color:var(--green-900);margin-bottom:4px}
+.af p{font-size:12px;color:var(--gray-400);line-height:1.5;margin:0}
+
+/* Order strip */
+.order-strip{padding:48px 28px;background:var(--green-800);text-align:center}
+.order-strip h2{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--white);margin-bottom:8px}
+.order-strip p{color:rgba(255,255,255,0.7);font-size:15px;margin-bottom:24px;max-width:440px;margin-left:auto;margin-right:auto}
+.email-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);padding:14px 24px;border-radius:12px;max-width:100%}
+.email-pill .ep-icon{font-size:20px;color:var(--white);flex-shrink:0}
+.email-pill a{color:var(--white);text-decoration:none;font-size:16px;font-weight:700;overflow-wrap:break-word;word-break:break-all}
+.email-pill:hover{background:rgba(255,255,255,0.15)}
+
+/* Footer */
+footer{background:var(--gray-900);padding:40px 28px}
+.ft-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.ft-logo{font-family:var(--display);font-size:18px;font-weight:800;color:var(--white)}
+.ft-links{display:flex;gap:20px;flex-wrap:wrap}
+.ft-links a{color:rgba(255,255,255,0.35);font-size:12px;text-decoration:none}
+.ft-links a:hover{color:rgba(255,255,255,0.8)}
+.ft-credit{width:100%;text-align:center;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:11px;color:rgba(255,255,255,0.2)}
+.ft-credit a{color:rgba(255,255,255,0.35)}
+
+/* Responsive */
+@media(max-width:768px){
+  nav{display:none}
+  .mobile-toggle{display:block}
+  .header-inner{padding:0 16px;height:56px}
+  .logo{font-size:17px;gap:8px}
+  .logo-mark{width:28px;height:28px;font-size:14px}
+  .hero{padding:48px 16px 40px}
+  .hero-pill{font-size:11px;padding:5px 12px;margin-bottom:14px}
+  .hero h1{font-size:28px;margin-bottom:10px}
+  .hero-sub{font-size:14px;margin-bottom:24px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn{padding:14px 20px;font-size:14px;justify-content:center;width:100%}
+  .stats-bar{padding:0 16px;margin-top:-16px}
+  .stats-inner{flex-direction:row;border-radius:12px;flex-wrap:wrap}
+  .stats-inner .si{flex:1 1 45%;padding:14px 8px;border-right:none;border-bottom:1px solid var(--gray-100)}
+  .stats-inner .si:nth-child(odd){border-right:1px solid var(--gray-100)}
+  .stats-inner .si:nth-last-child(-n+2){border-bottom:none}
+  .si-num{font-size:20px}
+  .si-label{font-size:11px}
+  .products{padding:48px 16px}
+  .sh{margin-bottom:24px}
+  .sh h2{font-size:22px}
+  .sh p{font-size:13px}
+  .p-card{grid-template-columns:1fr;gap:12px;padding:14px}
+  .p-thumb{width:100%;height:120px;font-size:44px;border-radius:10px}
+  .p-info h3{font-size:16px}
+  .p-info .p-desc{font-size:12px}
+  .p-action{flex-direction:row;align-items:center;justify-content:space-between;width:100%}
+  .p-price{font-size:18px}
+  .p-btn{padding:10px 16px;font-size:13px;width:auto}
+  .about-section{padding:48px 16px}
+  .about-inner h2{font-size:24px;margin-bottom:12px}
+  .about-inner p{font-size:14px}
+  .about-features{flex-direction:column;align-items:stretch;gap:10px}
+  .af{padding:16px;min-width:auto}
+  .order-strip{padding:36px 16px}
+  .order-strip h2{font-size:20px;margin-bottom:6px}
+  .order-strip p{font-size:13px;margin-bottom:16px;line-height:1.6}
+  .email-pill{display:flex;flex-direction:row;align-items:center;gap:10px;padding:14px 18px;width:auto;max-width:100%;border-radius:10px}
+  .email-pill .ep-icon{font-size:18px}
+  .email-pill a{font-size:14px;word-break:break-all;text-align:left}
+  footer{padding:28px 16px}
+  .ft-inner{flex-direction:column;text-align:center;gap:16px}
+  .ft-logo{font-size:16px}
+  .ft-links{flex-wrap:wrap;justify-content:center;gap:16px 14px;padding:0 8px}
+  .ft-links a{font-size:13px;padding:4px 0;color:rgba(255,255,255,0.5)}
+  .ft-credit{margin-top:12px;padding-top:12px;font-size:11px;line-height:1.5}
+  .modal-bg{padding:12px}
+  .m-box{padding:20px 16px;margin:0;border-radius:16px;max-height:90vh}
+  .m-emoji{font-size:48px;margin-bottom:10px}
+  .m-box h2{font-size:22px}
+  .m-grid{grid-template-columns:1fr 1fr;gap:6px}
+  .m-gi{padding:8px 10px}
+  .m-price-tag{font-size:20px}
+  .m-cta{padding:12px;flex-direction:column;text-align:center;gap:6px}
+  .m-cta .cta-text{font-size:12px}
+  .m-cta a{word-break:break-all}
+  .mobile-menu{top:100px}
+}
+@media(max-width:380px){
+  .hero h1{font-size:24px}
+  .m-grid{grid-template-columns:1fr}
+  .stats-inner .si{flex:1 1 100%;border-right:none!important}
+}
+</style>
+</head>
+<body>
+<div class="demo-banner">Dies ist eine Demo-Website f&uuml;r ProPlantGenetics. <a href="https://ssdhaliwal.dev/#contact">Website erstellen lassen &rarr;</a></div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">&#127793;</span>
+      ProPlantGenetics
+    </a>
+    <nav>
+      <a href="#stecklinge" class="nav-item has-dd">
+        Unsere Stecklinge
+        <div class="dd">
+          <a href="#" data-product="mac1">Mac 1 <span class="code">MAC1</span></a>
+          <a href="#" data-product="di">Dantes Inferno <span class="code">DI</span></a>
+          <a href="#" data-product="s54">Studio 54 <span class="code">S54</span></a>
+          <a href="#" data-product="wck">Wedding Cake <span class="code">WCK</span></a>
+          <a href="#" data-product="sbc">Super Buff Cherry <span class="code">SBC</span></a>
+        </div>
+      </a>
+      <a href="#ueber-uns" class="nav-item">&Uuml;ber uns</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="nav-ig">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+    </nav>
+    <button class="mobile-toggle" aria-label="Men&uuml;">&#9776;</button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#stecklinge" class="mm-nav">Unsere Stecklinge</a>
+  <a href="#" class="mm-sub" data-product="mac1">Mac 1</a>
+  <a href="#" class="mm-sub" data-product="di">Dantes Inferno</a>
+  <a href="#" class="mm-sub" data-product="s54">Studio 54</a>
+  <a href="#" class="mm-sub" data-product="wck">Wedding Cake</a>
+  <a href="#" class="mm-sub" data-product="sbc">Super Buff Cherry</a>
+  <a href="#ueber-uns" class="mm-nav">&Uuml;ber uns</a>
+  <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill">&#127793; Premium Pflanzengenetik</div>
+    <h1>Premium <span class="accent">Stecklinge</span> aus &Ouml;sterreich</h1>
+    <p class="hero-sub">Genetisch verifiziert. F&uuml;nf exklusive Sorten. H&ouml;chste Qualit&auml;t.</p>
+    <div class="hero-actions">
+      <a href="#stecklinge" class="btn btn-fill">Sorten entdecken &darr;</a>
+      <a href="#bestellen" class="btn btn-ghost">&#9993; Bestellen per E-Mail</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="si"><div class="si-num">5</div><div class="si-label">Sorten</div></div>
+    <div class="si"><div class="si-num">100%</div><div class="si-label">Qualit&auml;t</div></div>
+    <div class="si"><div class="si-num">AT</div><div class="si-label">Herkunft</div></div>
+    <div class="si"><div class="si-num">&#9993;</div><div class="si-label">E-Mail Bestellung</div></div>
+  </div>
+</div>
+
+<!-- Products -->
+<section class="products" id="stecklinge">
+  <div class="sh">
+    <div class="sh-overline">Sortiment</div>
+    <h2>Unsere Stecklinge</h2>
+    <p>Klicke auf eine Sorte, um alle Infos zu sehen.</p>
+  </div>
+  <div class="p-list">
+
+    <div class="p-card" data-product="mac1">
+      <div class="p-thumb">&#127807;</div>
+      <div class="p-info">
+        <h3>Mac 1</h3>
+        <div class="p-code">MAC1</div>
+        <div class="p-desc">Einzigartige Genetik mit herausragender Harzproduktion. Ideal f&uuml;r erfahrene Z&uuml;chter.</div>
+      </div>
+      <div class="p-action">
+        <div class="p-price">&euro; &mdash;</div>
+        <button class="p-btn">Details ansehen</button>
+      </div>
+    </div>
+
+    <div class="p-card" data-product="di">
+      <div class="p-thumb">&#127811;</div>
+      <div class="p-info">
+        <h3>Dantes Inferno</h3>
+        <div class="p-code">DI</div>
+        <div class="p-desc">Kraftvolle Sorte mit intensivem Aromaprofil und beeindruckender Struktur.</div>
+      </div>
+      <div class="p-action">
+        <div class="p-price">&euro; &mdash;</div>
+        <button class="p-btn">Details ansehen</button>
+      </div>
+    </div>
+
+    <div class="p-card" data-product="s54">
+      <div class="p-thumb">&#127807;</div>
+      <div class="p-info">
+        <h3>Studio 54</h3>
+        <div class="p-code">S54</div>
+        <div class="p-desc">Elegante Genetik mit ausgewogenem Wachstum und erstklassiger Qualit&auml;t.</div>
+      </div>
+      <div class="p-action">
+        <div class="p-price">&euro; &mdash;</div>
+        <button class="p-btn">Details ansehen</button>
+      </div>
+    </div>
+
+    <div class="p-card" data-product="wck">
+      <div class="p-thumb">&#127793;</div>
+      <div class="p-info">
+        <h3>Wedding Cake</h3>
+        <div class="p-code">WCK</div>
+        <div class="p-desc">Weltweit beliebt &mdash; dichte Bl&uuml;tenstruktur, s&uuml;&szlig;es Vanille-Aroma. Ein Klassiker.</div>
+      </div>
+      <div class="p-action">
+        <div class="p-price">&euro; &mdash;</div>
+        <button class="p-btn">Details ansehen</button>
+      </div>
+    </div>
+
+    <div class="p-card" data-product="sbc">
+      <div class="p-thumb">&#127826;</div>
+      <div class="p-info">
+        <h3>Super Buff Cherry</h3>
+        <div class="p-code">SBC</div>
+        <div class="p-desc">Fruchtige Genetik mit kr&auml;ftigem Wachstum und einzigartigem Geschmacksprofil.</div>
+      </div>
+      <div class="p-action">
+        <div class="p-price">&euro; &mdash;</div>
+        <button class="p-btn">Details ansehen</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- About -->
+<section class="about-section" id="ueber-uns">
+  <div class="about-inner">
+    <div class="sh-overline">&Uuml;ber uns</div>
+    <h2>ProPlantGenetics</h2>
+    <p>Wir sind ein engagiertes Team mit Leidenschaft f&uuml;r erstklassige Pflanzengenetik. Unser Fokus liegt auf Qualit&auml;t, Reinheit und der sorgf&auml;ltigen Auswahl jeder einzelnen Sorte.</p>
+    <p>Weitere Informationen &uuml;ber unser Team und unsere Geschichte folgen in K&uuml;rze.</p>
+    <div class="about-features">
+      <div class="af"><div class="af-icon">&#127793;</div><h4>Premium Genetik</h4><p>Sorgf&auml;ltig selektierte Sorten</p></div>
+      <div class="af"><div class="af-icon">&#128300;</div><h4>Verifiziert</h4><p>Genetisch gepr&uuml;fte Qualit&auml;t</p></div>
+      <div class="af"><div class="af-icon">&#127462;&#127481;</div><h4>Aus &Ouml;sterreich</h4><p>Lokale Aufzucht &amp; Betreuung</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Order Strip -->
+<div class="order-strip" id="bestellen">
+  <h2>Jetzt bestellen</h2>
+  <p>Schreib uns eine E-Mail &mdash; wir melden uns schnellstm&ouml;glich.</p>
+  <div class="email-pill">
+    <span class="ep-icon">&#9993;</span>
+    <a href="mailto:bestellung@proplantgenetics.at">bestellung@proplantgenetics.at</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">ProPlantGenetics</div>
+    <div class="ft-links">
+      <a href="#stecklinge">Stecklinge</a>
+      <a href="#ueber-uns">&Uuml;ber uns</a>
+      <a href="#bestellen">Bestellen</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+    <div class="ft-links">
+      <a href="https://instagram.com" target="_blank" rel="noopener">&#128247; Instagram</a>
+    </div>
+    <div class="ft-credit">Demo-Template von <a href="https://ssdhaliwal.dev">ssdhaliwal.dev</a> &mdash; <a href="https://ssdhaliwal.dev/#contact">Website erstellen lassen</a></div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-bg" id="modalBg">
+  <div class="m-box">
+    <button class="m-close" id="mClose">&#10005;</button>
+    <div class="m-emoji" id="mEmoji"></div>
+    <h2 id="mTitle"></h2>
+    <div class="m-code" id="mCode"></div>
+    <p class="m-desc" id="mDesc"></p>
+    <div class="m-grid" id="mGrid"></div>
+    <div class="m-price-tag" id="mPrice"></div>
+    <div class="m-cta">
+      <span class="cta-icon">&#9993;</span>
+      <div class="cta-text">
+        F&uuml;r Bestellungen schreib uns an:<br>
+        <a href="mailto:bestellung@proplantgenetics.at">bestellung@proplantgenetics.at</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var products = {
+    mac1: {
+      emoji: '\u{1F33F}', name: 'Mac 1', strain: 'MAC1',
+      desc: 'Mac 1 ist eine exklusive Sorte, bekannt f\u00fcr ihre au\u00dfergewohenliche Harzproduktion und einzigartige Genetik. Ideal f\u00fcr erfahrene Z\u00fcchter, die Wert auf Qualit\u00e4t legen.',
+      info: [{l:'Typ',v:'Hybrid'},{l:'Bl\u00fctezeit',v:'Folgt'},{l:'Ertrag',v:'Hoch'},{l:'Schwierigkeit',v:'Mittel'}],
+      price: 'Preis auf Anfrage'
+    },
+    di: {
+      emoji: '\u{1F343}', name: 'Dantes Inferno', strain: 'DI',
+      desc: 'Dantes Inferno \u00fcberzeugt durch ein intensives Aromaprofil und beeindruckende Struktur. Eine kraftvolle Sorte f\u00fcr Kenner.',
+      info: [{l:'Typ',v:'Indica-dominant'},{l:'Bl\u00fctezeit',v:'Folgt'},{l:'Ertrag',v:'Mittel-Hoch'},{l:'Schwierigkeit',v:'Mittel'}],
+      price: 'Preis auf Anfrage'
+    },
+    s54: {
+      emoji: '\u{1F33F}', name: 'Studio 54', strain: 'S54',
+      desc: 'Studio 54 besticht durch elegantes Wachstum und erstklassige Qualit\u00e4t. Eine Sorte, die in jeder Hinsicht \u00fcberzeugt.',
+      info: [{l:'Typ',v:'Hybrid'},{l:'Bl\u00fctezeit',v:'Folgt'},{l:'Ertrag',v:'Hoch'},{l:'Schwierigkeit',v:'Einfach'}],
+      price: 'Preis auf Anfrage'
+    },
+    wck: {
+      emoji: '\u{1F331}', name: 'Wedding Cake', strain: 'WCK',
+      desc: 'Wedding Cake ist weltweit beliebt \u2014 bekannt f\u00fcr ihre dichte Bl\u00fctenstruktur und das s\u00fc\u00dfe, vanilleartige Aroma. Ein Klassiker.',
+      info: [{l:'Typ',v:'Indica-dominant'},{l:'Bl\u00fctezeit',v:'Folgt'},{l:'Ertrag',v:'Hoch'},{l:'Schwierigkeit',v:'Mittel'}],
+      price: 'Preis auf Anfrage'
+    },
+    sbc: {
+      emoji: '\u{1F352}', name: 'Super Buff Cherry', strain: 'SBC',
+      desc: 'Super Buff Cherry \u00fcberzeugt mit einem fruchtigen Profil und kr\u00e4ftigem Wachstum. Einzigartige Genetik mit unverwechselbarem Geschmack.',
+      info: [{l:'Typ',v:'Hybrid'},{l:'Bl\u00fctezeit',v:'Folgt'},{l:'Ertrag',v:'Mittel-Hoch'},{l:'Schwierigkeit',v:'Einfach'}],
+      price: 'Preis auf Anfrage'
+    }
+  };
+
+  var bg = document.getElementById('modalBg');
+
+  function openModal(id) {
+    var p = products[id];
+    if (!p) return;
+    document.getElementById('mEmoji').textContent = p.emoji;
+    document.getElementById('mTitle').textContent = p.name;
+    document.getElementById('mCode').textContent = p.strain;
+    document.getElementById('mDesc').textContent = p.desc;
+    document.getElementById('mPrice').textContent = p.price;
+
+    var grid = document.getElementById('mGrid');
+    while (grid.firstChild) grid.removeChild(grid.firstChild);
+    p.info.forEach(function(item) {
+      var div = document.createElement('div');
+      div.className = 'm-gi';
+      var lbl = document.createElement('div');
+      lbl.className = 'm-gi-label';
+      lbl.textContent = item.l;
+      var val = document.createElement('div');
+      val.className = 'm-gi-value';
+      val.textContent = item.v;
+      div.appendChild(lbl);
+      div.appendChild(val);
+      grid.appendChild(div);
+    });
+
+    bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    bg.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  bg.addEventListener('click', function(e) { if (e.target === bg) closeModal(); });
+  document.getElementById('mClose').addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+  document.addEventListener('click', function(e) {
+    var target = e.target.closest('[data-product]');
+    if (target) {
+      e.preventDefault();
+      openModal(target.getAttribute('data-product'));
+      var mm = document.getElementById('mobileMenu');
+      if (mm) mm.classList.remove('open');
+    }
+  });
+
+  var mobileToggle = document.querySelector('.mobile-toggle');
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+  }
+
+  document.querySelectorAll('.mm-nav').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>

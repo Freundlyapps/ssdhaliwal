@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProPlantGenetics — Premium Stecklinge | Demo V1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green-dark:#1a5c2e;
+  --green:#22763a;
+  --green-mid:#2d9e4e;
+  --green-light:#4ecca3;
+  --green-pale:#e8f5e9;
+  --green-muted:#f0f7f1;
+  --white:#ffffff;
+  --off-white:#fafcfa;
+  --dark:#111b14;
+  --text:#2c3e2f;
+  --text-light:#6b7c6e;
+  --sans:'Outfit',system-ui,sans-serif;
+  --display:'Playfair Display',Georgia,serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--white);color:var(--text);overflow-x:hidden;line-height:1.6}
+
+/* Demo Banner */
+.demo-banner{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,#007BFF,#0056b3);color:#fff;text-align:center;padding:10px 20px;font-size:14px;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.demo-banner a{color:#fff;background:rgba(255,255,255,0.2);padding:6px 16px;border-radius:6px;text-decoration:none;font-weight:600}
+body{padding-top:44px}
+
+/* Header */
+.header{position:sticky;top:44px;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(26,92,46,0.08);transition:box-shadow 0.3s}
+.header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+.header-inner{max-width:1200px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--display);font-size:24px;font-weight:900;color:var(--green-dark);letter-spacing:-0.5px;text-decoration:none}
+.logo span{color:var(--green-mid);font-style:italic}
+
+/* Navigation */
+nav{display:flex;gap:8px;align-items:center}
+.nav-link{color:var(--text-light);text-decoration:none;font-size:15px;font-weight:500;padding:8px 16px;border-radius:8px;transition:all 0.2s;position:relative}
+.nav-link:hover{color:var(--green-dark);background:var(--green-pale)}
+
+/* Dropdown */
+.dropdown{position:relative}
+.dropdown-menu{position:absolute;top:100%;left:0;min-width:220px;background:var(--white);border:1px solid rgba(26,92,46,0.1);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,0.1);padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);transition:all 0.25s ease}
+.dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.dropdown-item{display:block;padding:10px 14px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;border-radius:8px;transition:all 0.15s}
+.dropdown-item:hover{background:var(--green-pale);color:var(--green-dark)}
+.dropdown-item .strain-code{font-size:11px;color:var(--text-light);font-weight:400}
+.nav-arrow{font-size:10px;margin-left:4px;transition:transform 0.2s}
+.dropdown:hover .nav-arrow{transform:rotate(180deg)}
+
+/* Social link */
+.nav-insta{display:flex;align-items:center;gap:6px;color:var(--green);text-decoration:none;font-size:14px;font-weight:600;padding:8px 16px;border:2px solid var(--green);border-radius:8px;transition:all 0.2s}
+.nav-insta:hover{background:var(--green);color:var(--white)}
+.nav-insta svg{width:18px;height:18px}
+
+/* Mobile */
+.mobile-toggle{display:none;background:none;border:none;font-size:26px;cursor:pointer;color:var(--green-dark)}
+.mobile-menu{display:none;position:fixed;top:44px;left:0;right:0;bottom:0;background:var(--white);z-index:99;padding:24px;flex-direction:column;gap:4px;overflow-y:auto}
+.mobile-menu.open{display:flex}
+.mobile-menu a{display:block;padding:14px 16px;color:var(--text);text-decoration:none;font-size:16px;font-weight:500;border-radius:10px}
+.mobile-menu a:hover{background:var(--green-pale)}
+.mobile-menu .sub-item{padding-left:32px;font-size:14px;color:var(--text-light)}
+
+/* Hero */
+.hero{padding:100px 32px 80px;background:linear-gradient(170deg,var(--green-pale) 0%,var(--white) 60%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(34,118,58,0.06) 0%,transparent 70%);border-radius:50%}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-content{position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(34,118,58,0.08);border:1px solid rgba(34,118,58,0.15);color:var(--green);padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;margin-bottom:24px}
+.hero h1{font-family:var(--display);font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1.08;color:var(--dark);margin-bottom:18px}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero p{color:var(--text-light);font-size:17px;line-height:1.7;margin-bottom:32px;max-width:480px}
+.hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
+.hero-plant{width:100%;max-width:420px;aspect-ratio:1;background:linear-gradient(135deg,var(--green-pale),rgba(78,204,163,0.15));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:140px;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.25s;font-family:var(--sans);border:none;cursor:pointer}
+.btn-primary{background:var(--green);color:var(--white)}
+.btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(34,118,58,0.25)}
+.btn-outline{background:transparent;color:var(--green);border:2px solid var(--green)}
+.btn-outline:hover{background:var(--green);color:var(--white)}
+
+/* Products Section */
+.products{padding:100px 32px;background:var(--off-white)}
+.section-header{text-align:center;margin-bottom:48px}
+.section-tag{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+.section-title{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--dark)}
+.section-desc{color:var(--text-light);font-size:15px;max-width:500px;margin:12px auto 0;line-height:1.7}
+
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.product-card{background:var(--white);border-radius:20px;border:1px solid rgba(26,92,46,0.06);overflow:hidden;transition:all 0.35s;cursor:pointer}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(26,92,46,0.1)}
+.product-img{aspect-ratio:4/3;background:linear-gradient(135deg,var(--green-pale),rgba(78,204,163,0.12));display:flex;align-items:center;justify-content:center;font-size:72px;position:relative;overflow:hidden}
+.product-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(255,255,255,0.6));pointer-events:none}
+.product-tag{position:absolute;top:14px;left:14px;padding:5px 12px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;background:var(--green);color:var(--white);z-index:1}
+.product-body{padding:20px 22px 24px}
+.product-name{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.product-strain{font-size:13px;color:var(--green);font-weight:600;margin-bottom:8px}
+.product-desc{font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:14px}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-size:22px;font-weight:800;color:var(--green-dark)}
+.product-detail-btn{padding:8px 16px;border-radius:8px;border:2px solid var(--green);background:transparent;color:var(--green);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:var(--sans)}
+.product-detail-btn:hover{background:var(--green);color:var(--white)}
+
+/* Product Detail Modal */
+.modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:20px;max-width:560px;width:100%;max-height:85vh;overflow-y:auto;padding:36px;position:relative;animation:modalIn 0.3s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+.modal-close{position:absolute;top:16px;right:16px;background:var(--green-pale);border:none;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--green-dark);transition:all 0.2s}
+.modal-close:hover{background:var(--green);color:var(--white)}
+.modal-emoji{font-size:80px;text-align:center;margin-bottom:16px}
+.modal h2{font-family:var(--display);font-size:28px;font-weight:800;color:var(--dark);margin-bottom:4px}
+.modal .modal-strain{font-size:14px;color:var(--green);font-weight:600;margin-bottom:16px}
+.modal p{font-size:14px;color:var(--text-light);line-height:1.7;margin-bottom:16px}
+.modal-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.modal-info-item{background:var(--green-muted);padding:12px;border-radius:10px}
+.modal-info-item .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:2px}
+.modal-info-item .value{font-size:15px;font-weight:600;color:var(--dark)}
+.modal-price{font-size:28px;font-weight:800;color:var(--green-dark);margin-bottom:16px}
+.modal-order{display:flex;align-items:center;gap:12px;background:var(--green-pale);padding:16px;border-radius:12px}
+.modal-order .icon{font-size:24px}
+.modal-order .text{font-size:13px;color:var(--text);line-height:1.5}
+.modal-order a{color:var(--green-dark);font-weight:700}
+
+/* About Section */
+.about{padding:100px 32px;background:var(--white)}
+.about-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-visual{display:flex;align-items:center;justify-content:center}
+.about-circle{width:320px;height:320px;background:linear-gradient(135deg,var(--green-pale),rgba(78,204,163,0.1));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:100px}
+.about-content h2{font-family:var(--display);font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--dark);margin-bottom:16px}
+.about-content p{color:var(--text-light);font-size:15px;line-height:1.8;margin-bottom:16px}
+.about-stats{display:flex;gap:32px;margin-top:24px}
+.stat{text-align:center}
+.stat-number{font-size:32px;font-weight:800;color:var(--green)}
+.stat-label{font-size:12px;color:var(--text-light);font-weight:500}
+
+/* Order CTA Banner */
+.order-cta{background:linear-gradient(135deg,var(--green-dark),var(--green));color:var(--white);padding:60px 32px;text-align:center}
+.order-cta h2{font-family:var(--display);font-size:clamp(24px,3.5vw,36px);font-weight:800;margin-bottom:10px}
+.order-cta p{font-size:16px;opacity:0.85;max-width:500px;margin:0 auto 28px}
+.order-email-box{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);padding:16px 28px;border-radius:14px;transition:all 0.2s}
+.order-email-box:hover{background:rgba(255,255,255,0.2)}
+.order-email-box .mail-icon{font-size:24px}
+.order-email-box a{color:var(--white);text-decoration:none;font-size:18px;font-weight:700;letter-spacing:0.3px}
+
+/* Footer */
+footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:48px 32px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.footer-logo{font-family:var(--display);font-size:20px;font-weight:900;color:#fff}
+.footer-logo span{color:var(--green-light)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{color:rgba(255,255,255,0.4);font-size:13px;text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-social a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s}
+.footer-social a:hover{color:var(--green-light)}
+.footer-bottom{max-width:1200px;margin:24px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);text-align:center}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.25)}
+.footer-bottom a{color:rgba(255,255,255,0.4)}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-visual{order:-1}
+  .hero-plant{max-width:200px;font-size:80px}
+  .about-inner{grid-template-columns:1fr;text-align:center}
+  .about-visual{order:-1}
+  .about-circle{width:200px;height:200px;font-size:60px}
+  .about-stats{justify-content:center}
+}
+@media(max-width:768px){
+  nav{display:none}
+  .mobile-toggle{display:block}
+  .header-inner{padding:12px 16px}
+  .logo{font-size:20px}
+  .hero{padding:40px 16px 36px}
+  .hero-tag{font-size:12px;padding:6px 14px;margin-bottom:16px}
+  .hero h1{font-size:28px;margin-bottom:12px}
+  .hero p{font-size:15px;margin-bottom:24px}
+  .btn{padding:12px 20px;font-size:14px;width:100%;justify-content:center}
+  .products{padding:48px 16px}
+  .section-header{margin-bottom:28px}
+  .section-title{font-size:24px}
+  .section-desc{font-size:14px}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .product-body{padding:14px 14px 16px}
+  .product-name{font-size:15px}
+  .product-desc{font-size:12px;margin-bottom:10px}
+  .product-price{font-size:18px}
+  .product-detail-btn{padding:6px 12px;font-size:12px}
+  .about{padding:48px 16px}
+  .about-content h2{font-size:24px}
+  .about-content p{font-size:14px}
+  .about-stats{gap:20px}
+  .stat-number{font-size:24px}
+  .order-cta{padding:40px 16px}
+  .order-cta h2{font-size:22px}
+  .order-cta p{font-size:14px;margin-bottom:20px}
+  .order-email-box{padding:12px 16px;flex-direction:column;gap:8px;width:100%;text-align:center}
+  .order-email-box a{font-size:15px;word-break:break-all}
+  footer{padding:32px 16px}
+  .footer-inner{flex-direction:column;text-align:center;gap:14px}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:12px}
+  .footer-links a{font-size:12px}
+  .modal{padding:24px 20px;margin:8px;border-radius:16px;max-height:90vh}
+  .modal-overlay{padding:12px}
+  .modal-emoji{font-size:56px;margin-bottom:10px}
+  .modal h2{font-size:22px}
+  .modal-info{grid-template-columns:1fr 1fr;gap:8px}
+  .modal-info-item{padding:10px}
+  .modal-price{font-size:22px}
+  .modal-order{padding:12px;flex-direction:column;text-align:center;gap:8px}
+  .modal-order .text{font-size:12px}
+  .modal-order a{word-break:break-all}
+}
+@media(max-width:380px){
+  .product-grid{grid-template-columns:1fr}
+  .modal-info{grid-template-columns:1fr}
+  .hero h1{font-size:24px}
+}
+</style>
+</head>
+<body>
+<div class="demo-banner">Dies ist eine Demo-Website f&uuml;r ProPlantGenetics. <a href="https://ssdhaliwal.dev/#contact">Website erstellen lassen &rarr;</a></div>
+
+<!-- Header -->
+<header class="header" id="top">
+  <div class="header-inner">
+    <a href="#top" class="logo">ProPlant<span>Genetics</span></a>
+    <nav>
+      <div class="dropdown">
+        <a href="#stecklinge" class="nav-link">Unsere Stecklinge <span class="nav-arrow">&#9660;</span></a>
+        <div class="dropdown-menu">
+          <a href="#" class="dropdown-item" data-product="mac1">Mac 1 <span class="strain-code">&mdash; MAC1</span></a>
+          <a href="#" class="dropdown-item" data-product="di">Dantes Inferno <span class="strain-code">&mdash; DI</span></a>
+          <a href="#" class="dropdown-item" data-product="s54">Studio 54 <span class="strain-code">&mdash; S54</span></a>
+          <a href="#" class="dropdown-item" data-product="wck">Wedding Cake <span class="strain-code">&mdash; WCK</span></a>
+          <a href="#" class="dropdown-item" data-product="sbc">Super Buff Cherry <span class="strain-code">&mdash; SBC</span></a>
+        </div>
+      </div>
+      <a href="#ueber-uns" class="nav-link">&Uuml;ber uns</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener" class="nav-insta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+    </nav>
+    <button class="mobile-toggle" aria-label="Men&uuml;">&#9776;</button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#stecklinge" class="mobile-nav-link">&#127793; Unsere Stecklinge</a>
+  <a href="#" class="sub-item" data-product="mac1">Mac 1</a>
+  <a href="#" class="sub-item" data-product="di">Dantes Inferno</a>
+  <a href="#" class="sub-item" data-product="s54">Studio 54</a>
+  <a href="#" class="sub-item" data-product="wck">Wedding Cake</a>
+  <a href="#" class="sub-item" data-product="sbc">Super Buff Cherry</a>
+  <a href="#ueber-uns" class="mobile-nav-link">&#128161; &Uuml;ber uns</a>
+  <a href="https://instagram.com" target="_blank" rel="noopener">&#128247; Instagram</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">&#127793; Premium Genetik aus &Ouml;sterreich</div>
+      <h1>Premium <em>Stecklinge</em> aus &Ouml;sterreich</h1>
+      <p>Genetisch verifizierte Sorten. H&ouml;chste Qualit&auml;t.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#stecklinge" class="btn btn-primary">Sortiment ansehen &#8595;</a>
+        <a href="#bestellen" class="btn btn-outline">Jetzt bestellen</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-plant">&#127793;</div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="stecklinge">
+  <div class="section-header">
+    <div class="section-tag">Sortiment</div>
+    <h2 class="section-title">Unsere Stecklinge</h2>
+    <p class="section-desc">Jede Sorte wird sorgf&auml;ltig selektiert und unter optimalen Bedingungen gezogen. Klicke auf eine Sorte f&uuml;r alle Details.</p>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card" data-product="mac1">
+      <div class="product-img"><span class="product-tag">Beliebt</span>&#127807;</div>
+      <div class="product-body">
+        <div class="product-name">Mac 1</div>
+        <div class="product-strain">MAC1</div>
+        <div class="product-desc">Einzigartige Genetik mit herausragender Harzproduktion. Ideal f&uuml;r erfahrene Z&uuml;chter.</div>
+        <div class="product-footer">
+          <span class="product-price">&euro; &mdash;</span>
+          <button class="product-detail-btn">Details &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-product="di">
+      <div class="product-img">&#127811;</div>
+      <div class="product-body">
+        <div class="product-name">Dantes Inferno</div>
+        <div class="product-strain">DI</div>
+        <div class="product-desc">Kraftvolle Sorte mit intensivem Aromaprofil und beeindruckender Struktur.</div>
+        <div class="product-footer">
+          <span class="product-price">&euro; &mdash;</span>
+          <button class="product-detail-btn">Details &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-product="s54">
+      <div class="product-img"><span class="product-tag">Neu</span>&#127807;</div>
+      <div class="product-body">
+        <div class="product-name">Studio 54</div>
+        <div class="product-strain">S54</div>
+        <div class="product-desc">Elegante Genetik mit ausgewogenem Wachstum und erstklassiger Qualit&auml;t.</div>
+        <div class="product-footer">
+          <span class="product-price">&euro; &mdash;</span>
+          <button class="product-detail-btn">Details &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-product="wck">
+      <div class="product-img">&#127793;</div>
+      <div class="product-body">
+        <div class="product-name">Wedding Cake</div>
+        <div class="product-strain">WCK</div>
+        <div class="product-desc">Weltweit beliebte Sorte &mdash; bekannt f&uuml;r dichte Struktur und s&uuml;&szlig;es Aroma.</div>
+        <div class="product-footer">
+          <span class="product-price">&euro; &mdash;</span>
+          <button class="product-detail-btn">Details &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-product="sbc">
+      <div class="product-img">&#127826;</div>
+      <div class="product-body">
+        <div class="product-name">Super Buff Cherry</div>
+        <div class="product-strain">SBC</div>
+        <div class="product-desc">Fruchtige Genetik mit kr&auml;ftigem Wachstum und einzigartigem Geschmacksprofil.</div>
+        <div class="product-footer">
+          <span class="product-price">&euro; &mdash;</span>
+          <button class="product-detail-btn">Details &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="ueber-uns">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-circle">&#129716;</div>
+    </div>
+    <div class="about-content">
+      <div class="section-tag">&Uuml;ber uns</div>
+      <h2>ProPlantGenetics</h2>
+      <p>Wir sind ein engagiertes Team mit Leidenschaft f&uuml;r erstklassige Pflanzengenetik. Unser Fokus liegt auf Qualit&auml;t, Reinheit und der sorgf&auml;ltigen Auswahl jeder einzelnen Sorte.</p>
+      <p>Weitere Informationen &uuml;ber unser Team und unsere Geschichte folgen in K&uuml;rze.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="stat-number">5</div><div class="stat-label">Sorten</div></div>
+        <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Qualit&auml;t</div></div>
+        <div class="stat"><div class="stat-number">AT</div><div class="stat-label">Standort</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Order CTA -->
+<div class="order-cta" id="bestellen">
+  <h2>Bestellung aufgeben</h2>
+  <p>F&uuml;r Bestellungen und Anfragen kontaktiere uns bitte direkt per E-Mail. Wir melden uns schnellstm&ouml;glich bei dir.</p>
+  <div class="order-email-box">
+    <span class="mail-icon">&#9993;</span>
+    <a href="mailto:bestellung@proplantgenetics.at">bestellung@proplantgenetics.at</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">ProPlant<span>Genetics</span></div>
+    <div class="footer-links">
+      <a href="#stecklinge">Stecklinge</a>
+      <a href="#ueber-uns">&Uuml;ber uns</a>
+      <a href="#bestellen">Bestellen</a>
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com" target="_blank" rel="noopener">&#128247; Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Demo-Template von <a href="https://ssdhaliwal.dev">ssdhaliwal.dev</a> &mdash; <a href="https://ssdhaliwal.dev/#contact">Website erstellen lassen</a></p>
+  </div>
+</footer>
+
+<!-- Product Detail Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">&#10005;</button>
+    <div class="modal-emoji" id="modalEmoji"></div>
+    <h2 id="modalTitle"></h2>
+    <div class="modal-strain" id="modalStrain"></div>
+    <p id="modalDesc"></p>
+    <div class="modal-info" id="modalInfo"></div>
+    <div class="modal-price" id="modalPrice"></div>
+    <div class="modal-order">
+      <span class="icon">&#9993;</span>
+      <div class="text">
+        F&uuml;r Bestellungen schreib uns an:<br>
+        <a href="mailto:bestellung@proplantgenetics.at">bestellung@proplantgenetics.at</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Product data (all static, trusted content)
+  var products = {
+    mac1: {
+      emoji: '\u{1F33F}',
+      name: 'Mac 1',
+      strain: 'MAC1',
+      desc: 'Mac 1 ist eine exklusive Sorte, bekannt f\u00fcr ihre au\u00dfergewohenliche Harzproduktion und einzigartige Genetik. Ideal f\u00fcr erfahrene Z\u00fcchter, die Wert auf Qualit\u00e4t legen.',
+      info: [
+        { label: 'Typ', value: 'Hybrid' },
+        { label: 'Bl\u00fctezeit', value: 'Folgt' },
+        { label: 'Ertrag', value: 'Hoch' },
+        { label: 'Schwierigkeit', value: 'Mittel' }
+      ],
+      price: 'Preis auf Anfrage'
+    },
+    di: {
+      emoji: '\u{1F343}',
+      name: 'Dantes Inferno',
+      strain: 'DI',
+      desc: 'Dantes Inferno \u00fcberzeugt durch ein intensives Aromaprofil und beeindruckende Struktur. Eine kraftvolle Sorte f\u00fcr Kenner.',
+      info: [
+        { label: 'Typ', value: 'Indica-dominant' },
+        { label: 'Bl\u00fctezeit', value: 'Folgt' },
+        { label: 'Ertrag', value: 'Mittel-Hoch' },
+        { label: 'Schwierigkeit', value: 'Mittel' }
+      ],
+      price: 'Preis auf Anfrage'
+    },
+    s54: {
+      emoji: '\u{1F33F}',
+      name: 'Studio 54',
+      strain: 'S54',
+      desc: 'Studio 54 besticht durch elegantes Wachstum und erstklassige Qualit\u00e4t. Eine Sorte, die in jeder Hinsicht \u00fcberzeugt.',
+      info: [
+        { label: 'Typ', value: 'Hybrid' },
+        { label: 'Bl\u00fctezeit', value: 'Folgt' },
+        { label: 'Ertrag', value: 'Hoch' },
+        { label: 'Schwierigkeit', value: 'Einfach' }
+      ],
+      price: 'Preis auf Anfrage'
+    },
+    wck: {
+      emoji: '\u{1F331}',
+      name: 'Wedding Cake',
+      strain: 'WCK',
+      desc: 'Wedding Cake ist weltweit beliebt \u2014 bekannt f\u00fcr ihre dichte Bl\u00fctenstruktur und das s\u00fc\u00dfe, vanilleartige Aroma. Ein Klassiker.',
+      info: [
+        { label: 'Typ', value: 'Indica-dominant' },
+        { label: 'Bl\u00fctezeit', value: 'Folgt' },
+        { label: 'Ertrag', value: 'Hoch' },
+        { label: 'Schwierigkeit', value: 'Mittel' }
+      ],
+      price: 'Preis auf Anfrage'
+    },
+    sbc: {
+      emoji: '\u{1F352}',
+      name: 'Super Buff Cherry',
+      strain: 'SBC',
+      desc: 'Super Buff Cherry \u00fcberzeugt mit einem fruchtigen Profil und kr\u00e4ftigem Wachstum. Einzigartige Genetik mit unverwechselbarem Geschmack.',
+      info: [
+        { label: 'Typ', value: 'Hybrid' },
+        { label: 'Bl\u00fctezeit', value: 'Folgt' },
+        { label: 'Ertrag', value: 'Mittel-Hoch' },
+        { label: 'Schwierigkeit', value: 'Einfach' }
+      ],
+      price: 'Preis auf Anfrage'
+    }
+  };
+
+  var overlay = document.getElementById('modalOverlay');
+
+  function openModal(id) {
+    var p = products[id];
+    if (!p) return;
+    document.getElementById('modalEmoji').textContent = p.emoji;
+    document.getElementById('modalTitle').textContent = p.name;
+    document.getElementById('modalStrain').textContent = p.strain;
+    document.getElementById('modalDesc').textContent = p.desc;
+    document.getElementById('modalPrice').textContent = p.price;
+
+    var infoEl = document.getElementById('modalInfo');
+    while (infoEl.firstChild) infoEl.removeChild(infoEl.firstChild);
+    p.info.forEach(function(item) {
+      var div = document.createElement('div');
+      div.className = 'modal-info-item';
+      var lbl = document.createElement('div');
+      lbl.className = 'label';
+      lbl.textContent = item.label;
+      var val = document.createElement('div');
+      val.className = 'value';
+      val.textContent = item.value;
+      div.appendChild(lbl);
+      div.appendChild(val);
+      infoEl.appendChild(div);
+    });
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Close button
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+
+  // Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Delegate clicks for product cards and dropdown items
+  document.addEventListener('click', function(e) {
+    var target = e.target.closest('[data-product]');
+    if (target) {
+      e.preventDefault();
+      var id = target.getAttribute('data-product');
+      openModal(id);
+      // Close mobile menu if open
+      var mm = document.getElementById('mobileMenu');
+      if (mm) mm.classList.remove('open');
+    }
+  });
+
+  // Mobile menu toggle
+  var mobileToggle = document.querySelector('.mobile-toggle');
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+  }
+
+  // Close mobile menu on nav link click
+  document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+
+  // Header scroll shadow
+  window.addEventListener('scroll', function() {
+    var h = document.querySelector('.header');
+    if (h) h.classList.toggle('scrolled', window.scrollY > 10);
+  });
+})();
+</script>
+</body>
+</html>
