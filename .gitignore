@@ -139,3 +139,9 @@ site/assets/dist/
 # ----------
 docs/
 CLAUDE.md
+
+# ----------
+# Client files
+# ----------
+Client/
+Screenshot/
